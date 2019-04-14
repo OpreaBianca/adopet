@@ -1,7 +1,7 @@
 .details-wrapper {
   width: 50%;
-  height: 93%;
   position: absolute;
+  top: 65px;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
 
@@ -12,7 +12,7 @@
     img {
       max-width: 100%;
       height: auto;
-      margin-top: 14%;
+      margin-top: 18%;
     }
   }
 
@@ -64,11 +64,12 @@
     }
 
     .error {
-      height: 18px;
+      height: 27px;
       font-size: 18px;
       letter-spacing: 1px;
       font-weight: 100;
       margin-bottom: 9px;
+      color: #e60000;
     }
 
     button {
@@ -89,26 +90,12 @@
       }
     }
   }
-
-  .privacy {
-    width: 60%;
-    margin: 0 auto;
-
-    p {
-      margin-top: 5%; 
-      text-align: center;
-      color: #ffffff;
-      font-size: 14px;
-      padding: 19px 14px;
-      letter-spacing: 1px;
-      font-weight: 100;
-    }
-  }
 }
 
 @media only screen and (max-width: 600px) {
   .details-wrapper {
     width: 100%;
+    top: 55px;
   
     .logo {
       width: 60%;
@@ -138,7 +125,7 @@
       }
   
       .error {
-        height: 14px;
+        height: 19px;
         font-size: 14px;
         margin-bottom: 5px;
       }
@@ -146,16 +133,6 @@
       button {
         height: 35px;
         font-size: 14px;
-      }
-    }
-      
-    .privacy {
-      width: 90%;
-      margin: 0 auto;
-  
-      p {
-        font-size: 10px;
-        padding: 7px 14px;
       }
     }
   }

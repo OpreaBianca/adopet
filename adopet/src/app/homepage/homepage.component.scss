@@ -1,7 +1,7 @@
 .details-wrapper {
   width: 50%;
-  height: 93%;
   position: absolute;
+  top: 65px;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
 
@@ -52,6 +52,7 @@
 @media only screen and (max-width: 600px) {
   .details-wrapper {
     width: 100%;
+    top: 55px;
   
     .logo {
       width: 80%;

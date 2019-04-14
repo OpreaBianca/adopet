@@ -1,0 +1,255 @@
+.details-wrapper {
+  width: 50%;
+  position: absolute;
+  top: 65px;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+
+  .logo {
+    width: 35%;
+    margin: 0 auto;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      margin-top: 18%;
+    }
+  }
+
+  .login {
+    width: 60%;
+    margin: 0 auto;
+
+    p {
+      margin-top: 5%; 
+      text-align: center;
+      color: #ffffff;
+      font-size: 16px;
+      padding: 19px 14px;
+      letter-spacing: 1px;
+      font-weight: 100;
+
+      a {
+        color: #ffffff;
+      }
+    }
+  }
+
+  .signup-form-wrapper {
+    width: 100%;
+
+    &::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .left-side {
+      float: left;
+      width: 35%;
+      margin-left: 7.5%;
+    }
+
+    .separator {
+      float: left;
+      width: 1px;
+      height: 255px;
+      border: 1px solid #ffffff;
+      margin-left: 7.5%;
+      margin-right: 7.5%;
+    }
+
+    .right-side {
+      float: left;
+      width: 35%;
+    }
+
+    label {
+      display: block;
+      letter-spacing: 1px;
+      font-weight: 100;
+      font-size: 16px;
+      color: #ffffff;
+
+      .input-field::after {
+        content: " *";
+        color: #e60000;
+      }
+    }
+
+    input, select {
+      display: block;
+      width: 100%;
+      height: 45px;
+      letter-spacing: 1px;
+      font-weight: 100;
+      font-size: 18px;
+      margin-bottom: 9px;
+      padding: 4px;
+    }
+
+    .container {
+      position: relative;
+      padding-left: 50px;
+      padding-right: 0px;
+      cursor: pointer;
+      font-size: 16px;
+      letter-spacing: 1px;
+      font-weight: 100;
+      margin-top: 35px;
+
+      input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+
+      .checkmark {
+        position: absolute;
+        top: 4px;
+        left: 0;
+        height: 40px;
+        width: 40px;
+        background-color: #ffffff;
+
+        &::after {
+          content: "";
+          position: absolute;
+          display: none;
+        }
+      }
+
+      input:checked ~ .checkmark:after {
+        display: block;
+        left: 16px;
+        top: 6px;
+        width: 12px;
+        height: 24px;
+        border: solid #000000;
+        border-width: 0 4px 4px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  .error-button-wrapper {
+    width: 35%;
+    margin: 0 auto;
+    margin-top: 15px;
+
+    .error {
+      height: 27px;
+      font-size: 18px;
+      letter-spacing: 1px;
+      font-weight: 100;
+      margin-bottom: 9px;
+      color: #e60000;
+    }
+
+    button {
+      width: 100%;
+      height: 45px;
+      background: #000000;
+      outline: none;
+      font-size: 18px;
+      letter-spacing: 1px;
+      font-weight: 100;
+      color: #ffffff;
+      cursor: pointer;
+      border: transparent;
+        
+      &:hover,
+      &:focus {
+        background: rgba(0, 0, 0, 0.6);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .details-wrapper {
+    width: 100%;
+    top: 55px;
+    
+    .logo {
+      // width: 60%;
+      display: none;
+    }
+  
+    .login {
+      width: 80%;
+  
+      p {
+        font-size: 14px;
+      }
+    }
+
+    .signup-form-wrapper {
+      width: 70%;
+      height: 360px;
+      margin: 0 auto;
+
+      &::after {
+        display: none;
+      }
+
+      .left-side, .right-side {
+        width: 100%;
+        margin: 0;
+      }
+
+      .separator {
+        display: none;
+      }
+
+      label {
+        margin-bottom: 1px;
+        font-size: 14px;
+      }
+  
+      input, select {
+        height: 35px;
+        font-size: 14px;
+        margin-bottom: 5px;
+        padding: 3px;
+      }
+
+      .container {
+        font-size: 12px;
+        padding-left: 30px;
+        margin-top: 15px;
+
+        .checkmark {
+          width: 20px;
+          height: 20px;
+        }
+
+        input:checked ~ .checkmark:after {
+          left: 6px;
+          top: 1px;
+          width: 8px;
+          height: 16px;
+        }
+      }
+    }
+
+    .error-button-wrapper {
+      width: 70%;
+
+      .error {
+        height: 19px;
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+
+      button {
+        height: 35px;
+        font-size: 14px;
+      }
+    }
+  }
+}

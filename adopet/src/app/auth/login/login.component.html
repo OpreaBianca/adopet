@@ -7,22 +7,19 @@
   </div>
   <div class="login-form-wrapper">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <label for="email" class="email">
+      <label for="email">
         <span>Email</span>
       </label>
       <input type="email" formControlName="email" placeholder="email">
-      <label for="password" class="password">
+      <label for="password">
         <span>Password</span>
       </label>
       <input type="password" formControlName="password" placeholder="password">
       <div class="error">
+        All fields are required.
         <!-- <mat-error *ngIf="hasError()">{{getError()}}</mat-error> -->
       </div>
-      <button type=submit>Submit</button>
+      <button type=submit>Login</button>
     </form>
-  </div>
-  <div class="privacy">
-    <p>* By logging in, you agree to our Terms of Use and to receive emails & updates and acknowledge that you read our
-      Privacy Policy. You also acknowledge that ADOPeT uses cookies to give the best user experience.</p>
   </div>
 </div>

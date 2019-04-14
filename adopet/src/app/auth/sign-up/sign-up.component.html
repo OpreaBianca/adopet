@@ -1,3 +1,54 @@
-<p>
-  sign-up works!
-</p>
+<div class="details-wrapper">
+  <div class="logo">
+    <img src="../../assets/LOGO.png">
+  </div>
+  <div class="login">
+    <p>Already have an account? <a [routerLink]="['', 'login']">Log in</a></p>
+  </div>
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <div class="signup-form-wrapper">
+      <div class="left-side">
+        <label for="name">
+          <span class="input-field">Name</span>
+        </label>
+        <input type="text" formControlName="name" placeholder="name">
+        <label for="profile">
+          <span class="input-field">Profile type</span>
+        </label>
+        <select formControlName="profile">
+          <option>Shelter</option>
+          <option>ONG</option>
+          <option>Veterinary</option>
+          <option>Other</option>
+        </select>
+        <label for="phone">
+          <span class="input-field">Phone number</span>
+        </label>
+        <input type="tel" formControlName="phone" placeholder="phone">
+      </div>
+      <div class="separator"> </div>
+      <div class="right-side">
+        <label for="email">
+          <span class="input-field">Email</span>
+        </label>
+        <input type="email" formControlName="email" placeholder="email">
+        <label for="password">
+          <span class="input-field">Password</span>
+        </label>
+        <input type="password" formControlName="password" placeholder="password">
+        <label class="container">I want to receive notifications in case of emergency.
+          <input type="checkbox" formControlName="emergency">
+          <span class="checkmark"></span>
+        </label>
+      </div>
+    </div>
+    <div class="error-button-wrapper">
+      <div class="error">
+        <p>All fields are required.</p>
+
+        <!-- <mat-error *ngIf="hasError()">{{getError()}}</mat-error> -->
+      </div>
+      <button type=submit>Sign up</button>
+    </div>
+  </form>
+</div>
