@@ -3,8 +3,7 @@
   height: 93%;
   position: absolute;
   bottom: 0;
-  background: #000000;
-  opacity: 0.5;
+  background: rgba(0, 0, 0, 0.5);
 
   .logo {
     width: 45%;
@@ -27,6 +26,8 @@
       color: #ffffff;
       font-size: 20px;
       padding: 19px 14px;
+      letter-spacing: 1px;
+      font-weight: 100;
     }
   }
     
@@ -35,11 +36,15 @@
     margin: 0 auto;
 
     p {
-      margin-top: 14%; 
       text-align: right;
-      color: #ffffff;
-      font-size: 25px;
-      padding: 19px 14px;
+      font-size: 22px;
+      padding: 5px 14px;
+      letter-spacing: 1px;
+      font-weight: 100;
+
+      a {
+        color: #ffffff;
+      }
     }
   }
 }

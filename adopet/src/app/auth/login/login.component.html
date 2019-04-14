@@ -1,0 +1,28 @@
+<div class="details-wrapper">
+  <div class="logo">
+    <img src="../../assets/LOGO.png">
+  </div>
+  <div class="sign-up">
+    <p>Don't have an account? <a [routerLink]="['', 'sign-up']">Sign up</a></p>
+  </div>
+  <div class="login-form-wrapper">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <label for="email" class="email">
+        <span>Email</span>
+      </label>
+      <input type="email" formControlName="email" placeholder="email">
+      <label for="password" class="password">
+        <span>Password</span>
+      </label>
+      <input type="password" formControlName="password" placeholder="password">
+      <div class="error">
+        <!-- <mat-error *ngIf="hasError()">{{getError()}}</mat-error> -->
+      </div>
+      <button type=submit>Submit</button>
+    </form>
+  </div>
+  <div class="privacy">
+    <p>* By logging in, you agree to our Terms of Use and to receive emails & updates and acknowledge that you read our
+      Privacy Policy. You also acknowledge that ADOPeT uses cookies to give the best user experience.</p>
+  </div>
+</div>

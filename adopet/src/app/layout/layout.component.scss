@@ -11,8 +11,7 @@
   .navbar {
     height: 7%;
     margin: 0;
-    background-color: #000000;
-    opacity: 0.7;
+    background-color: rgba(0, 0, 0, 0.7);
 
     ul {
       width: 100%;
@@ -31,6 +30,10 @@
         
         &:last-child {
           float: right;
+        }
+
+        a {
+          color: #ffffff;
         }
       }
     }
