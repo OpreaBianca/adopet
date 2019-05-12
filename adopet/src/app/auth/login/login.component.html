@@ -3,7 +3,7 @@
     <img src="../../assets/LOGO.png">
   </div>
   <div class="sign-up">
-    <p>Don't have an account? <a [routerLink]="['', 'sign-up']">Sign up</a></p>
+    <p>Don't have an account? <a routerLink="/sign-up">Sign up</a></p>
   </div>
   <div class="login-form-wrapper">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">

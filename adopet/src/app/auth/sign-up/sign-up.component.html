@@ -3,7 +3,7 @@
     <img src="../../assets/LOGO.png">
   </div>
   <div class="login">
-    <p>Already have an account? <a [routerLink]="['', 'login']">Log in</a></p>
+    <p>Already have an account? <a routerLink="/login">Log in</a></p>
   </div>
   <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
     <div class="signup-form-wrapper">
@@ -16,6 +16,7 @@
           <span class="input-field">Profile type</span>
         </label>
         <select formControlName="profile">
+          <option value="" disabled selected>profile</option>
           <option>Shelter/ONG</option>
           <option>Veterinary</option>
           <option>Other</option>

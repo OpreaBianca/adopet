@@ -4,13 +4,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { ValidationModule } from './validation/validation.module';
+import { AuthModule } from './auth/auth.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { LayoutComponent } from './layout/layout.component';
-import { AuthService } from './auth/auth.service';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AuthService } from './auth/auth.service';
     LayoutComponent,
     HomepageComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -26,9 +28,10 @@ import { AuthService } from './auth/auth.service';
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    ValidationModule
+    ValidationModule,
+    AuthModule
   ],
-  providers: [AuthService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

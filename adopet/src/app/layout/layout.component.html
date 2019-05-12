@@ -15,9 +15,20 @@
       <li>BLOG</li>
       <!--Evenimente-->
       <li>NEWS FEED</li>
-      <li><a [routerLink]="['login']">LOGIN</a></li>
+      <!--Shelthers/NGOs can display donation requests-->
+      <li>DONATE</li>
+      <li *ngIf="!authService.isAuthenticated()"><a routerLink="/login">LOGIN</a></li>
+      <li *ngIf="authService.isAuthenticated()">
+        <div class="dropdown">HOME
+          <div class="dropdown-content">
+            <a>MY PROFILE</a>
+            <a (click)="authService.logout()">LOGOUT</a>
+          </div>
+        </div>
+      </li>
     </ul>
     <img class="menu" src="../../assets/menu.png">
     <img class="login" src="../../assets/login.png">
   </div>
 </div>
+<router-outlet></router-outlet>

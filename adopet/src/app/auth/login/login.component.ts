@@ -19,24 +19,23 @@ export class LoginComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    // if (this._authService.isAuthenticated()) {
-    //   this._router.navigate(['']);
-    // }
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['profile']);
+    }
+
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required])
+      password: new FormControl('', Validators.required)
     });
   }
-
-  get email() { return this.loginForm.get('email'); }
-  get password() { return this.loginForm.get('password'); }
 
   onSubmit() {
     if (this.loginForm.valid) {
       // this.submittedForm = true;
       this.userCredentials = this.loginForm.value;
+      this.userCredentials.password = btoa(this.userCredentials.password);
       this.authService.login(this.userCredentials).subscribe(
-        res => console.log(res), // this.authService.authenticateUser(res.token)
+        res => this.authService.authenticateUser(res.token),
         err => console.log(err)
       );
     }

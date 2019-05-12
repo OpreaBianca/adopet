@@ -19,16 +19,17 @@ export class SignUpComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    // if (this._authService.isAuthenticated()) {
-    //   this._router.navigate(['']);
-    // }
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['profile']);
+    }
+
     //const phoneNumberPattern = '[0-9]{4}-[0-9]{3}-[0-9]{3}';
     this.signUpForm = new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      profile: new FormControl('', [Validators.required]),
-      phone: new FormControl('', [Validators.required /*Validators.pattern(phoneNumberPattern)*/]),
+      name: new FormControl('', Validators.required),
+      profile: new FormControl('', Validators.required),
+      phone: new FormControl('', Validators.required /*Validators.pattern(phoneNumberPattern)*/),
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required]),
+      password: new FormControl('', Validators.required),
       emergency: new FormControl('')
     });
   }
@@ -37,8 +38,9 @@ export class SignUpComponent implements OnInit {
     if (this.signUpForm.valid) {
       // this.submittedForm = true;
       this.user = this.signUpForm.value;
+      this.user.password = btoa(this.user.password);
       this.authService.signUp(this.user).subscribe(
-        res => console.log(res), //this.authService.authenticateUser(res.token)
+        res => this.authService.authenticateUser(res.token),
         err => console.log(err)
       );
     }
