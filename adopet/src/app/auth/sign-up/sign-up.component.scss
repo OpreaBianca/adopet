@@ -28,10 +28,19 @@
       padding: 19px 14px;
       letter-spacing: 1px;
       font-weight: 100;
-
+    
       a {
-        color: #ffffff;
+        font-weight: 400;
       }
+    }
+  }
+
+  form.submitted {
+    .ng-invalid, 
+    .ng-dirty.ng-invalid {
+      outline: none;
+      border: 1px solid #e60000;
+      border-radius: 0;
     }
   }
 
@@ -69,6 +78,7 @@
       letter-spacing: 1px;
       font-weight: 100;
       font-size: 16px;
+      margin-bottom: 3px;
       color: #ffffff;
 
       .input-field::after {
@@ -96,7 +106,7 @@
       font-size: 16px;
       letter-spacing: 1px;
       font-weight: 100;
-      margin-top: 35px;
+      margin-top: 38px;
 
       input {
         position: absolute;
@@ -108,10 +118,10 @@
 
       .checkmark {
         position: absolute;
-        top: 4px;
+        top: 10px;
         left: 0;
-        height: 40px;
-        width: 40px;
+        height: 25px;
+        width: 25px;
         background-color: #ffffff;
 
         &::after {
@@ -123,10 +133,10 @@
 
       input:checked ~ .checkmark:after {
         display: block;
-        left: 16px;
-        top: 6px;
-        width: 12px;
-        height: 24px;
+        left: 8px;
+        top: 1px;
+        width: 10px;
+        height: 20px;
         border: solid #000000;
         border-width: 0 4px 4px 0;
         -webkit-transform: rotate(45deg);
@@ -136,19 +146,10 @@
     }
   }
 
-  .error-button-wrapper {
+  .button-wrapper {
     width: 35%;
     margin: 0 auto;
-    margin-top: 15px;
-
-    .error {
-      height: 27px;
-      font-size: 18px;
-      letter-spacing: 1px;
-      font-weight: 100;
-      margin-bottom: 9px;
-      color: #e60000;
-    }
+    margin-top: 20px;
 
     button {
       width: 100%;
@@ -162,9 +163,12 @@
       cursor: pointer;
       border: transparent;
         
-      &:hover,
-      &:focus {
+      &:hover {
         background: rgba(0, 0, 0, 0.6);
+      }
+
+      &:disabled {
+        background: #666666;
       }
     }
   }
@@ -236,15 +240,8 @@
         }
       }
     }
-
-    .error-button-wrapper {
+    .button-wrapper {
       width: 70%;
-
-      .error {
-        height: 19px;
-        font-size: 14px;
-        margin-bottom: 5px;
-      }
 
       button {
         height: 35px;

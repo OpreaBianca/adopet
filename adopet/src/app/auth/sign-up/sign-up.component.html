@@ -16,8 +16,7 @@
           <span class="input-field">Profile type</span>
         </label>
         <select formControlName="profile">
-          <option>Shelter</option>
-          <option>ONG</option>
+          <option>Shelter/ONG</option>
           <option>Veterinary</option>
           <option>Other</option>
         </select>
@@ -42,13 +41,8 @@
         </label>
       </div>
     </div>
-    <div class="error-button-wrapper">
-      <div class="error">
-        <p>All fields are required.</p>
-
-        <!-- <mat-error *ngIf="hasError()">{{getError()}}</mat-error> -->
-      </div>
-      <button type=submit>Sign up</button>
+    <div class="button-wrapper">
+      <button type="submit" [disabled]="submittedForm">Sign up</button>
     </div>
   </form>
 </div>

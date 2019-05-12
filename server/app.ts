@@ -1,6 +1,14 @@
 import * as express from 'express';
 import * as path from 'path';
+import * as passport from 'passport';
+import * as bodyParser from 'body-parser';
+import * as expressSession from 'express-session';
+import * as cors from 'cors';
+import * as cookieParser from 'cookie-parser';
+
 import IndexRouter from './routes';
+
+const mongoose = require('mongoose');
 
 class App {
   public express: express.Application;
@@ -10,10 +18,18 @@ class App {
     this.config();
     this.api();
     this.setRoutes();
+    this.connectToDb();
   }
 
   public config(): void {
     this.express.use(express.static(path.join(__dirname, '../public')));
+    this.express.use(cors());
+    this.express.use(cookieParser());
+    this.express.use(bodyParser.json());
+    this.express.use(bodyParser.urlencoded({ extended: false }));
+    this.express.use(expressSession({ secret: 'shh', resave: true, saveUninitialized: false }));
+    this.express.use(passport.initialize());
+    this.express.use(passport.session());
   }
 
   public api(): void {
@@ -23,6 +39,16 @@ class App {
   public setRoutes(): void {
     this.express.get('/', (req, res) => {
       res.sendFile(path.join(__dirname, '../public/index.html'));
+    });
+  }
+
+  public connectToDb() {
+    mongoose.connect('mongodb://adopet:adopet1234@ds155396.mlab.com:55396/adopet', { useNewUrlParser: true }, err => {
+      if (err) {
+        console.log('Some problem with the connection ' + err);
+      } else {
+        console.log('The Mongoose connection is ready');
+      }
     });
   }
 }

@@ -15,11 +15,7 @@
         <span>Password</span>
       </label>
       <input type="password" formControlName="password" placeholder="password">
-      <div class="error">
-        All fields are required.
-        <!-- <mat-error *ngIf="hasError()">{{getError()}}</mat-error> -->
-      </div>
-      <button type=submit>Login</button>
+      <button type="submit" [disabled]="submittedForm">Login</button>
     </form>
   </div>
 </div>

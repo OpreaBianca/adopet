@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
+import { ValidationModule } from './validation/validation.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomepageComponent } from './homepage/homepage.component';
@@ -23,9 +24,9 @@ import { AuthService } from './auth/auth.service';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ValidationModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
