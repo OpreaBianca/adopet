@@ -14,8 +14,8 @@ import { UserCredentials } from '../models/user-credentials.interface';
 })
 export class AuthService {
   constructor(private http: HttpClient,
-    private _jwtHelper: JwtHelperService,
-    private _router: Router) { }
+    private jwtHelper: JwtHelperService,
+    private router: Router) { }
 
   signUp(user: User): Observable<any> {
     return this.http.post(`${environment.apiPath}/auth/sign-up`, user).pipe(
@@ -31,23 +31,23 @@ export class AuthService {
 
   logout() {
     localStorage.clear();
-    this._router.navigate(['']);
+    this.router.navigate(['']);
   }
 
   getUser(): User {
-    const token = this._jwtHelper.tokenGetter();
+    const token = this.jwtHelper.tokenGetter();
     if (token) {
-      return this._jwtHelper.decodeToken(token).user;
+      return this.jwtHelper.decodeToken(token).user;
     }
   }
 
   authenticateUser(token) {
     localStorage.setItem('token', token);
-    this._router.navigate(['profile']);
+    this.router.navigate(['profile']);
   }
 
   isAuthenticated(): boolean {
-    const token = this._jwtHelper.tokenGetter();
-    return !this._jwtHelper.isTokenExpired(token);
+    const token = this.jwtHelper.tokenGetter();
+    return !this.jwtHelper.isTokenExpired(token);
   }
 }

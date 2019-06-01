@@ -1,0 +1,102 @@
+<div class="form-wrapper">
+  <div class="close-form" (click)="close()">
+    <img src="../../../../assets/close.png">
+  </div>
+  <app-attach-photos></app-attach-photos>
+  <form [formGroup]="addPetForm" (ngSubmit)="onSubmit()">
+    <div class="form-inputs">
+      <div class="row">
+        <div class="col-md-4">
+          <label for="name">
+            <span class="input-field">Name</span>
+          </label>
+          <input type="text" placeholder="name" formControlName="name">
+
+          <label for="gender">
+            <span class="input-field">Gender</span>
+          </label>
+          <select formControlName="gender">
+            <option value="" disabled selected>gender</option>
+            <option>Female</option>
+            <option>Male</option>
+          </select>
+
+          <label for="goodWith">
+            <span class="input-field">Good with</span>
+          </label>
+          <select formControlName="goodWith">
+            <option value="" disabled selected>good with</option>
+            <option>Kids</option>
+            <option>Elders</option>
+            <option>People with disabilities</option>
+            <option>Dogs</option>
+            <option>Cats</option>
+            <option>Other animals</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="category">
+            <span class="input-field">Category</span>
+          </label>
+          <select formControlName="category">
+            <option value="" disabled selected>category</option>
+            <option>Dog</option>
+            <option>Cat</option>
+            <option>Fish</option>
+            <option>Rabbit</option>
+          </select>
+
+          <!-- Aici am nevoie de validare pentru varsta: number + months/years -->
+          <label for="age">
+            <span class="input-field">Age</span>
+          </label>
+          <input type="text" placeholder="age" formControlName="age">
+
+          <label for="fitFor">
+            <span class="input-field">Fit for</span>
+          </label>
+          <select formControlName="fitFor">
+            <option value="" disabled selected>fit for</option>
+            <option>Apartment</option>
+            <option>House</option>
+            <option>Outdoor</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="location">
+            <span class="input-field">Location</span>
+          </label>
+          <select formControlName="location">
+            <option value="" disabled selected>location</option>
+            <option>Bucharest</option>
+            <option>Teleorman</option>
+          </select>
+
+          <label for="size">
+            <span class="input-field">Size</span>
+          </label>
+          <select formControlName="size">
+            <option value="" disabled selected>size</option>
+            <option>Small</option>
+            <option>Medium</option>
+            <option>Big</option>
+          </select>
+
+          <label for="status">
+            <span class="input-field">Status</span>
+          </label>
+          <select formControlName="status">
+            <option value="" disabled selected>status</option>
+            <option>Adopted</option>
+            <option>Placed for adoption/foster</option>
+            <option>Lost</option>
+            <option>Returned to owner</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2 submit-button">
+      <button type="submit" [disabled]="submittedForm">Save</button>
+    </div>
+  </form>
+</div>

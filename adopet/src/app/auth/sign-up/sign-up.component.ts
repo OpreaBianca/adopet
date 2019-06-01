@@ -23,7 +23,8 @@ export class SignUpComponent implements OnInit {
       this.router.navigate(['profile']);
     }
 
-    //const phoneNumberPattern = '[0-9]{4}-[0-9]{3}-[0-9]{3}';
+    // const phoneNumberPattern = '[0-9]{4}-[0-9]{3}-[0-9]{3}';
+    // password minimum 9 characters
     this.signUpForm = new FormGroup({
       name: new FormControl('', Validators.required),
       profile: new FormControl('', Validators.required),
