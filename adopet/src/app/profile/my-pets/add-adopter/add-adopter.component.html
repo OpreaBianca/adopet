@@ -1,3 +1,44 @@
-<p>
-  add-adopter works!
-</p>
+<div class="form-wrapper">
+  <p>Adopter details</p>
+  <hr />
+  <form [formGroup]="addAdopterForm">
+    <div class="form-inputs">
+      <div class="row">
+        <div class="col-md-4">
+          <label for="name">
+            <span>Name</span>
+          </label>
+          <input type="text" placeholder="name" formControlName="name">
+        </div>
+        <div class="col-md-4">
+          <label for="email">
+            <span>Email</span>
+          </label>
+          <input type="text" placeholder="email" formControlName="email">
+        </div>
+        <div class="col-md-4">
+          <label for="phone">
+            <span>Phone</span>
+          </label>
+          <input type="text" placeholder="phone" formControlName="phone">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <label for="address">
+            <span>Address</span>
+          </label>
+          <input type="text" placeholder="phone" formControlName="phone">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <label for="details">
+            <span>Other details</span>
+          </label>
+          <textarea placeholder="other details" formControlName="otherDetails"></textarea>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

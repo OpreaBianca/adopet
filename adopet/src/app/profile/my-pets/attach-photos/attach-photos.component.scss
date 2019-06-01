@@ -1,61 +1,65 @@
-.button-wrapper {
-  button {
-    width: 165px;
-    height: 45px;
-    background: #fabc3d;
-    outline: none;
-    font-size: 18px;
-    letter-spacing: 1px;
-    font-weight: 100;
-    color: #000000;
-    cursor: pointer;
-    border: transparent;
-    padding-top: 5px;
+.attachment-wrapper {
+  margin-bottom: 15px;
 
-    img {
-      width: 40px;
-      margin-right: -5px;
-      margin-top: -5px;
+  .button-wrapper {
+    button {
+      width: 165px;
+      height: 45px;
+      background: #fabc3d;
+      outline: none;
+      font-size: 18px;
+      letter-spacing: 1px;
+      font-weight: 100;
+      color: #000000;
+      cursor: pointer;
+      border: transparent;
+      padding-top: 5px;
+
+      img {
+        width: 40px;
+        margin-right: -5px;
+        margin-top: -5px;
+      }
     }
   }
-}
 
-.pointer-class {
-  cursor: pointer;
-}
-
-.file-header {
-  margin-top: -13px;
-  font-weight: bold;
-  border-bottom: 1px solid #ccc;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
-.upload-button-file {
-  width: 738px;
-  margin-top:20px;
-  margin-bottom:20px;
-  background: #585858;
-  color: #fff;
-  border-radius: 0px;
-  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0), 
-              0 2px 2px 0 rgba(0, 0, 0, 0), 
-              0 1px 5px 0 rgba(0, 0, 0, 0);
-}
-
-.info-file {
-  margin-top: 5px;
-
-  &:last-child {
-      margin-bottom: 40px;
+  .pointer-class {
+    cursor: pointer;
   }
-}
 
-.action-buttons {
-  margin-top: 20px;
-}
+  .file-header {
+    margin-top: -13px;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
 
-h4 {
-  text-align: center;
+  .upload-button-file {
+    width: 738px;
+    margin-top:20px;
+    margin-bottom:20px;
+    background: #585858;
+    color: #fff;
+    border-radius: 0px;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0), 
+                0 2px 2px 0 rgba(0, 0, 0, 0), 
+                0 1px 5px 0 rgba(0, 0, 0, 0);
+  }
+
+  .info-file {
+    margin-top: 5px;
+
+    &:last-child {
+        margin-bottom: 40px;
+    }
+  }
+
+  .action-buttons {
+    margin-top: 20px;
+  }
+
+  h4 {
+    text-align: center;
+  }
 }

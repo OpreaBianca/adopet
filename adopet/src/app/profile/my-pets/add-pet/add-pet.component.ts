@@ -15,11 +15,6 @@ export class AddPetComponent implements OnInit {
   addPetForm: FormGroup;
   user: User;
   submittedForm = false;
-  fileSelected = false;
-  fileName: string;
-  file: FormData;
-  attachedFiles: File[] = [];
-  shouldDisplayLoader = false;
 
   constructor(private authService: AuthService,
     private dialogRef: MatDialogRef<MyPetsComponent>) { }
@@ -36,7 +31,8 @@ export class AddPetComponent implements OnInit {
       size: new FormControl('', Validators.required),
       goodWith: new FormControl('', Validators.required),
       fitFor: new FormControl('', Validators.required),
-      status: new FormControl('', Validators.required)
+      status: new FormControl('', Validators.required),
+      description: new FormControl('')
     });
   }
 

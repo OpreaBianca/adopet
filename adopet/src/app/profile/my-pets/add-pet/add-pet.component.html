@@ -2,6 +2,8 @@
   <div class="close-form" (click)="close()">
     <img src="../../../../assets/close.png">
   </div>
+  <p>Pet details</p>
+  <hr />
   <app-attach-photos></app-attach-photos>
   <form [formGroup]="addPetForm" (ngSubmit)="onSubmit()">
     <div class="form-inputs">
@@ -94,6 +96,15 @@
           </select>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-12">
+          <label for="description">
+            <span>Description</span>
+          </label>
+          <textarea placeholder="description" formControlName="description"></textarea>
+        </div>
+      </div>
+      <app-add-adopter></app-add-adopter>
     </div>
     <div class="col-md-2 submit-button">
       <button type="submit" [disabled]="submittedForm">Save</button>

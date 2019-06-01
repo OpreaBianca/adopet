@@ -1,40 +1,41 @@
-<div class="button-wrapper" *ngIf="!fileSelected; else fileNotSelected">
-  <button (click)="fileInput.click()">Add photos
-    <img src="../../../../assets/camera.png">
-  </button>
-  <input #fileInput type="file" (change)="onFileChanged($event)" accept="image/*" style="display: none;" multiple />
-</div>
-<hr />
-<ng-template #fileNotSelected>
-  <button mat-raised-button class="upload-button-file" (click)="onUpload()">
-    <i class="material-icons">file_upload</i>
-    {{fileName}}
-  </button>
-  <button mat-icon-button color="warn" (click)="clearFile()">
-    <i class="material-icons">close</i>
-  </button>
-</ng-template>
-<div class="col-md-12 " *ngIf="attachedFiles.length > 0">
-  <div class="row file-header">
-    <div class="col-md-1">
-      <span>#</span>
-    </div>
-    <div class="col-md-6">
-      <span>File Name</span>
-    </div>
-    <div class="col-md-3">
-      <span>Date</span>
-    </div>
-    <div class="col-md-1">
-      <span></span>
-    </div>
+<div class="attachment-wrapper">
+  <div class="button-wrapper" *ngIf="!fileSelected; else fileNotSelected">
+    <button (click)="fileInput.click()">Add photos
+      <img src="../../../../assets/camera.png">
+    </button>
+    <input #fileInput type="file" (change)="onFileChanged($event)" accept="image/*" style="display: none;" multiple />
   </div>
-  <div class="row info-file" *ngFor="let file of attachedFiles">
-    <div class="col-md-1"><span>{{file.Id}}</span></div>
-    <div class="col-md-6"><span>{{file.Name}}</span></div>
-    <div class="col-md-3"><span>{{file.DateUploaded | date: "yyyy-MM-dd"}}</span></div>
-    <div class="col-md-1">
-      <i class="material-icons pointer-class" matTooltip="Attach File" (click)="downloadFile(file)">get_app</i>
+  <ng-template #fileNotSelected>
+    <button mat-raised-button class="upload-button-file" (click)="onUpload()">
+      <i class="material-icons">file_upload</i>
+      {{fileName}}
+    </button>
+    <button mat-icon-button color="warn" (click)="clearFile()">
+      <i class="material-icons">close</i>
+    </button>
+  </ng-template>
+  <div class="col-md-12 " *ngIf="attachedFiles.length > 0">
+    <div class="row file-header">
+      <div class="col-md-1">
+        <span>#</span>
+      </div>
+      <div class="col-md-6">
+        <span>File Name</span>
+      </div>
+      <div class="col-md-3">
+        <span>Date</span>
+      </div>
+      <div class="col-md-1">
+        <span></span>
+      </div>
+    </div>
+    <div class="row info-file" *ngFor="let file of attachedFiles">
+      <div class="col-md-1"><span>{{file.Id}}</span></div>
+      <div class="col-md-6"><span>{{file.Name}}</span></div>
+      <div class="col-md-3"><span>{{file.DateUploaded | date: "yyyy-MM-dd"}}</span></div>
+      <div class="col-md-1">
+        <i class="material-icons pointer-class" matTooltip="Attach File" (click)="downloadFile(file)">get_app</i>
+      </div>
     </div>
   </div>
 </div>
