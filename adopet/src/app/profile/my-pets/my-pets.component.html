@@ -1,0 +1,11 @@
+<app-profile-layout></app-profile-layout>
+<div class="page-wrapper">
+  <button>Add
+    <img src="../../assets/add.png">
+  </button>
+  <div class="row pets-wrapper">
+    <div class="col-md-3 pet-container" *ngFor="let pet of pets;">
+      <app-pet [pet]="pet"></app-pet>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,10 @@ export default mongoose.model('User', {
     phone: String,
     password: String,
     emergencyNotificationOn: Boolean,
-    description: String,
-    location: String
+    location: String,
+    facebook: String,
+    twitter: String,
+    website: String,
+    instagram: String,
+    description: String
 })

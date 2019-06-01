@@ -38,7 +38,7 @@ export class SignUpComponent implements OnInit {
     if (this.signUpForm.valid) {
       // this.submittedForm = true;
       this.user = this.signUpForm.value;
-      this.user.password = btoa(this.user.password);
+      // this.user.password = btoa(this.user.password);
       this.authService.signUp(this.user).subscribe(
         res => this.authService.authenticateUser(res.token),
         err => console.log(err)

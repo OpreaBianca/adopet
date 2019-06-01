@@ -4,7 +4,7 @@
       <!--Despre cum functioneaza aplicatia-->
       <li>ABOUT US</li>
       <!--Lista cu animale oferite pentru adoptie-->
-      <li>ADOPT</li>
+      <li><a routerLink="/adopt" routerLinkActive="active">ADOPT</a></li>
       <!--List cu adaposturi: Descriere, locatie, contact, how to donate, posibilitatea de a le vizita profilul-->
       <li>SHELTERS</li>
       <!--List cu veterinari + integrare cu google maps penntru locatie si afisare cele mai apropiate centre veterinare-->
@@ -14,14 +14,12 @@
       <!--Articole despre legi/procesul de adoptie/ingrijirea animalelor-->
       <li>BLOG</li>
       <!--Evenimente-->
-      <li>NEWS FEED</li>
-      <!--Shelthers/NGOs can display donation requests-->
-      <li>DONATE</li>
-      <li *ngIf="!authService.isAuthenticated()"><a routerLink="/login">LOGIN</a></li>
+      <li>EVENTS</li>
+      <li *ngIf="!authService.isAuthenticated()"><a routerLink="/login" routerLinkActive="active">LOGIN</a></li>
       <li *ngIf="authService.isAuthenticated()">
         <div class="dropdown">HOME
           <div class="dropdown-content">
-            <a>MY PROFILE</a>
+            <a routerLink="/profile">MY PROFILE</a>
             <a (click)="authService.logout()">LOGOUT</a>
           </div>
         </div>
@@ -31,4 +29,3 @@
     <img class="login" src="../../assets/login.png">
   </div>
 </div>
-<router-outlet></router-outlet>

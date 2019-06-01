@@ -11,7 +11,12 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { LayoutComponent } from './layout/layout.component';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileLayoutComponent } from './profile-layout/profile-layout.component';
+import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
+import { MyPetsComponent } from './profile/my-pets/my-pets.component';
+import { PetComponent } from './profile/pet/pet.component';
+import { AddPetComponent } from './profile/add-pet/add-pet.component';
+import { AdoptComponent } from './adopt/adopt.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +25,12 @@ import { ProfileComponent } from './profile/profile.component';
     HomepageComponent,
     LoginComponent,
     SignUpComponent,
-    ProfileComponent
+    ProfileLayoutComponent,
+    EditProfileComponent,
+    MyPetsComponent,
+    PetComponent,
+    AddPetComponent,
+    AdoptComponent
   ],
   imports: [
     BrowserModule,

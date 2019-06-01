@@ -1,0 +1,65 @@
+<app-profile-layout></app-profile-layout>
+<div class="edit-profile-wrapper">
+  <form [formGroup]="editProfileForm" (ngSubmit)="onSubmit()">
+    <div class="edit-form-wrapper">
+      <div class="left-side">
+        <label for="name">
+          <span class="input-field">Name</span>
+        </label>
+        <input type="text" formControlName="name" placeholder="name">
+        <label for="profile">
+          <span class="input-field">Profile type</span>
+        </label>
+        <select formControlName="profile">
+          <option value="" disabled selected>profile</option>
+          <option>Shelter/ONG</option>
+          <option>Veterinary</option>
+          <option>Other</option>
+        </select>
+        <label for="location">
+          <span>Location</span>
+        </label>
+        <input type="text" formControlName="location" placeholder="location">
+        <label for="facebook">
+          <span>Facebook</span>
+        </label>
+        <input type="text" formControlName="facebook" placeholder="facebook link">
+        <label for="instagram">
+          <span>Instagram</span>
+        </label>
+        <input type="text" formControlName="instagram" placeholder="instagram account">
+      </div>
+      <div class="separator"> </div>
+      <div class="right-side">
+        <label for="email">
+          <span class="input-field">Email</span>
+        </label>
+        <input type="email" formControlName="email" placeholder="email"><label for="phone">
+          <span class="input-field">Phone number</span>
+        </label>
+        <input type="tel" formControlName="phone" placeholder="phone">
+        <label for="twitter">
+          <span>Twitter</span>
+        </label>
+        <input type="text" formControlName="twitter" placeholder="twitter account">
+        <label for="website">
+          <span>Website</span>
+        </label>
+        <input type="text" formControlName="website" placeholder="website link">
+        <label class="container">I want to receive notifications in case of emergency.
+          <input type="checkbox" formControlName="emergency">
+          <span class="checkmark"></span>
+        </label>
+      </div>
+    </div>
+    <div class="description">
+      <label for="description">
+        <span>Description</span>
+      </label>
+      <textarea formControlName="description" placeholder="description" rows="3" cols="60"></textarea>
+    </div>
+    <div class="button-wrapper">
+      <button type="submit" [disabled]="submittedForm">Save Changes</button>
+    </div>
+  </form>
+</div>

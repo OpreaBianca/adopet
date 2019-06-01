@@ -1,10 +1,14 @@
 export interface User {
   name: string;
   email: string;
-  profileID: number;
+  profile: string;
   phone: string;
   password: string;
   emergencyNotificationOn: boolean;
-  description?: string;
   location?: string;
+  facebook?: string;
+  twitter?: string;
+  website?: string;
+  instagram?: string;
+  description?: string;
 }

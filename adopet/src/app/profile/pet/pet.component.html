@@ -1,0 +1,28 @@
+<div class="pet-image-wrapper" (mouseenter)="displayDetails=true" (mouseleave)="displayDetails=false">
+  <div class="pet-image">
+    <img src="../../../assets/sarah-ball-350921-unsplash.png">
+  </div>
+  <div *ngIf="displayDetails" class="on-hover">
+    <div class="name">
+      <p>{{pet.name}}</p>
+    </div>
+    <div class="status">
+      <p>Status: {{pet.status}}</p>
+    </div>
+    <div class="row details">
+      <div class="col-md-6 left-side">
+        <p>Age: {{pet.age}}</p>
+        <p>Size {{pet.size}}</p>
+      </div>
+      <div clsas="col-md-6 right-side">
+        <p>Gender: {{pet.gender}}</p>
+        <p>Category: {{pet.category}}</p>
+      </div>
+    </div>
+    <div class="description">
+      <p>{{pet.description}}</p>
+    </div>
+    <div class="view-more" (click)="openEditMenu()">
+      <img src="../../../assets/view-more.png">
+    </div>
+  </div>

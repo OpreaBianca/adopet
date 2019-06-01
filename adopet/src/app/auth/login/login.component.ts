@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       // this.submittedForm = true;
       this.userCredentials = this.loginForm.value;
-      this.userCredentials.password = btoa(this.userCredentials.password);
+      // this.userCredentials.password = btoa(this.userCredentials.password);
       this.authService.login(this.userCredentials).subscribe(
         res => this.authService.authenticateUser(res.token),
         err => console.log(err)
