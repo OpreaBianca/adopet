@@ -48,7 +48,7 @@ export class MyPetsComponent implements OnInit {
   addPet() {
     this.dialog.open(AddPetComponent, {
       width: '1000px',
-      height: '100%',
+      maxHeight: '850px',
       disableClose: true
     }).afterClosed().subscribe(res => {
       console.log(res);

@@ -1,10 +1,21 @@
 .form-wrapper {
+  padding-top: 25px;
+
+  .hide-form {
+    width: 30px;
+    float: right;
+    cursor: pointer;
+
+    img {
+      width: 30px;
+    }
+  }
+
   p {
     letter-spacing: 1px;
     font-weight: 100;
     font-size: 22px;
     margin: 0;
-    padding-top: 25px;
   }
 
   hr {

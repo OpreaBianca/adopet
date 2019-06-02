@@ -1,5 +1,8 @@
 <div class="form-wrapper">
-  <p>Adopter details</p>
+  <div *ngIf="formTitle === 'Foster'" class="hide-form" (click)="hideFosterForm()" matTooltip="Remove foster details">
+    <img src="../../../../assets/remove.png">
+  </div>
+  <p>{{formTitle}} details</p>
   <hr />
   <form [formGroup]="addAdopterForm">
     <div class="form-inputs">

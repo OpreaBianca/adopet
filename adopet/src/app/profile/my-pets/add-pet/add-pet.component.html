@@ -1,5 +1,5 @@
 <div class="form-wrapper">
-  <div class="close-form" (click)="close()">
+  <div class="close-form" (click)="onClose()">
     <img src="../../../../assets/close.png">
   </div>
   <p>Pet details</p>
@@ -91,7 +91,7 @@
             <option value="" disabled selected>status</option>
             <option>Adopted</option>
             <option>Placed for adoption/foster</option>
-            <option>Lost</option>
+            <option>Looking for the owner</option>
             <option>Returned to owner</option>
           </select>
         </div>
@@ -104,7 +104,17 @@
           <textarea placeholder="description" formControlName="description"></textarea>
         </div>
       </div>
-      <app-add-adopter></app-add-adopter>
+
+      <div class="row foster" *ngIf="!fosterFormVisible && !isAdopted()">
+        Is the pet currently in foster? Add the details <p (click)="showFosterForm(true)"> &nbsp;here.</p>
+      </div>
+      <app-add-adopter formTitle="Adopter" [data]="adopter" (formReady)="formInitialized('adopter', $event)"
+        *ngIf="isAdopted()">
+      </app-add-adopter>
+      <app-add-adopter formTitle="Foster" [data]="foster" (formVisible)="showFosterForm($event)"
+        (formReady)="formInitialized('foster', $event)" *ngIf="!isAdopted() && fosterFormVisible">
+      </app-add-adopter>
+
     </div>
     <div class="col-md-2 submit-button">
       <button type="submit" [disabled]="submittedForm">Save</button>
