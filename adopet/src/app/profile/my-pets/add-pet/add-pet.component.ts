@@ -5,6 +5,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MyPetsComponent } from '../my-pets.component';
 import { User } from '../../../models/user.interface';
 import { AuthService } from '../../../auth/auth.service';
+import { PetService } from '../../../services/pet/pet.service';
 import { AttachPhotosComponent } from '../attach-photos/attach-photos.component';
 
 @Component({
@@ -21,6 +22,7 @@ export class AddPetComponent implements OnInit {
   fosterFormVisible = false;
 
   constructor(private authService: AuthService,
+    private petService: PetService,
     private dialogRef: MatDialogRef<MyPetsComponent>) { }
 
   ngOnInit() {
@@ -49,18 +51,18 @@ export class AddPetComponent implements OnInit {
   onSubmit() {
     if (this.addPetForm.valid) {
       // this.submittedForm = true;
-      console.log(this.addPetForm.value);
+      let formData = new FormData();
+      formData.append('pet', JSON.stringify(this.addPetForm.value));
 
       let files = this.fileField.getFiles();
-      console.log(files);
+      files.forEach((file) => {
+        formData.append('files[]', file.rawFile, file.name);
+      });
 
-      let formData = new FormData();
-      // formData.append('somekey', 'some value') // Add any other data you want to send
-
-      // files.forEach((file) => {
-      //   formData.append('files[]', file.rawFile, file.name);
-      // });
-
+      this.petService.addPet(formData).subscribe(
+        res => console.log(res),
+        err => console.log(err)
+      );
     }
   }
 

@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 
 class TestRouter {
   router: Router;
@@ -8,7 +8,7 @@ class TestRouter {
     this.init();
   }
 
-  async getTest(req: any, res: any) {
+  async getTest(req: Request, res: Response) {
     res.json('Hello World of ADOPeT!');
   }
 
