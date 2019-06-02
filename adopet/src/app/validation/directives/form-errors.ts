@@ -2,7 +2,7 @@
 import { InjectionToken } from '@angular/core';
 
 export const defaultErrors = {
-  required: () => 'This field is required.',
+  required: () => 'Required filed.',
   email: () => 'Invalid email address.'
 };
 

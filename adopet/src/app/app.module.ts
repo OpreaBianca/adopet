@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FileUploadModule } from 'ng2-file-upload';
 import 'hammerjs';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +23,7 @@ import { AddPetComponent } from './profile/my-pets/add-pet/add-pet.component';
 import { AdoptComponent } from './adopt/adopt.component';
 import { AddAdopterComponent } from './profile/my-pets/add-adopter/add-adopter.component';
 import { AttachPhotosComponent } from './profile/my-pets/attach-photos/attach-photos.component';
+import { ThumbnailDirective } from './profile/my-pets/attach-photos/thumbnail.directive';
 
 @NgModule({
   entryComponents: [
@@ -40,7 +42,8 @@ import { AttachPhotosComponent } from './profile/my-pets/attach-photos/attach-ph
     AddPetComponent,
     AdoptComponent,
     AddAdopterComponent,
-    AttachPhotosComponent
+    AttachPhotosComponent,
+    ThumbnailDirective
   ],
   imports: [
     BrowserModule,
@@ -48,6 +51,7 @@ import { AttachPhotosComponent } from './profile/my-pets/attach-photos/attach-ph
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FileUploadModule,
     AppRoutingModule,
     ValidationModule,
     MaterialModule,

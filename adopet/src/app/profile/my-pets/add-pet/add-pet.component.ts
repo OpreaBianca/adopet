@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { MyPetsComponent } from '../my-pets.component';
 import { User } from '../../../models/user.interface';
 import { AuthService } from '../../../auth/auth.service';
+import { AttachPhotosComponent } from '../attach-photos/attach-photos.component';
 
 @Component({
   selector: 'app-add-pet',
@@ -12,6 +13,8 @@ import { AuthService } from '../../../auth/auth.service';
   styleUrls: ['./add-pet.component.scss']
 })
 export class AddPetComponent implements OnInit {
+  @ViewChild(AttachPhotosComponent) fileField: AttachPhotosComponent;
+
   addPetForm: FormGroup;
   user: User;
   submittedForm = false;
@@ -26,9 +29,10 @@ export class AddPetComponent implements OnInit {
     this.addPetForm = new FormGroup({
       name: new FormControl('', Validators.required),
       category: new FormControl('', Validators.required),
-      location: new FormControl('', Validators.required /*Validators.pattern(phoneNumberPattern)*/),
+      location: new FormControl('', Validators.required),
       gender: new FormControl('', Validators.required),
-      age: new FormControl('', Validators.required),
+      ageNumber: new FormControl('', Validators.required),
+      ageMeasurementUnit: new FormControl('Years', Validators.required),
       size: new FormControl('', Validators.required),
       goodWith: new FormControl('', Validators.required),
       fitFor: new FormControl('', Validators.required),
@@ -46,6 +50,17 @@ export class AddPetComponent implements OnInit {
     if (this.addPetForm.valid) {
       // this.submittedForm = true;
       console.log(this.addPetForm.value);
+
+      let files = this.fileField.getFiles();
+      console.log(files);
+
+      let formData = new FormData();
+      // formData.append('somekey', 'some value') // Add any other data you want to send
+
+      // files.forEach((file) => {
+      //   formData.append('files[]', file.rawFile, file.name);
+      // });
+
     }
   }
 

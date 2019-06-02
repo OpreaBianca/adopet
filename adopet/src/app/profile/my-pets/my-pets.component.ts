@@ -42,8 +42,7 @@ export class MyPetsComponent implements OnInit {
 
   constructor(private dialog: MatDialog) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   addPet() {
     this.dialog.open(AddPetComponent, {

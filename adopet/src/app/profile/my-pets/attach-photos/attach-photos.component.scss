@@ -1,7 +1,7 @@
 .attachment-wrapper {
-  margin-bottom: 15px;
-
   .button-wrapper {
+    margin-bottom: 10px;
+
     button {
       width: 165px;
       height: 45px;
@@ -20,6 +20,28 @@
         margin-right: -5px;
         margin-top: -5px;
       }
+    }
+  }
+
+  .images-wrapper {
+    margin-bottom: 15px;
+
+    .image-container {
+      position: relative;
+      margin-top: 5px;
+    }
+
+    .remove-image {
+      position: absolute;
+      top: 2px;
+      right: 12px;
+      width: 17px;
+      z-index: 2;
+      cursor: pointer;
+    }
+    
+    .image {
+      z-index: 1;
     }
   }
 

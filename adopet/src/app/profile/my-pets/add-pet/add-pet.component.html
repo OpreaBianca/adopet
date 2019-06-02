@@ -4,7 +4,9 @@
   </div>
   <p>Pet details</p>
   <hr />
+
   <app-attach-photos></app-attach-photos>
+
   <form [formGroup]="addPetForm" (ngSubmit)="onSubmit()">
     <div class="form-inputs">
       <div class="row">
@@ -48,11 +50,20 @@
             <option>Rabbit</option>
           </select>
 
-          <!-- Aici am nevoie de validare pentru varsta: number + months/years -->
           <label for="age">
             <span class="input-field">Age</span>
           </label>
-          <input type="text" placeholder="age" formControlName="age">
+          <div class="row">
+            <div class="col-md-6">
+              <input type="number" placeholder="1" formControlName="ageNumber">
+            </div>
+            <div class="col-md-6">
+              <select formControlName="ageMeasurementUnit">
+                <option selected>Years</option>
+                <option>Months</option>
+              </select>
+            </div>
+          </div>
 
           <label for="fitFor">
             <span class="input-field">Fit for</span>
