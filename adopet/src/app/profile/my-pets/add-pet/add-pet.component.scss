@@ -44,7 +44,7 @@
       }
     }
 
-    input, select {
+    input {
       width: 100%;
       height: 45px;
       font-size: 18px;
@@ -52,6 +52,25 @@
       padding: 4px;
       letter-spacing: 1px;
       font-weight: 100;
+    }
+
+    mat-select {
+      width: 100%;
+      height: 45px;
+      background-color: #FFFFFF;
+      border: 1px solid #999999;
+      border-radius: 0;
+      font-size: 18px;
+      margin-bottom: 9px;
+      padding: 4px;
+      padding-top: 8px;
+      font-family: inherit;
+      letter-spacing: 1px;
+      font-weight: 100;
+      
+      &:focus {
+        outline: 5px auto -webkit-focus-ring-color;
+      }
     }
 
     textarea {

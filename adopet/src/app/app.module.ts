@@ -3,6 +3,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FileUploadModule } from 'ng2-file-upload';
+import { Ng2ImgMaxModule } from 'ng2-img-max';
+import { NgxLoadingModule } from 'ngx-loading';
 import 'hammerjs';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -52,6 +54,8 @@ import { ThumbnailDirective } from './profile/my-pets/attach-photos/thumbnail.di
     ReactiveFormsModule,
     HttpClientModule,
     FileUploadModule,
+    Ng2ImgMaxModule,
+    NgxLoadingModule,
     AppRoutingModule,
     ValidationModule,
     MaterialModule,

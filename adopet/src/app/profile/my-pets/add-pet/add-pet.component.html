@@ -19,92 +19,69 @@
           <label for="gender">
             <span class="input-field">Gender</span>
           </label>
-          <select formControlName="gender">
-            <option value="" disabled selected>gender</option>
-            <option>Female</option>
-            <option>Male</option>
-          </select>
+          <mat-select formControlName="gender" placeholder="gender">
+            <mat-option *ngFor="let gender of genders" [value]="gender">{{gender.name}}</mat-option>
+          </mat-select>
 
           <label for="goodWith">
             <span class="input-field">Good with</span>
           </label>
-          <select formControlName="goodWith">
-            <option value="" disabled selected>good with</option>
-            <option>Kids</option>
-            <option>Elders</option>
-            <option>People with disabilities</option>
-            <option>Dogs</option>
-            <option>Cats</option>
-            <option>Other animals</option>
-          </select>
+          <mat-select formControlName="goodWith" placeholder="good with" multiple>
+            <mat-option *ngFor="let goodWith of goodWith" [value]="goodWith">{{goodWith.name}}</mat-option>
+          </mat-select>
         </div>
         <div class="col-md-4">
           <label for="category">
             <span class="input-field">Category</span>
           </label>
-          <select formControlName="category">
-            <option value="" disabled selected>category</option>
-            <option>Dog</option>
-            <option>Cat</option>
-            <option>Fish</option>
-            <option>Rabbit</option>
-          </select>
+          <mat-select formControlName="category" placeholder="category">
+            <mat-option *ngFor="let category of categories" [value]="category">{{category.name}}</mat-option>
+          </mat-select>
 
           <label for="age">
             <span class="input-field">Age</span>
           </label>
           <div class="row">
             <div class="col-md-6">
-              <input type="number" placeholder="1" formControlName="ageNumber">
+              <input type="number" placeholder="number" formControlName="ageNumber">
             </div>
             <div class="col-md-6">
-              <select formControlName="ageMeasurementUnit">
-                <option selected>Years</option>
-                <option>Months</option>
-              </select>
+              <mat-select formControlName="ageMeasurementUnit" placeholder="unit">
+                <mat-option *ngFor="let ageMeasurementUnit of ageMeasurementUnits" [value]="ageMeasurementUnit">
+                  {{ageMeasurementUnit.name}}
+                </mat-option>
+              </mat-select>
             </div>
           </div>
 
           <label for="fitFor">
             <span class="input-field">Fit for</span>
           </label>
-          <select formControlName="fitFor">
-            <option value="" disabled selected>fit for</option>
-            <option>Apartment</option>
-            <option>House</option>
-            <option>Outdoor</option>
-          </select>
+          <mat-select formControlName="fitFor" placeholder="fit for" multiple>
+            <mat-option *ngFor="let fitFor of fitFor" [value]="fitFor">{{fitFor.name}} </mat-option>
+          </mat-select>
         </div>
         <div class="col-md-4">
           <label for="location">
             <span class="input-field">Location</span>
           </label>
-          <select formControlName="location">
-            <option value="" disabled selected>location</option>
-            <option>Bucharest</option>
-            <option>Teleorman</option>
-          </select>
+          <mat-select formControlName="location" placeholder="location" multiple>
+            <mat-option *ngFor="let location of locations" [value]="location">{{location.name}}</mat-option>
+          </mat-select>
 
           <label for="size">
             <span class="input-field">Size</span>
           </label>
-          <select formControlName="size">
-            <option value="" disabled selected>size</option>
-            <option>Small</option>
-            <option>Medium</option>
-            <option>Big</option>
-          </select>
+          <mat-select formControlName="size" placeholder="size">
+            <mat-option *ngFor="let size of sizes" [value]="size">{{size.name}}</mat-option>
+          </mat-select>
 
           <label for="status">
             <span class="input-field">Status</span>
           </label>
-          <select formControlName="status">
-            <option value="" disabled selected>status</option>
-            <option>Adopted</option>
-            <option>Placed for adoption/foster</option>
-            <option>Looking for the owner</option>
-            <option>Returned to owner</option>
-          </select>
+          <mat-select formControlName="status" placeholder="status">
+            <mat-option *ngFor="let status of statuses" [value]="status">{{status.name}}</mat-option>
+          </mat-select>
         </div>
       </div>
       <div class="row">

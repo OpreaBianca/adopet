@@ -1,11 +1,11 @@
 import { Request } from 'express';
-import { Passport } from 'passport';
+import { PassportStatic } from 'passport';
 
 import User from '../models/user';
 
 const LocalStrategy = require('passport-local').Strategy;
 
-export function setupSignUpStrategy(passport: Passport): void {
+export function setupSignUpStrategy(passport: PassportStatic): void {
   passport.use('sign-up', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
@@ -34,8 +34,7 @@ export function setupSignUpStrategy(passport: Passport): void {
   }));
 }
 
-
-export function setupLoginStrategy(passport: Passport): void {
+export function setupLoginStrategy(passport: PassportStatic): void {
   passport.use('login', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password'

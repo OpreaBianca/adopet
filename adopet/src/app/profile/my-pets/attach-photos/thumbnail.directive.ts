@@ -33,7 +33,7 @@ export class ThumbnailDirective implements OnChanges {
           sy = (image.height - image.width) / 2;
         }
 
-        canvas.width = 140;   // resize image to 200
+        canvas.width = 140;   // resize image to 140
         canvas.height = 140;
         canvas.getContext('2d').drawImage(image,
           sx, sy, size, size, // size: keep original scale

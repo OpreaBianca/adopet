@@ -1,20 +1,15 @@
 import { Router } from 'express';
 import * as passport from 'passport';
-import * as jwt from 'jsonwebtoken';
 
 import { setupSignUpStrategy, setupLoginStrategy } from '../config/passport-strategy';
+import { AuthConfig } from '../config/auth-config';
 
 class AuthRouter {
-  jwtSecret = 'ADOPeT';
   router: Router;
 
   constructor() {
     this.router = Router();
     this.init();
-  }
-
-  private constructUserToken(user: any): string {
-    return jwt.sign({ user: user }, this.jwtSecret, { expiresIn: 60 * 60 * 12 });
   }
 
   private init() {
@@ -29,7 +24,7 @@ class AuthRouter {
           // 409: Conflict - Duplicate user
           return res.status(409).json(info);
         } else {
-          res.json({ token: this.constructUserToken(user) });
+          res.json({ token: AuthConfig.constructUserToken(user) });
         }
       })(req, res, next)
     });
@@ -47,7 +42,7 @@ class AuthRouter {
         }
 
         if (user) {
-          return res.json({ token: this.constructUserToken(user) });
+          return res.json({ token: AuthConfig.constructUserToken(user) });
         }
       })(req, res, next)
     });

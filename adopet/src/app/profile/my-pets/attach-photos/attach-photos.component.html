@@ -4,13 +4,14 @@
     <button (click)="fileInput.click()">Add photos
       <img src="../../../../assets/camera.png">
     </button>
-    <input #fileInput type="file" ng2FileSelect [uploader]="uploader" accept="image/*" style="display: none;"
-      multiple />
+    <input #fileInput type="file" ng2FileSelect [uploader]="uploader" (onFileSelected)="compressFiles()"
+      accept="image/*" style="display: none;" multiple />
   </div>
   <!-- Display images -->
   <div class="row images-wrapper">
-    <div class="image-container col-md-2" *ngFor="let item of uploader.queue">
-      <img src="../../../../assets/close.png" class="remove-image" matTooltip="Remove image"
+    <ngx-loading [show]="isLoading()" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
+    <div class="image-container col-md-2" *ngFor="let item of files">
+      <img src="../../../../assets/remove-image.png" class="remove-image" matTooltip="Remove image"
         (click)="removeImage(item)" />
       <img src="" thumbnail [image]="item?._file" class="image" />
     </div>

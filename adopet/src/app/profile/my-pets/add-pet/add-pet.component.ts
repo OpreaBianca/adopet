@@ -21,6 +21,17 @@ export class AddPetComponent implements OnInit {
   submittedForm = false;
   fosterFormVisible = false;
 
+  genders = [{ id: 1, name: 'Female' }, { id: 2, name: 'Male' }];
+  goodWith = [{ id: 1, name: 'Kids' }, { id: 2, name: 'Elders' }, { id: 3, name: 'People with disabilities' },
+  { id: 4, name: 'Dogs' }, { id: 5, name: 'Cats' }, { id: 6, name: 'Other animals' }];
+  categories = [{ id: 1, name: 'Dog' }, { id: 2, name: 'Cat' }, { id: 3, name: 'Rabbit' }, { id: 4, name: 'Fish' }];
+  ageMeasurementUnits = [{ id: 1, name: 'Days' }, { id: 2, name: 'Weeks' }, { id: 3, name: 'Months' }, { id: 4, name: 'Years' }];
+  fitFor = [{ id: 1, name: 'Apartment' }, { id: 2, name: 'House' }, { id: 3, name: 'Outdoor' }];
+  locations = [{ id: 1, name: 'Bucharest' }, { id: 2, name: 'Teleorman' }];
+  sizes = [{ id: 1, name: 'Small' }, { id: 1, name: 'Medium' }, { id: 1, name: 'Large' }];
+  statuses = [{ id: 1, name: 'Adopted' }, { id: 2, name: 'Placed for adoption/foster' }, { id: 3, name: 'Looking for the owner' },
+  { id: 4, name: 'Returned to owner' }]
+
   constructor(private authService: AuthService,
     private petService: PetService,
     private dialogRef: MatDialogRef<MyPetsComponent>) { }
@@ -34,7 +45,7 @@ export class AddPetComponent implements OnInit {
       location: new FormControl('', Validators.required),
       gender: new FormControl('', Validators.required),
       ageNumber: new FormControl('', Validators.required),
-      ageMeasurementUnit: new FormControl('Years', Validators.required),
+      ageMeasurementUnit: new FormControl('', Validators.required),
       size: new FormControl('', Validators.required),
       goodWith: new FormControl('', Validators.required),
       fitFor: new FormControl('', Validators.required),
@@ -48,14 +59,14 @@ export class AddPetComponent implements OnInit {
   get adopter() { return this.addPetForm.get('adopter').value; }
   get foster() { return this.addPetForm.get('foster').value; }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.addPetForm.valid) {
       // this.submittedForm = true;
       let formData = new FormData();
       formData.append('pet', JSON.stringify(this.addPetForm.value));
 
       let files = this.fileField.getFiles();
-      files.forEach((file) => {
+      files.forEach(async (file) => {
         formData.append('files[]', file.rawFile, file.name);
       });
 

@@ -1,7 +1,10 @@
 import { Router, Request, Response } from 'express';
 import { IncomingForm } from 'formidable';
+import * as jwt from 'express-jwt';
 import * as path from 'path';
 import * as fs from 'fs';
+
+import { AuthConfig } from '../config/auth-config';
 
 class PetRouter {
   uploadPath = '../../uploads';
@@ -52,7 +55,7 @@ class PetRouter {
   }
 
   init() {
-    this.router.post('/', this.addPet.bind(this));
+    this.router.post('/', jwt({ secret: AuthConfig.jwtSecret }), this.addPet.bind(this));
   }
 }
 export default new PetRouter().router;
