@@ -45,8 +45,10 @@ export class MyPetsComponent implements OnInit, OnDestroy {
       maxHeight: '850px',
       disableClose: true
     }).afterClosed().subscribe((pet: Pet) => {
-      this.setProfileImage(pet);
-      this.pets.unshift(pet);
+      if (pet) {
+        this.setProfileImage(pet);
+        this.pets.unshift(pet);
+      }
     });
   }
 

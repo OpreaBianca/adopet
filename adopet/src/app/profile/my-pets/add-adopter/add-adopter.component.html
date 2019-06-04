@@ -1,5 +1,5 @@
 <div class="form-wrapper">
-  <div *ngIf="formTitle === 'Foster'" class="hide-form" (click)="hideFosterForm()" matTooltip="Remove foster details">
+  <div *ngIf="formTitle === 'Foster'" class="hide-form" (click)="removeFosterForm()" matTooltip="Remove foster details">
     <img src="../../../../assets/remove.png">
   </div>
   <p>{{formTitle}} details</p>
@@ -31,7 +31,7 @@
           <label for="address">
             <span>Address</span>
           </label>
-          <input type="text" placeholder="address" formControlName="phone">
+          <input type="text" placeholder="address" formControlName="address">
         </div>
       </div>
       <div class="row">

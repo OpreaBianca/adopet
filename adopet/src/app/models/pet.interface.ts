@@ -15,6 +15,7 @@ export interface Pet {
   description: string;
   foster: Adopter;
   adopter: Adopter;
+  fosterFormVisibile: boolean;
   images: string[];
   profileImageUrl: string;
   ownerID: string;

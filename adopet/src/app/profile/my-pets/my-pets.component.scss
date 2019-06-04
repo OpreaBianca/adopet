@@ -50,6 +50,14 @@
     }
   }
 
+  .pets-wrapper {
+    .pet-container {
+      width: 295px;
+      height: 295px;
+      margin-top: 30px;
+    }
+  }
+
   .pets-wrapper > .pet-container:nth-of-type(4n) {
     clear: both;
   } 

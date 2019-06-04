@@ -68,9 +68,67 @@ class PetRouter {
     });
   }
 
+  updatePet(req: Request, res: Response) {
+    const filesPath = path.join(__dirname, `${this.uploadPath}/${req.user.user._id}`);
+
+    const form = new IncomingForm();
+    form.uploadDir = filesPath;
+    form.keepExtensions = true;
+
+    const images: string[] = [];
+
+    form.on('fileBegin', (name, file) => {
+      const uploadName = `${Date.now()}_${file.name}`;
+      file.path = path.join(form.uploadDir, uploadName);
+      images.push(uploadName);
+    });
+
+    form.on('error', (err) => {
+      return res.status(500).json(err);
+    });
+
+    form.parse(req, (err, fields, files) => {
+      if (err) {
+        return res.status(500).json(err);
+      }
+
+      const localPet: LocalPet = JSON.parse(fields.pet);
+      localPet.ownerID = req.user.user._id;
+
+      // add the new photos
+      localPet.images = localPet.images.concat(images);
+
+      // removed deleted photos
+      const removed: string[] = JSON.parse(fields.removed);
+      removed.forEach((imageName: string) => {
+        const imgIdx = localPet.images.indexOf(imageName);
+        if (imgIdx !== -1) {
+          localPet.images.splice(imgIdx, 1);
+        }
+      });
+
+      try {
+        Pet.updateOne({ _id: localPet._id }, localPet);
+        return res.json(localPet);
+      } catch (err) {
+        return res.status(500).json(err);
+      }
+
+      // const pet = new Pet(localPet);
+      // pet.save(err => {
+      //   if (err) {
+      //     return res.status(500).json(err);
+      //   }
+
+      //   return res.json(pet);
+      // })
+    });
+  }
+
   init() {
     this.router.get('/', jwt({ secret: AuthConfig.jwtSecret }), this.getPetsByOwner.bind(this));
     this.router.post('/', jwt({ secret: AuthConfig.jwtSecret }), this.addPet.bind(this));
+    this.router.put('/', jwt({ secret: AuthConfig.jwtSecret }), this.updatePet.bind(this));
   }
 }
 export default new PetRouter().router;

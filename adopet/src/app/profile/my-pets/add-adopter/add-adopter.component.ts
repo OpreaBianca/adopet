@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms'
 
+import { Adopter } from '../../../models/adopter.interface';
+
 @Component({
   selector: 'app-add-adopter',
   templateUrl: './add-adopter.component.html',
@@ -8,7 +10,7 @@ import { FormGroup, FormControl } from '@angular/forms'
 })
 export class AddAdopterComponent implements OnInit {
   @Input() formTitle: string;
-  @Input() data: any;
+  @Input() data: Adopter;
   @Output() formReady = new EventEmitter<FormGroup>();
   @Output() formVisible = new EventEmitter<boolean>();
 
@@ -20,7 +22,7 @@ export class AddAdopterComponent implements OnInit {
     this.addAdopterForm = new FormGroup({
       name: new FormControl(this.data.name),
       email: new FormControl(this.data.email),
-      phone: new FormControl(this.data.phone /*Validators.pattern(phoneNumberPattern)*/),
+      phone: new FormControl(this.data.phone),
       address: new FormControl(this.data.address),
       otherDetails: new FormControl(this.data.otherDetails)
     });
@@ -28,7 +30,8 @@ export class AddAdopterComponent implements OnInit {
     this.formReady.emit(this.addAdopterForm);
   }
 
-  hideFosterForm() {
+  removeFosterForm() {
+    this.addAdopterForm.reset();
     this.formVisible.emit(false);
   }
 }

@@ -22,4 +22,10 @@ export class PetService {
       catchError((err) => observableThrowError(err))
     );
   }
+
+  updatePet(formData: FormData): Observable<any> {
+    return this._http.put(`${environment.apiPath}/pet`, formData).pipe(
+      catchError((err) => observableThrowError(err))
+    );
+  }
 }

@@ -31,13 +31,10 @@ export class AddPetComponent implements OnInit {
   sizes = ['Small', 'Medium', 'Large'];
   statuses = ['Adopted', 'Placed for adoption/foster', 'Looking for the owner', 'Returned to owner']
 
-  constructor(private authService: AuthService,
-    private petService: PetService,
+  constructor(private petService: PetService,
     private dialogRef: MatDialogRef<MyPetsComponent>) { }
 
   ngOnInit() {
-    this.user = this.authService.getUser();
-
     this.addPetForm = new FormGroup({
       name: new FormControl('', Validators.required),
       category: new FormControl('', Validators.required),
@@ -50,8 +47,20 @@ export class AddPetComponent implements OnInit {
       fitFor: new FormControl('', Validators.required),
       status: new FormControl('', Validators.required),
       description: new FormControl(''),
-      adopter: new FormGroup({}),
-      foster: new FormGroup({})
+      adopter: new FormGroup({
+        name: new FormControl(''),
+        email: new FormControl(''),
+        phone: new FormControl(''),
+        address: new FormControl(''),
+        otherDetails: new FormControl('')
+      }),
+      foster: new FormGroup({
+        name: new FormControl(''),
+        email: new FormControl(''),
+        phone: new FormControl(''),
+        address: new FormControl(''),
+        otherDetails: new FormControl('')
+      })
     });
   }
 
@@ -61,10 +70,13 @@ export class AddPetComponent implements OnInit {
   async onSubmit() {
     if (this.addPetForm.valid) {
       this.submittedForm = true;
-      
-      let formData = new FormData();
-      formData.append('pet', JSON.stringify(this.addPetForm.value));
-      
+
+      const formData = new FormData();
+
+      const pet: Pet = this.addPetForm.value;
+      pet.fosterFormVisibile = this.fosterFormVisible;
+      formData.append('pet', JSON.stringify(pet));
+
       const files = this.fileField.getFiles();
       files.forEach(async (file) => {
         formData.append('files[]', file.rawFile, file.name);
