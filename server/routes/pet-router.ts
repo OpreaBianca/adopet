@@ -70,6 +70,9 @@ class PetRouter {
 
   updatePet(req: Request, res: Response) {
     const filesPath = path.join(__dirname, `${this.uploadPath}/${req.user.user._id}`);
+    if (!fs.existsSync(filesPath)) {
+      fs.mkdirSync(filesPath);
+    }
 
     const form = new IncomingForm();
     form.uploadDir = filesPath;
@@ -113,15 +116,6 @@ class PetRouter {
       } catch (err) {
         return res.status(500).json(err);
       }
-
-      // const pet = new Pet(localPet);
-      // pet.save(err => {
-      //   if (err) {
-      //     return res.status(500).json(err);
-      //   }
-
-      //   return res.json(pet);
-      // })
     });
   }
 

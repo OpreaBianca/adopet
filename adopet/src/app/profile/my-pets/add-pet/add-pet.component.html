@@ -5,9 +5,9 @@
   <p>Pet details</p>
   <hr />
 
-  <app-attach-photos></app-attach-photos>
+  <app-attach-photos [images]="images"></app-attach-photos>
 
-  <form [formGroup]="addPetForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="addPetForm">
     <div class="form-inputs">
       <div class="row">
         <div class="col-md-4">
@@ -105,7 +105,8 @@
 
     </div>
     <div class="col-md-2 submit-button">
-      <button type="submit" [disabled]="submittedForm">Save</button>
+      <button type="submit" [disabled]="submittedForm" (click)="onAddPet()" *ngIf="!pet">Save</button>
+      <button type="submit" [disabled]="submittedForm" (click)="onEditPet()" *ngIf="pet">Update</button>
     </div>
   </form>
 </div>

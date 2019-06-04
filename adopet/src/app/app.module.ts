@@ -22,7 +22,6 @@ import { EditProfileComponent } from './profile/edit-profile/edit-profile.compon
 import { MyPetsComponent } from './profile/my-pets/my-pets.component';
 import { PetComponent } from './profile/my-pets/pet/pet.component';
 import { AddPetComponent } from './profile/my-pets/add-pet/add-pet.component';
-import { EditPetComponent } from './profile/my-pets/edit-pet/edit-pet.component';
 import { AdoptComponent } from './adopt/adopt.component';
 import { AddAdopterComponent } from './profile/my-pets/add-adopter/add-adopter.component';
 import { AttachPhotosComponent } from './profile/my-pets/attach-photos/attach-photos.component';
@@ -30,8 +29,7 @@ import { ThumbnailDirective } from './profile/my-pets/attach-photos/thumbnail.di
 
 @NgModule({
   entryComponents: [
-    AddPetComponent,
-    EditPetComponent
+    AddPetComponent
   ],
   declarations: [
     AppComponent,
@@ -44,7 +42,6 @@ import { ThumbnailDirective } from './profile/my-pets/attach-photos/thumbnail.di
     MyPetsComponent,
     PetComponent,
     AddPetComponent,
-    EditPetComponent,
     AdoptComponent,
     AddAdopterComponent,
     AttachPhotosComponent,

@@ -12,8 +12,8 @@ export default mongoose.model('Pet', {
     goodWith: [String],
     status: String,
     description: String,
-    foster: { name: String, email: String, phone: String, otherDetails: String },
-    adopter: { name: String, email: String, phone: String, otherDetails: String },
+    foster: { name: String, email: String, phone: String, address: String, otherDetails: String },
+    adopter: { name: String, email: String, phone: String, address: String, otherDetails: String },
     fosterFormVisibile: Boolean,
     images: [String],
     ownerID: String

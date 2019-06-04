@@ -3,7 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material';
 
 import { Pet } from '../../../models/pet.interface';
-import { EditPetComponent } from '../edit-pet/edit-pet.component';
+import { AddPetComponent } from '../add-pet/add-pet.component';
 import { ImageService } from '../../../services/image/image.service';
 
 @Component({
@@ -23,7 +23,7 @@ export class PetComponent implements OnInit {
   ngOnInit() { }
 
   editPet() {
-    this.dialog.open(EditPetComponent, {
+    this.dialog.open(AddPetComponent, {
       width: '1000px',
       maxHeight: '850px',
       disableClose: true,
