@@ -5,56 +5,71 @@ import * as path from 'path';
 import * as fs from 'fs';
 
 import { AuthConfig } from '../config/auth-config';
+import { LocalPet } from '../models/local-pet.interface';
+import Pet from '../db-models/pet';
 
 class PetRouter {
-  uploadPath = '../../uploads';
   router: Router;
+  uploadPath = '../../uploads';
 
   constructor() {
     this.router = Router();
     this.init();
   }
 
-  async addPet(req: Request, res: Response) {
-    let uploadName: string;
+  async getPetsByOwner(req: Request, res: Response) {
+    try {
+      const pets = await Pet.find({ ownerID: req.user.user._id });
+      return res.json(pets);
+    } catch (err) {
+      return res.status(500).json(err);
+    }
+  }
+
+  addPet(req: Request, res: Response) {
+    const filesPath = path.join(__dirname, `${this.uploadPath}/${req.user.user._id}`);
+    if (!fs.existsSync(filesPath)) {
+      fs.mkdirSync(filesPath);
+    }
 
     const form = new IncomingForm();
-    form.uploadDir = path.join(__dirname, `${this.uploadPath}/`);
+    form.uploadDir = filesPath;
     form.keepExtensions = true;
 
+    let images: string[] = [];
+
     form.on('fileBegin', (name, file) => {
-      console.log(file, name);
-      // uploadName = `${Date.now()}_${file.name}`;
-      // file.path = path.join(form.uploadDir, uploadName);
+      const uploadName = `${Date.now()}_${file.name}`;
+      file.path = path.join(form.uploadDir, uploadName);
+      images.push(uploadName);
     });
 
     form.on('error', (err) => {
-      // logger.error('UploadFile' + err.message);
-      // res.status(500).json(err);
-      console.log(err);
+      return res.status(500).json(err);
     });
 
     form.parse(req, async (err, fields, files) => {
       if (err) {
-        // logger.error('UploadParseFile' + err.message);
-        // res.status(500).json(err);
-        console.log(err);
+        return res.status(500).json(err);
       }
-      console.log(files, fields);
-      // const file = await this.fileManagement.insertFile(fields, files, uploadName, res);
-      // if (file) {
-      //   const stakeholders = await this.stakeholderManagement.insertStakeholders(JSON.parse(fields.stakeholders), [file], res);
-      //   if (stakeholders) {
-      //     const threads: Thread[] = this.fileDetailsAggregator.setFilesPerThread([file], stakeholders);
-      //     const message: Message = new UpdateMessage(fileAction.upload);
-      //     await this.fileMailSender.sendFileUpdateMail(threads[0], message, res);
-      //     await this.mailScheduler.scheduleEmails(threads[0]);
-      //   }
-      // }
+
+      const localPet: LocalPet = JSON.parse(fields.pet);
+      localPet.ownerID = req.user.user._id;
+      localPet.images = images;
+
+      const pet = new Pet(localPet);
+      pet.save(err => {
+        if (err) {
+          return res.status(500).json(err);
+        }
+
+        return res.json(pet);
+      })
     });
   }
 
   init() {
+    this.router.get('/', jwt({ secret: AuthConfig.jwtSecret }), this.getPetsByOwner.bind(this));
     this.router.post('/', jwt({ secret: AuthConfig.jwtSecret }), this.addPet.bind(this));
   }
 }

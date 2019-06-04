@@ -1,7 +1,7 @@
 import { Request } from 'express';
 import { PassportStatic } from 'passport';
 
-import User from '../models/user';
+import User from '../db-models/user';
 
 const LocalStrategy = require('passport-local').Strategy;
 

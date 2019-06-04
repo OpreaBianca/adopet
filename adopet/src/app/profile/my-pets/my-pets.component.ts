@@ -1,56 +1,90 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material';
 
 import { AddPetComponent } from './add-pet/add-pet.component';
+import { Pet } from '../../models/pet.interface';
+import { PetService } from '../../services/pet/pet.service';
+import { ImageService } from '../../services/image/image.service';
 
 @Component({
   selector: 'app-my-pets',
   templateUrl: './my-pets.component.html',
   styleUrls: ['./my-pets.component.scss']
 })
-export class MyPetsComponent implements OnInit {
-  pets: any[] = [{
-    id: 1,
-    name: 'Pumpkin',
-    location: 'Bucharest',
-    category: 'Cat',
-    age: '2',
-    size: 'Small',
-    gender: 'Female',
-    fitFor: 'Apartment',
-    goodWith: 'Kids',
-    description: `Pumpkin is a sweet lady that has had a hard life. She came in with her kittens and 
-    now that all but one of her babies have been adopted.. it's Pumpkin's time to shine! Pumpkin is 
-    the sweetest and she is becoming a sassy and confident lady! She deserves a great life.`,
-    status: 'Placed for adoption',
-    adopter: {
-      id: 1,
-      name: 'Bianca Oprea',
-      email: 'bianca@gmail.com',
-      phone: '1234567890',
-      address: 'str. Fabricii, nr. 53',
-      otherDetails: ''
-    },
-    shelter: {
-      id: 1,
-      name: 'Asociatia Pisici pe Creier',
-      email: 'a@a',
-      phone: '1234567890',
-      address: 'str Iuliu Maniu',
-    }
-  }];
+export class MyPetsComponent implements OnInit, OnDestroy {
+  pets: Pet[] = [];
 
-  constructor(private dialog: MatDialog) { }
+  numberPerPage = 8;
+  currentPage = 0;
 
-  ngOnInit() { }
+  constructor(private petService: PetService,
+    private imageService: ImageService,
+    private dialog: MatDialog) { }
+
+  ngOnInit() {
+    this.petService.getPetsByOwner().subscribe(
+      res => {
+        this.pets = res;
+        this.setProfileImages();
+      },
+      err => console.log(err)
+    )
+  }
+
+  ngOnDestroy() {
+    this.pets.forEach((pet: Pet) => {
+      if (pet.profileImageUrl) {
+        URL.revokeObjectURL(pet.profileImageUrl);
+      }
+    });
+  }
 
   addPet() {
     this.dialog.open(AddPetComponent, {
       width: '1000px',
       maxHeight: '850px',
       disableClose: true
-    }).afterClosed().subscribe(res => {
-      console.log(res);
+    }).afterClosed().subscribe((pet: Pet) => {
+      this.setProfileImage(pet);
+      this.pets.unshift(pet);
     });
+  }
+
+  setProfileImages() {
+    this.pets.forEach((pet: Pet) => {
+      this.setProfileImage(pet);
+    });
+  }
+
+  setProfileImage(pet: Pet) {
+    if (pet.images.length > 0) {
+      this.imageService.getImageByName(pet.images[0]).subscribe(
+        res => pet.profileImageUrl = URL.createObjectURL(res),
+        err => console.log(err)
+      );
+    }
+  }
+
+  previousPage() {
+    this.currentPage -= 1;
+  }
+
+  nextPage() {
+    this.currentPage += 1;
+  }
+
+  getPetsToDisplay() {
+    const startIdx = this.currentPage * this.numberPerPage;
+    const endIdx = startIdx + this.numberPerPage;
+    return this.pets.slice(startIdx, endIdx);
+  }
+
+  isFirstPage() {
+    return this.currentPage === 0;
+  }
+
+  isLastPage() {
+    const numberOfPages = Math.ceil(this.pets.length / this.numberPerPage);
+    return numberOfPages === 0 ? true : this.currentPage === numberOfPages - 1;
   }
 }

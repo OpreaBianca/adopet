@@ -1,10 +1,18 @@
 <app-profile-layout></app-profile-layout>
+<div class="row pagination-wrapper">
+  <div class="col-md-6 previous">
+    <img src="../../../assets/previous.png" (click)="previousPage()" *ngIf="!isFirstPage()">
+  </div>
+  <div class="col-md-6 next">
+    <img src="../../../assets/next.png" (click)="nextPage()" *ngIf="!isLastPage()">
+  </div>
+</div>
 <div class="page-wrapper">
   <button (click)="addPet()">Add
     <img src="../../assets/add.png">
   </button>
   <div class="row pets-wrapper">
-    <div class="col-md-3 pet-container" *ngFor="let pet of pets;">
+    <div class="col-md-3 pet-container" *ngFor="let pet of getPetsToDisplay();">
       <app-pet [pet]="pet"></app-pet>
     </div>
   </div>

@@ -1,15 +1,38 @@
+.pagination-wrapper {
+  position: absolute;
+  width: 75%;
+  right: 0;
+  top: 50%;
+  bottom: 0;
+  margin: auto;
+
+  .previous {
+    padding-left: 15px;
+  }
+
+  .next {
+    text-align: end;
+    padding-right: 20px;
+  }
+
+  img {
+    width: 45px;
+    cursor: pointer;
+  }
+}
+
 .page-wrapper {
   width: 67%;
   position: absolute;
-  top: 100px;
-  margin-left: 30%;
+  top: 95px;
+  right: 80px;
 
   button {
-    width: 100px;
-    height: 45px;
+    width: 115px;
+    height: 55px;
     background: #000000;
     outline: none;
-    font-size: 18px;
+    font-size: 20px;
     letter-spacing: 1px;
     font-weight: 100;
     color: #ffffff;
@@ -25,10 +48,6 @@
       margin-left: 5px;
       margin-top: -5px;
     }
-  }
-
-  .pets-wrapper {
-    margin-top: 30px;
   }
 
   .pets-wrapper > .pet-container:nth-of-type(4n) {

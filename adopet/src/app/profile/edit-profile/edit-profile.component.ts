@@ -25,7 +25,7 @@ export class EditProfileComponent implements OnInit {
       phone: new FormControl(this.user.phone, Validators.required /*Validators.pattern(phoneNumberPattern)*/),
       email: new FormControl({ value: this.user.email, disabled: true }),
       emergency: new FormControl(this.user.emergencyNotificationOn),
-      location: new FormControl(this.user.location),
+      address: new FormControl(this.user.address),
       facebook: new FormControl(this.user.facebook),
       instagram: new FormControl(this.user.instagram),
       twitter: new FormControl(this.user.twitter),

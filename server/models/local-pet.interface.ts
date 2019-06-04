@@ -1,6 +1,6 @@
 import { Adopter } from './adopter.interface';
 
-export interface Pet {
+export interface LocalPet {
   _id?: string;
   name: string;
   category: string;
@@ -16,6 +16,5 @@ export interface Pet {
   foster: Adopter;
   adopter: Adopter;
   images: string[];
-  profileImageUrl: string;
   ownerID: string;
 }

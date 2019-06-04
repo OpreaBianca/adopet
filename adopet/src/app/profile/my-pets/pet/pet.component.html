@@ -1,26 +1,31 @@
 <div class="pet-image-wrapper" (mouseenter)="displayDetails=true" (mouseleave)="displayDetails=false">
-  <div class="pet-image">
-    <img src="../../../assets/sarah-ball-350921-unsplash.png">
+  <div class="pet-image" *ngIf="pet.profileImageUrl">
+    <img [src]=" domSanitizer.bypassSecurityTrustUrl(pet.profileImageUrl)">
   </div>
+  <div class="pet-placeholder" *ngIf="!pet.profileImageUrl && this.pet.images.length === 0">
+    <img src="../../../../assets/paw.png">
+  </div>
+  <ngx-loading [show]="!this.pet.profileImageUrl && this.pet.images.length > 0"
+    [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
   <div *ngIf="displayDetails" class="on-hover">
     <div class="name">
       <p>{{pet.name}}</p>
     </div>
     <div class="status">
-      <p>Status: {{pet.status}}</p>
+      <p>{{pet.status}}</p>
     </div>
     <div class="row details">
-      <div class="col-md-6 left-side">
-        <p>Age: {{pet.age}}</p>
+      <div class="col-md-6">
+        <p>Age: {{getAge()}}</p>
         <p>Size {{pet.size}}</p>
       </div>
-      <div clsas="col-md-6 right-side">
+      <div class="col-md-6">
         <p>Gender: {{pet.gender}}</p>
         <p>Category: {{pet.category}}</p>
       </div>
     </div>
     <div class="description">
-      <p>{{pet.description}}</p>
+      <p>{{getDescription()}}</p>
     </div>
     <div class="view-more" (click)="openEditMenu()">
       <img src="../../../assets/view-more.png">

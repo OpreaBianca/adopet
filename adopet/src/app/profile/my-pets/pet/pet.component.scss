@@ -1,5 +1,7 @@
 .pet-image-wrapper {
-  width: 252px;
+  width: 295px;
+  height: 295px;
+  margin-top: 30px;
 
   &:hover {
     -webkit-box-shadow: 2px 0 25px -8px rgba(0, 0, 0, 1);
@@ -7,16 +9,18 @@
     box-shadow: 2px 0 25px -8px rgba(0, 0, 0, 1);
   }
 
-  .pet-image {      
+  .pet-image, .pet-placeholder {
     img {
-      width: 252px;
+      width: 295px;
+      height: 295px;
+      object-fit: cover;
     }
   }
     
   .on-hover {
     position: relative;
-    margin-top: -252px;
-    height: 252px;
+    margin-top: -295px;
+    height: 295px;
     background: rgba(0, 0, 0, 0.75);
 
     p {
@@ -29,56 +33,28 @@
 
     .name {
       text-align: center;
-      font-size: 18px;
+      font-size: 20px;
       padding-top: 15px;
       text-transform: uppercase;
     }
 
     .status {
       text-align: center;
-      font-size: 13px;
+      font-size: 17px;
     }
 
     .details {
-      font-size: 13px;
+      font-size: 15px;
       margin: 0;
       margin-top: 15px;
     }
 
     .description {
-      /* use this value to count block height */
       line-height: 1.2em;
-      /* max-height = line-height (1.2) * lines max number (5) */
-      max-height: 6em; 
-      font-size: 12px;
-      overflow: hidden;
-      position: relative; 
+      max-height: 7em; 
+      font-size: 14px; 
       text-align: justify;  
-      margin-right: 2px;;
-      padding-right: 15px;
-      margin-top: 10px;
-      margin-left: 15px;
-
-      &:before {
-        position: absolute;
-        content: '...';
-        color: white;
-        font-family: inherit;
-        letter-spacing: 1px;
-        font-weight: 100;
-        right: 0;
-        bottom: 0;
-      }
-
-      &:after {
-        content: '';
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        width: 1em;
-        height: 1em;
-        margin-top: 0.2em;
-      }
+      margin: 15px;
     }
 
     .view-more {

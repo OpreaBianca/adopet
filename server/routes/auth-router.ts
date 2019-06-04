@@ -24,7 +24,7 @@ class AuthRouter {
           // 409: Conflict - Duplicate user
           return res.status(409).json(info);
         } else {
-          res.json({ token: AuthConfig.constructUserToken(user) });
+          return res.json({ token: AuthConfig.constructUserToken(user) });
         }
       })(req, res, next)
     });

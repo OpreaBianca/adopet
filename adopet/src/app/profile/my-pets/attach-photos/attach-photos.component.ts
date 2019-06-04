@@ -22,11 +22,6 @@ export class AttachPhotosComponent implements OnInit {
   }
 
   compressFiles() {
-
-    console.log(this.uploader.queue.length);
-    console.log(this.files.length);
-
-
     this.uploader.queue.forEach((item: FileItem) => {
       if (this.files.indexOf(item) === -1) {
         this.ng2ImgMax.compressImage(item._file, 0.05).subscribe(

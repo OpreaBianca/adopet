@@ -1,4 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+
+import { Pet } from '../../../models/pet.interface';
 
 @Component({
   selector: 'app-pet',
@@ -6,13 +9,23 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./pet.component.scss']
 })
 export class PetComponent implements OnInit {
-  @Input() pet: any;
+  @Input() pet: Pet;
 
   displayDetails = false;
 
-  constructor() { }
+  constructor(private domSanitizer: DomSanitizer) { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  isLoading() {
+    return !this.pet.profileImageUrl && this.pet.images.length > 0;
   }
 
+  getAge() {
+    return `${this.pet.ageNumber} ${this.pet.ageMeasurementUnit}`;
+  }
+
+  getDescription() {
+    return this.pet.description.length < 195 ? this.pet.description : this.pet.description.slice(0, 195) + '...';
+  }
 }

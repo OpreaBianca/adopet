@@ -7,6 +7,7 @@ import { User } from '../../../models/user.interface';
 import { AuthService } from '../../../auth/auth.service';
 import { PetService } from '../../../services/pet/pet.service';
 import { AttachPhotosComponent } from '../attach-photos/attach-photos.component';
+import { Pet } from '../../../models/pet.interface';
 
 @Component({
   selector: 'app-add-pet',
@@ -21,16 +22,14 @@ export class AddPetComponent implements OnInit {
   submittedForm = false;
   fosterFormVisible = false;
 
-  genders = [{ id: 1, name: 'Female' }, { id: 2, name: 'Male' }];
-  goodWith = [{ id: 1, name: 'Kids' }, { id: 2, name: 'Elders' }, { id: 3, name: 'People with disabilities' },
-  { id: 4, name: 'Dogs' }, { id: 5, name: 'Cats' }, { id: 6, name: 'Other animals' }];
-  categories = [{ id: 1, name: 'Dog' }, { id: 2, name: 'Cat' }, { id: 3, name: 'Rabbit' }, { id: 4, name: 'Fish' }];
-  ageMeasurementUnits = [{ id: 1, name: 'Days' }, { id: 2, name: 'Weeks' }, { id: 3, name: 'Months' }, { id: 4, name: 'Years' }];
-  fitFor = [{ id: 1, name: 'Apartment' }, { id: 2, name: 'House' }, { id: 3, name: 'Outdoor' }];
-  locations = [{ id: 1, name: 'Bucharest' }, { id: 2, name: 'Teleorman' }];
-  sizes = [{ id: 1, name: 'Small' }, { id: 1, name: 'Medium' }, { id: 1, name: 'Large' }];
-  statuses = [{ id: 1, name: 'Adopted' }, { id: 2, name: 'Placed for adoption/foster' }, { id: 3, name: 'Looking for the owner' },
-  { id: 4, name: 'Returned to owner' }]
+  genders = ['Female', 'Male'];
+  goodWith = ['Kids', 'Elders', 'People with disabilities', 'Dogs', 'Cats', 'Other animals'];
+  categories = ['Dog', 'Cat', 'Rabbit', 'Fish'];
+  ageMeasurementUnits = ['Days', 'Weeks', 'Months', 'Years'];
+  fitFor = ['Apartment', 'House', 'Outdoor'];
+  locations = ['Bucharest', 'Teleorman'];
+  sizes = ['Small', 'Medium', 'Large'];
+  statuses = ['Adopted', 'Placed for adoption/foster', 'Looking for the owner', 'Returned to owner']
 
   constructor(private authService: AuthService,
     private petService: PetService,
@@ -47,7 +46,7 @@ export class AddPetComponent implements OnInit {
       ageNumber: new FormControl('', Validators.required),
       ageMeasurementUnit: new FormControl('', Validators.required),
       size: new FormControl('', Validators.required),
-      goodWith: new FormControl('', Validators.required),
+      goodWith: new FormControl(''),
       fitFor: new FormControl('', Validators.required),
       status: new FormControl('', Validators.required),
       description: new FormControl(''),
@@ -61,22 +60,22 @@ export class AddPetComponent implements OnInit {
 
   async onSubmit() {
     if (this.addPetForm.valid) {
-      // this.submittedForm = true;
+      this.submittedForm = true;
+      
       let formData = new FormData();
       formData.append('pet', JSON.stringify(this.addPetForm.value));
-
-      let files = this.fileField.getFiles();
+      
+      const files = this.fileField.getFiles();
       files.forEach(async (file) => {
         formData.append('files[]', file.rawFile, file.name);
       });
 
       this.petService.addPet(formData).subscribe(
-        res => console.log(res),
+        res => this.onClose(res),
         err => console.log(err)
       );
     }
   }
-
 
   formInitialized(name: string, form: FormGroup) {
     this.addPetForm.setControl(name, form);
@@ -90,7 +89,7 @@ export class AddPetComponent implements OnInit {
     return this.addPetForm.get('status').value === 'Adopted';
   }
 
-  onClose() {
-    this.dialogRef.close();
+  onClose(pet: Pet = undefined) {
+    this.dialogRef.close(pet);
   }
 }
