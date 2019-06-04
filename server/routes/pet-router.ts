@@ -77,6 +77,7 @@ class PetRouter {
   private update(localPet: LocalPet, images: string[], fields: any, filesPath: string, res: Response) {
     // add new photos
     localPet.images = localPet.images.concat(images);
+    console.log(localPet.images);
 
     // delete removed photos
     const removed: string[] = JSON.parse(fields.removed);
@@ -87,13 +88,14 @@ class PetRouter {
         fs.unlinkSync(`${filesPath}/${imageName}`);
       }
     });
+    console.log(localPet.images);
 
-    try {
-      Pet.updateOne({ _id: localPet._id }, localPet);
+    Pet.update({ _id: localPet._id }, { $set: localPet }, err => {
+      if (err) {
+        return res.status(500).json(err);
+      }
       return res.json(localPet);
-    } catch (err) {
-      return res.status(500).json(err);
-    }
+    });
   }
 
   init() {
