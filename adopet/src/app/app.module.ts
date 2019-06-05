@@ -27,6 +27,8 @@ import { AddAdopterComponent } from './profile/my-pets/add-adopter/add-adopter.c
 import { AttachPhotosComponent } from './profile/my-pets/attach-photos/attach-photos.component';
 import { ThumbnailDirective } from './profile/my-pets/attach-photos/thumbnail.directive';
 import { DeletePetComponent } from './profile/my-pets/delete-pet/delete-pet.component';
+import { FavoritesComponent } from './profile/favorites/favorites.component';
+import { PetsLayoutComponent } from './pets-layout/pets-layout.component';
 
 @NgModule({
   entryComponents: [
@@ -48,7 +50,9 @@ import { DeletePetComponent } from './profile/my-pets/delete-pet/delete-pet.comp
     AdoptComponent,
     AddAdopterComponent,
     AttachPhotosComponent,
-    ThumbnailDirective
+    ThumbnailDirective,
+    FavoritesComponent,
+    PetsLayoutComponent
   ],
   imports: [
     BrowserModule,

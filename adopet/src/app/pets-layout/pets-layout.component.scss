@@ -1,0 +1,69 @@
+.page-wrapper {
+  width: 75%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 65px;
+  margin: auto;
+
+  .page-img {
+    width: 40px;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    cursor: pointer;
+  }
+
+  .button-wrapper {
+    height: 16%;
+    
+    button {
+      width: 115px;
+      height: 55px;
+      margin: auto 0;
+      background: #000000;
+      outline: none;
+      border: transparent;
+      color: #ffffff;
+      font-size: 20px;
+      letter-spacing: 1px;
+      font-weight: 100;
+      cursor: pointer;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.6);
+      }
+
+      img {
+        width: 25px;
+        margin-left: 5px;
+        margin-top: -5px;
+      }
+    }
+  }
+
+  .images-wrapper {
+    height: 68%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    margin-left: -15px;
+
+    .image-container {
+      position: relative;
+      width: 285px;
+      height: 285px;
+      margin: 0 15px 15px 0;
+
+      &:hover {
+        -webkit-box-shadow: 2px 0 25px -8px rgba(0, 0, 0, 1);
+        -moz-box-shadow: 2px 0 25px -8px rgba(0, 0, 0, 1);
+        box-shadow: 2px 0 25px -8px rgba(0, 0, 0, 1);
+      }
+    }
+  }
+}

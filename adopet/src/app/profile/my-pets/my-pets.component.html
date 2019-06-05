@@ -1,23 +1,2 @@
 <app-profile-layout></app-profile-layout>
-<div class="row page-wrapper">
-  <div class="col-md-1">
-    <img class="page-img" src="../../../assets/previous.png" (click)="previousPage()" *ngIf="!isFirstPage()">
-  </div>
-  <div class="col-md-10">
-    <div class="row button-wrapper">
-      <button (click)="addPet()">Add
-        <img src="../../assets/add.png">
-      </button>
-    </div>
-    <div class="row images-wrapper">
-      <div class="image-container" *ngFor="let pet of getPetsToDisplay()">
-        <ngx-loading [show]="!pet.profileImageUrl && pet.images.length > 0" [config]="{ backdropBorderRadius: '3px' }">
-        </ngx-loading>
-        <app-pet [pet]="pet" (removedPet)="removePet($event)"></app-pet>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-1">
-    <img class="page-img" src="../../../assets/next.png" (click)="nextPage()" *ngIf="!isLastPage()">
-  </div>
-</div>
+<app-pets-layout [pets]="pets" *ngIf="pets.length > 0"></app-pets-layout>
