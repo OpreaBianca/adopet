@@ -19,4 +19,5 @@ export interface LocalPet {
   images: string[];
   profileImageUrl: string;
   ownerID: string;
+  favorites: string[];
 }

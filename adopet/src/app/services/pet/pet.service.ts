@@ -30,6 +30,12 @@ export class PetService {
     );
   }
 
+  updatePetFavorites(pet: Pet): Observable<any> {
+    return this.http.put(`${environment.apiPath}/pet/favorites`, pet).pipe(
+      catchError((err) => observableThrowError(err))
+    );
+  }
+
   removePet(pet: Pet): Observable<any> {
     return this.http.delete(`${environment.apiPath}/pet`, {
       params: new HttpParams().set('pet', JSON.stringify(pet)),

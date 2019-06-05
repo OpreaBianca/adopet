@@ -5,74 +5,90 @@
         <label for="action">
           <span>I want to:</span>
         </label>
-        <select formControlName="action">
-          <option selected>adopt or foster</option>
-          <option>find my lost pet</option>
-        </select>
+        <mat-select formControlName="action" placeholder="any">
+          <mat-option *ngFor="let action of actions" [value]="action">{{action.name}}</mat-option>
+        </mat-select>
+
         <label for="location">
           <span>Location:</span>
         </label>
-        <select formControlName="location">
-          <option selected>Any</option>
-          <option>Bucharest</option>
-          <option>Teleorman</option>
-        </select>
+        <mat-select formControlName="location" placeholder="any" multiple>
+          <mat-option *ngFor="let location of locations" [value]="location">{{location}}</mat-option>
+        </mat-select>
+
         <label for="category">
           <span>Category:</span>
         </label>
-        <select formControlName="category">
-          <option selected>Any</option>
-          <option>Dog</option>
-          <option>Cat</option>
-          <option>Fish</option>
-          <option>Rabbit</option>
-        </select>
+        <mat-select formControlName="category" placeholder="any">
+          <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
+        </mat-select>
+
         <label for="age">
           <span>Age:</span>
         </label>
-        <select formControlName="age">
-          <option selected>Any</option>
-          <option>&#60; 1 year</option>
-          <option>1 year - 5 years</option>
-          <option>&#62; 5 years</option>
-        </select>
+        <mat-select formControlName="ageRange" placeholder="any">
+          <mat-option *ngFor="let ageRange of ageRanges" [value]="ageRange">{{ageRange}}</mat-option>
+        </mat-select>
+
         <label for="size">
           <span>Size:</span>
         </label>
-        <select formControlName="size">
-          <option selected>Any</option>
-          <option>Small</option>
-          <option>Medium</option>
-          <option>Big</option>
-        </select>
+        <mat-select formControlName="size" placeholder="any">
+          <mat-option *ngFor="let size of sizes" [value]="size">{{size}}</mat-option>
+        </mat-select>
+
+
         <label for="gender">
           <span>Gender:</span>
         </label>
-        <select formControlName="gender">
-          <option selected>Any</option>
-          <option>Female</option>
-          <option>Male</option>
-        </select>
+        <mat-select formControlName="gender" placeholder="any">
+          <mat-option *ngFor="let gender of genders" [value]="gender">{{gender}}</mat-option>
+        </mat-select>
+
         <label for="fitFor">
           <span>Fit for:</span>
         </label>
-        <select formControlName="fitFor">
-          <option selected>Any</option>
-          <option>Apartment</option>
-          <option>House</option>
-        </select>
+        <mat-select formControlName="fitFor" placeholder="any" multiple>
+          <mat-option *ngFor="let fitFor of fitFor" [value]="fitFor">{{fitFor}} </mat-option>
+        </mat-select>
+
         <label for="goodWith">
           <span>Good with:</span>
         </label>
-        <select formControlName="goodWith">
-          <option selected>Any</option>
-          <option>Kids</option>
-          <option>Dogs</option>
-          <option>Cats</option>
-          <option>Other animals</option>
-        </select>
-        <button type="submit" [disabled]="submittedForm">Search</button>
+        <mat-select formControlName="goodWith" placeholder="any" multiple>
+          <mat-option *ngFor="let goodWith of goodWith" [value]="goodWith">{{goodWith}}</mat-option>
+        </mat-select>
+
+        <button type="submit" [disabled]="submittedForm">
+          <div class="row">
+            <div class="col-md-7">
+              <p>Search...</p>
+            </div>
+            <div class="col-md-5">
+              <img src="../../assets/search.png">
+            </div>
+          </div>
+        </button>
       </form>
+    </div>
+  </div>
+
+  <div class="row page-wrapper">
+    <div class="col-md-1">
+      <img class="page-img" src="../../../assets/previous.png" (click)="previousPage()" *ngIf="!isFirstPage()">
+    </div>
+    <div class="col-md-10">
+      <div class="row images-wrapper">
+        <div class="image-container" *ngFor="let pet of getPetsToDisplay()">
+          <ngx-loading [show]="!pet.profileImageUrl && pet.images.length > 0"
+            [config]="{ backdropBorderRadius: '3px' }">
+          </ngx-loading>
+          <app-pet [pet]="pet" [user]="user" (removedPet)="removePet($event)"></app-pet>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1">
+      <img class="page-img" src="../../../assets/next.png" (click)="nextPage()" *ngIf="!isLastPage()">
     </div>
   </div>
 </div>

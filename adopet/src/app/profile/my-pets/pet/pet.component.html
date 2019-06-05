@@ -1,12 +1,12 @@
-<div class="pet-image-wrapper" (mouseenter)="displayDetails=true" (mouseleave)="displayDetails=false">
-  <div class="pet-image" *ngIf="pet.profileImageUrl">
+<div (mouseenter)="displayDetails=true" (mouseleave)="displayDetails=false">
+  <div class="image-wrapper" *ngIf="pet.profileImageUrl">
     <img [src]=" domSanitizer.bypassSecurityTrustUrl(pet.profileImageUrl)">
   </div>
-  <div class="pet-placeholder" *ngIf="!pet.profileImageUrl && this.pet.images.length === 0">
-    <img src="../../../../assets/paw.png">
+
+  <div class="image-wrapper" *ngIf="!pet.profileImageUrl && this.pet.images.length === 0">
+    <img src="../../../../assets/dog.png">
   </div>
-  <ngx-loading [show]="!this.pet.profileImageUrl && this.pet.images.length > 0"
-    [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
+
   <div *ngIf="displayDetails" class="on-hover">
     <div class="name">
       <p>{{pet.name}}</p>
@@ -15,11 +15,11 @@
       <p>{{pet.status}}</p>
     </div>
     <div class="row details">
-      <div class="col-md-6">
+      <div class="col-md-6 details-column">
         <p>Age: {{getAge()}}</p>
-        <p>Size {{pet.size}}</p>
+        <p>Size: {{pet.size}}</p>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6 details-column">
         <p>Gender: {{pet.gender}}</p>
         <p>Category: {{pet.category}}</p>
       </div>
@@ -27,10 +27,21 @@
     <div class="description">
       <p>{{getDescription()}}</p>
     </div>
-    <div class="view-more" (click)="editPet()">
-      <img src="../../../assets/view-more.png">
+    <div *ngIf="isMyPetsPage()">
+      <div class="right-image" (click)="editPet()">
+        <img src="../../../assets/view-more.png">
+      </div>
+      <div class="left-image" (click)="deletePet()">
+        <img src="../../../assets/delete.png">
+      </div>
     </div>
-    <div class="delete" (click)="deletePet()">
-      <img src="../../../assets/delete.png">
+    <div *ngIf="!isMyPetsPage()">
+      <div class="right-image" (click)="viewPetDetails()">
+        <img src="../../../assets/view-more.png">
+      </div>
+      <div class="left-image">
+        <img src="../../../../assets/empty-heart.png" *ngIf="!isFavorite()" (click)="addToFavorites()">
+        <img src="../../../../assets/full-heart.png" *ngIf="isFavorite()" (click)="removeFromFavorites()">
+      </div>
     </div>
   </div>

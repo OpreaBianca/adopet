@@ -96,6 +96,17 @@ class PetRouter {
     });
   }
 
+  updatePetFavorites(req: Request, res: Response) {
+    const localPet: LocalPet = req.body;
+
+    Pet.update({ _id: localPet._id }, { $set: { favorites: localPet.favorites } }, err => {
+      if (err) {
+        return res.status(500).json(err);
+      }
+      return res.json('OK');
+    });
+  }
+
   deletePet(req: Request, res: Response) {
     const filesPath = path.join(__dirname, `${this.uploadPath}/${req.user.user._id}`);
     const localPet: LocalPet = JSON.parse(req.query.pet);
@@ -116,6 +127,7 @@ class PetRouter {
     this.router.get('/', jwt({ secret: AuthConfig.jwtSecret }), this.getPetsByOwner.bind(this));
     this.router.post('/', jwt({ secret: AuthConfig.jwtSecret }), this.insertOrUpdatePet.bind(this));
     this.router.put('/', jwt({ secret: AuthConfig.jwtSecret }), this.insertOrUpdatePet.bind(this));
+    this.router.put('/favorites', jwt({ secret: AuthConfig.jwtSecret }), this.updatePetFavorites.bind(this));
     this.router.delete('/', jwt({ secret: AuthConfig.jwtSecret }), this.deletePet.bind(this));
   }
 }

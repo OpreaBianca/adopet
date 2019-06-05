@@ -13,7 +13,6 @@ import { ImageService } from '../../services/image/image.service';
 })
 export class MyPetsComponent implements OnInit, OnDestroy {
   pets: Pet[] = [];
-
   numberPerPage = 8;
   currentPage = 0;
 

@@ -19,4 +19,5 @@ export interface Pet {
   images: string[];
   profileImageUrl: string;
   ownerID: string;
+  favorites: string[];
 }
