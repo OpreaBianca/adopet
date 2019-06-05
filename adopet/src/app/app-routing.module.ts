@@ -8,6 +8,7 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 import { MyPetsComponent } from './profile/my-pets/my-pets.component';
 import { AdoptComponent } from './adopt/adopt.component';
+import { FavoritesComponent } from './profile/favorites/favorites.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
     path: 'profile', canActivate: [AuthGuard], children: [
       { path: '', redirectTo: 'my-pets', pathMatch: 'full' },
       { path: 'my-pets', component: MyPetsComponent },
+      { path: 'favorites', component: FavoritesComponent },
       { path: 'edit', component: EditProfileComponent }
     ]
   },

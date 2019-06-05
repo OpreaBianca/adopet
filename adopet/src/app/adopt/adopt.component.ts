@@ -40,7 +40,7 @@ export class AdoptComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.user = this.authService.getUser();
 
-    this.petService.getPetsByOwner().subscribe(
+    this.petService.getAllPets().subscribe(
       res => {
         this.pets = res;
         this.setProfileImages();
@@ -76,7 +76,7 @@ export class AdoptComponent implements OnInit, OnDestroy {
 
   setProfileImage(pet: Pet) {
     if (pet.images.length > 0) {
-      this.imageService.getImageByName(pet.images[0]).subscribe(
+      this.imageService.getImageByName(pet.images[0], pet.ownerID).subscribe(
         res => pet.profileImageUrl = URL.createObjectURL(res),
         err => console.log(err)
       );

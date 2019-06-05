@@ -3,6 +3,8 @@ import { FileUploader, FileLikeObject, FileItem } from 'ng2-file-upload';
 import { Ng2ImgMaxService } from 'ng2-img-max';
 
 import { ImageService } from '../../../services/image/image.service';
+import { AuthService } from '../../../auth/auth.service';
+import { User } from '../../../models/user.interface';
 
 @Component({
   selector: 'app-attach-photos',
@@ -16,12 +18,15 @@ export class AttachPhotosComponent implements OnInit {
   files: FileItem[] = [];
 
   constructor(private imageService: ImageService,
+    private authService: AuthService,
     private ng2ImgMax: Ng2ImgMaxService) { }
 
   ngOnInit() {
+    const user: User = this.authService.getUser();
+
     if (this.images.length > 0) {
       this.images.forEach((imageName: string) => {
-        this.imageService.getImageByName(imageName).subscribe(
+        this.imageService.getImageByName(imageName, user._id).subscribe(
           res => {
             const file = new File([res], imageName);
             this.uploader.addToQueue([file]);

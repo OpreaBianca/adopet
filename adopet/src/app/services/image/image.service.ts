@@ -11,10 +11,13 @@ import { environment } from '../../../environments/environment';
 export class ImageService {
   constructor(private _http: HttpClient) { }
 
-  getImageByName(imageName: string): Observable<any> {
+  getImageByName(imageName: string, userId: string): Observable<any> {
+    let params = new HttpParams().set('imageName', imageName);
+    params = params.set('userId', userId);
+
     return this._http.get(`${environment.apiPath}/image`, {
       headers: new HttpHeaders().set('Content-Type', 'application/json'),
-      params: new HttpParams().set('imageName', imageName),
+      params: params,
       responseType: 'blob'
     }).pipe(
       catchError((err) => observableThrowError(err))

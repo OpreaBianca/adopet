@@ -2,9 +2,10 @@ import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { MatDialog } from '@angular/material';
 
 import { Pet } from '../models/pet.interface';
-import { PetService } from '../services/pet/pet.service';
 import { ImageService } from '../services/image/image.service';
 import { AddPetComponent } from '../profile/my-pets/add-pet/add-pet.component';
+import { User } from '../models/user.interface';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-pets-layout',
@@ -14,13 +15,16 @@ import { AddPetComponent } from '../profile/my-pets/add-pet/add-pet.component';
 export class PetsLayoutComponent implements OnInit, OnDestroy {
   @Input() pets: Pet[] = [];
 
+  user: User;
   numberPerPage = 8;
   currentPage = 0;
 
   constructor(private imageService: ImageService,
+    private authService: AuthService,
     private dialog: MatDialog) { }
 
   ngOnInit() {
+    this.user = this.authService.getUser();
     this.setProfileImages();
   }
 
@@ -58,7 +62,7 @@ export class PetsLayoutComponent implements OnInit, OnDestroy {
 
   setProfileImage(pet: Pet) {
     if (pet.images.length > 0) {
-      this.imageService.getImageByName(pet.images[0]).subscribe(
+      this.imageService.getImageByName(pet.images[0], pet.ownerID).subscribe(
         res => pet.profileImageUrl = URL.createObjectURL(res),
         err => console.log(err)
       );

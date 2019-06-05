@@ -12,8 +12,20 @@ import { Pet } from '../../models/pet.interface';
 export class PetService {
   constructor(private http: HttpClient) { }
 
+  getAllPets(): Observable<any> {
+    return this.http.get(`${environment.apiPath}/pet/all`).pipe(
+      catchError((err) => observableThrowError(err))
+    );
+  }
+
   getPetsByOwner(): Observable<any> {
     return this.http.get(`${environment.apiPath}/pet`).pipe(
+      catchError((err) => observableThrowError(err))
+    );
+  }
+
+  getFavoritePets(): Observable<any> {
+    return this.http.get(`${environment.apiPath}/pet/favorites`).pipe(
       catchError((err) => observableThrowError(err))
     );
   }

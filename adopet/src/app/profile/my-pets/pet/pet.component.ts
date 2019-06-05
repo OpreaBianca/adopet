@@ -46,7 +46,7 @@ export class PetComponent implements OnInit {
 
   setProfileImage(pet: Pet) {
     if (pet.images.length > 0) {
-      this.imageService.getImageByName(pet.images[0]).subscribe(
+      this.imageService.getImageByName(pet.images[0], pet.ownerID).subscribe(
         res => pet.profileImageUrl = URL.createObjectURL(res),
         err => console.log(err)
       );

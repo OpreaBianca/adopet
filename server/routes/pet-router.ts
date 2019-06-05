@@ -1,4 +1,4 @@
-import { Router, Request, Response } from 'express';
+import { Router, Request, Response, response } from 'express';
 import { IncomingForm } from 'formidable';
 import * as jwt from 'express-jwt';
 import * as path from 'path';
@@ -17,9 +17,27 @@ class PetRouter {
     this.init();
   }
 
+  async getAllPets(req: Request, res: Response) {
+    try {
+      const pets = await Pet.find();
+      return res.json(pets);
+    } catch (err) {
+      return res.status(500).json(err);
+    }
+  }
+
   async getPetsByOwner(req: Request, res: Response) {
     try {
       const pets = await Pet.find({ ownerID: req.user.user._id });
+      return res.json(pets);
+    } catch (err) {
+      return res.status(500).json(err);
+    }
+  }
+
+  async getFavoritePets(req: Request, res: Response) {
+    try {
+      const pets = await Pet.find({ favorites: { $all: [req.user.user._id] } });
       return res.json(pets);
     } catch (err) {
       return res.status(500).json(err);
@@ -125,6 +143,8 @@ class PetRouter {
 
   init() {
     this.router.get('/', jwt({ secret: AuthConfig.jwtSecret }), this.getPetsByOwner.bind(this));
+    this.router.get('/all', jwt({ secret: AuthConfig.jwtSecret }), this.getAllPets.bind(this));
+    this.router.get('/favorites', jwt({ secret: AuthConfig.jwtSecret }), this.getFavoritePets.bind(this));
     this.router.post('/', jwt({ secret: AuthConfig.jwtSecret }), this.insertOrUpdatePet.bind(this));
     this.router.put('/', jwt({ secret: AuthConfig.jwtSecret }), this.insertOrUpdatePet.bind(this));
     this.router.put('/favorites', jwt({ secret: AuthConfig.jwtSecret }), this.updatePetFavorites.bind(this));

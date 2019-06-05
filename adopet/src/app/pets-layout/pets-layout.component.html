@@ -12,7 +12,7 @@
       <div class="image-container" *ngFor="let pet of getPetsToDisplay()">
         <ngx-loading [show]="!pet.profileImageUrl && pet.images.length > 0" [config]="{ backdropBorderRadius: '3px' }">
         </ngx-loading>
-        <app-pet [pet]="pet" (removedPet)="removePet($event)"></app-pet>
+        <app-pet [pet]="pet" [user]="user" (removedPet)="removePet($event)"></app-pet>
       </div>
     </div>
   </div>

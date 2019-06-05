@@ -9,13 +9,17 @@ import { PetService } from '../../services/pet/pet.service';
   styleUrls: ['./my-pets.component.scss']
 })
 export class MyPetsComponent implements OnInit {
+  successfulRequest = false;
   pets: Pet[] = [];
 
   constructor(private petService: PetService) { }
 
   ngOnInit() {
     this.petService.getPetsByOwner().subscribe(
-      res => this.pets = res,
+      res => {
+        this.pets = res;
+        this.successfulRequest = true;
+      },
       err => console.log(err)
     )
   }
