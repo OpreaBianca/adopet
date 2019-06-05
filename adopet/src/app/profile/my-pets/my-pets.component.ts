@@ -52,6 +52,11 @@ export class MyPetsComponent implements OnInit, OnDestroy {
     });
   }
 
+  removePet(pet: Pet) {
+    const petIdx = this.pets.findIndex((currentPet: Pet) => currentPet._id === pet._id);
+    this.pets.splice(petIdx, 1);
+  }
+
   setProfileImages() {
     this.pets.forEach((pet: Pet) => {
       this.setProfileImage(pet);

@@ -26,7 +26,7 @@ class PetRouter {
     }
   }
 
-  insertOrUpdate(req: Request, res: Response) {
+  insertOrUpdatePet(req: Request, res: Response) {
     const filesPath = path.join(__dirname, `${this.uploadPath}/${req.user.user._id}`);
     if (!fs.existsSync(filesPath)) {
       fs.mkdirSync(filesPath);
@@ -77,7 +77,6 @@ class PetRouter {
   private update(localPet: LocalPet, images: string[], fields: any, filesPath: string, res: Response) {
     // add new photos
     localPet.images = localPet.images.concat(images);
-    console.log(localPet.images);
 
     // delete removed photos
     const removed: string[] = JSON.parse(fields.removed);
@@ -88,7 +87,6 @@ class PetRouter {
         fs.unlinkSync(`${filesPath}/${imageName}`);
       }
     });
-    console.log(localPet.images);
 
     Pet.update({ _id: localPet._id }, { $set: localPet }, err => {
       if (err) {
@@ -98,10 +96,27 @@ class PetRouter {
     });
   }
 
+  deletePet(req: Request, res: Response) {
+    const filesPath = path.join(__dirname, `${this.uploadPath}/${req.user.user._id}`);
+    const localPet: LocalPet = JSON.parse(req.query.pet);
+
+    Pet.remove({ _id: localPet._id }, err => {
+      if (err) {
+        return res.status(500).json(err);
+      }
+      localPet.images.forEach((imageName: string) => {
+        fs.unlinkSync(`${filesPath}/${imageName}`);
+      });
+
+      return res.json('OK');
+    });
+  }
+
   init() {
     this.router.get('/', jwt({ secret: AuthConfig.jwtSecret }), this.getPetsByOwner.bind(this));
-    this.router.post('/', jwt({ secret: AuthConfig.jwtSecret }), this.insertOrUpdate.bind(this));
-    this.router.put('/', jwt({ secret: AuthConfig.jwtSecret }), this.insertOrUpdate.bind(this));
+    this.router.post('/', jwt({ secret: AuthConfig.jwtSecret }), this.insertOrUpdatePet.bind(this));
+    this.router.put('/', jwt({ secret: AuthConfig.jwtSecret }), this.insertOrUpdatePet.bind(this));
+    this.router.delete('/', jwt({ secret: AuthConfig.jwtSecret }), this.deletePet.bind(this));
   }
 }
 export default new PetRouter().router;

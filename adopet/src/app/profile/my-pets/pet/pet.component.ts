@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material';
 
 import { Pet } from '../../../models/pet.interface';
 import { AddPetComponent } from '../add-pet/add-pet.component';
 import { ImageService } from '../../../services/image/image.service';
+import { DeletePetComponent } from '../delete-pet/delete-pet.component';
 
 @Component({
   selector: 'app-pet',
@@ -13,6 +14,7 @@ import { ImageService } from '../../../services/image/image.service';
 })
 export class PetComponent implements OnInit {
   @Input() pet: Pet;
+  @Output() removedPet = new EventEmitter<Pet>();
 
   displayDetails = false;
 
@@ -34,6 +36,19 @@ export class PetComponent implements OnInit {
         this.pet = updatedPet;
       }
     });
+  }
+
+  deletePet() {
+    this.dialog.open(DeletePetComponent, {
+      width: '600px',
+      maxHeight: '850px',
+      disableClose: true,
+      data: this.pet
+    }).afterClosed().subscribe((res) => {
+      if (res) {
+        this.removedPet.emit(this.pet);
+      }
+    })
   }
 
   setProfileImage(pet: Pet) {

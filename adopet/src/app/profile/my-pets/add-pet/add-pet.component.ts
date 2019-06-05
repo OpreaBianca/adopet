@@ -4,10 +4,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FileLikeObject } from 'ng2-file-upload';
 
 import { Pet } from '../../../models/pet.interface';
-import { User } from '../../../models/user.interface';
 import { PetService } from '../../../services/pet/pet.service';
 import { AttachPhotosComponent } from '../attach-photos/attach-photos.component';
-import { MyPetsComponent } from '../my-pets.component';
 
 @Component({
   selector: 'app-add-pet',

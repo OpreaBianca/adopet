@@ -13,7 +13,7 @@
   </button>
   <div class="row pets-wrapper">
     <div class="col-md-3 pet-container" *ngFor="let pet of getPetsToDisplay();">
-      <app-pet [pet]="pet"></app-pet>
+      <app-pet [pet]="pet" (removedPet)="removePet($event)"></app-pet>
     </div>
   </div>
 </div>
