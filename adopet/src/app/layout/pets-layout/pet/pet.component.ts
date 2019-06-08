@@ -4,9 +4,9 @@ import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 
 import { Pet } from '../../../models/pet.interface';
-import { AddPetComponent } from '../add-pet/add-pet.component';
+import { AddPetComponent } from '../../../profile/my-pets/add-pet/add-pet.component';
 import { ImageService } from '../../../services/image/image.service';
-import { DeletePetComponent } from '../delete-pet/delete-pet.component';
+import { DeletePetComponent } from '../../../profile/my-pets/delete-pet/delete-pet.component';
 import { User } from '../../../models/user.interface';
 import { PetService } from '../../../services/pet/pet.service';
 
@@ -78,7 +78,12 @@ export class PetComponent implements OnInit {
   removeFromFavorites() {
     const idx = this.pet.favorites.findIndex((userId: string) => userId === this.user._id);
     this.pet.favorites.splice(idx, 1);
+
     this.updatePet();
+
+    if (this.router.url === '/profile/favorites') {
+      this.removedPet.emit(this.pet);
+    }
   }
 
   updatePet() {

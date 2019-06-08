@@ -3,7 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { Pet } from '../../../models/pet.interface';
 import { PetService } from '../../../services/pet/pet.service';
-import { PetComponent } from '../pet/pet.component';
+import { PetComponent } from '../../../layout/pets-layout/pet/pet.component';
 
 @Component({
   selector: 'app-delete-pet',

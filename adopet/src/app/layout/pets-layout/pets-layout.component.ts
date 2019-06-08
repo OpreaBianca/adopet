@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
 
-import { Pet } from '../models/pet.interface';
-import { ImageService } from '../services/image/image.service';
-import { AddPetComponent } from '../profile/my-pets/add-pet/add-pet.component';
-import { User } from '../models/user.interface';
-import { AuthService } from '../auth/auth.service';
+import { Pet } from '../../models/pet.interface';
+import { ImageService } from '../../services/image/image.service';
+import { AddPetComponent } from '../../profile/my-pets/add-pet/add-pet.component';
+import { User } from '../../models/user.interface';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-pets-layout',
@@ -21,6 +22,7 @@ export class PetsLayoutComponent implements OnInit, OnDestroy {
 
   constructor(private imageService: ImageService,
     private authService: AuthService,
+    private router: Router,
     private dialog: MatDialog) { }
 
   ngOnInit() {
@@ -90,5 +92,9 @@ export class PetsLayoutComponent implements OnInit, OnDestroy {
   isLastPage() {
     const numberOfPages = Math.ceil(this.pets.length / this.numberPerPage);
     return numberOfPages === 0 ? true : this.currentPage === numberOfPages - 1;
+  }
+
+  isMyPetsPage() {
+    return this.router.url === '/profile/my-pets';
   }
 }

@@ -27,7 +27,8 @@
     <div class="description">
       <p>{{getDescription()}}</p>
     </div>
-    <div *ngIf="isMyPetsPage()">
+
+    <div *ngIf="isMyPetsPage() else notMyPets">
       <div class="right-image" (click)="editPet()">
         <img src="../../../assets/view-more.png">
       </div>
@@ -35,13 +36,17 @@
         <img src="../../../assets/delete.png">
       </div>
     </div>
-    <div *ngIf="!isMyPetsPage()">
-      <div class="right-image" (click)="viewPetDetails()">
-        <img src="../../../assets/view-more.png">
+
+    <ng-template #notMyPets>
+      <div *ngIf="!isMyPetsPage()">
+        <div class="right-image" (click)="viewPetDetails()">
+          <img src="../../../assets/view-more.png">
+        </div>
+        <div class="left-image">
+          <img src="../../../../assets/empty-heart.png" *ngIf="!isFavorite()" (click)="addToFavorites()">
+          <img src="../../../../assets/full-heart.png" *ngIf="isFavorite()" (click)="removeFromFavorites()">
+        </div>
       </div>
-      <div class="left-image">
-        <img src="../../../../assets/empty-heart.png" *ngIf="!isFavorite()" (click)="addToFavorites()">
-        <img src="../../../../assets/full-heart.png" *ngIf="isFavorite()" (click)="removeFromFavorites()">
-      </div>
-    </div>
+    </ng-template>
   </div>
+</div>

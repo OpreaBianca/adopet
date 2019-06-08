@@ -3,9 +3,9 @@
     <img class="page-img" src="../../../assets/previous.png" (click)="previousPage()" *ngIf="!isFirstPage()">
   </div>
   <div class="col-md-10">
-    <div class="row button-wrapper">
+    <div class="row button-wrapper" *ngIf="isMyPetsPage()">
       <button (click)="addPet()">Add
-        <img src="../../assets/add.png">
+        <img src="../../../assets/add.png">
       </button>
     </div>
     <div class="row images-wrapper">

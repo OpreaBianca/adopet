@@ -16,11 +16,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
-import { LayoutComponent } from './layout/layout.component';
-import { ProfileLayoutComponent } from './profile/profile-layout/profile-layout.component';
+import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
+import { ProfileLayoutComponent } from './layout/profile-layout/profile-layout.component';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 import { MyPetsComponent } from './profile/my-pets/my-pets.component';
-import { PetComponent } from './profile/my-pets/pet/pet.component';
+import { PetComponent } from './layout/pets-layout/pet/pet.component';
 import { AddPetComponent } from './profile/my-pets/add-pet/add-pet.component';
 import { AdoptComponent } from './adopt/adopt.component';
 import { AddAdopterComponent } from './profile/my-pets/add-adopter/add-adopter.component';
@@ -28,7 +28,7 @@ import { AttachPhotosComponent } from './profile/my-pets/attach-photos/attach-ph
 import { ThumbnailDirective } from './profile/my-pets/attach-photos/thumbnail.directive';
 import { DeletePetComponent } from './profile/my-pets/delete-pet/delete-pet.component';
 import { FavoritesComponent } from './profile/favorites/favorites.component';
-import { PetsLayoutComponent } from './pets-layout/pets-layout.component';
+import { PetsLayoutComponent } from './layout/pets-layout/pets-layout.component';
 
 @NgModule({
   entryComponents: [
@@ -37,7 +37,7 @@ import { PetsLayoutComponent } from './pets-layout/pets-layout.component';
   ],
   declarations: [
     AppComponent,
-    LayoutComponent,
+    MainLayoutComponent,
     HomepageComponent,
     LoginComponent,
     SignUpComponent,
