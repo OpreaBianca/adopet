@@ -30,14 +30,12 @@ import { DeletePetComponent } from './profile/my-pets/delete-pet/delete-pet.comp
 import { FavoritesComponent } from './profile/favorites/favorites.component';
 import { PetsLayoutComponent } from './layout/pets-layout/pets-layout.component';
 import { MoreDetailsComponent } from './adopt/more-details/more-details.component';
-import { AdoptionRequestComponent } from './adopt/adoption-request/adoption-request.component';
 
 @NgModule({
   entryComponents: [
     AddPetComponent,
     DeletePetComponent,
-    MoreDetailsComponent,
-    AdoptionRequestComponent
+    MoreDetailsComponent
   ],
   declarations: [
     AppComponent,
@@ -57,8 +55,7 @@ import { AdoptionRequestComponent } from './adopt/adoption-request/adoption-requ
     ThumbnailDirective,
     FavoritesComponent,
     PetsLayoutComponent,
-    MoreDetailsComponent,
-    AdoptionRequestComponent
+    MoreDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Router, Request, Response, response } from 'express';
+import { Router, Request, Response } from 'express';
 import { IncomingForm } from 'formidable';
 import * as jwt from 'express-jwt';
 import * as path from 'path';
@@ -89,7 +89,7 @@ class PetRouter {
         return res.status(500).json(err);
       }
       return res.json(pet);
-    })
+    });
   }
 
   private update(localPet: LocalPet, images: string[], fields: any, filesPath: string, res: Response) {

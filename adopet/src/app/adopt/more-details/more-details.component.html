@@ -96,7 +96,7 @@
     </div>
   </div>
 
-  <div class="col-md-2 submit-button" *ngIf="authService.isAuthenticated()">
+  <div class="col-md-2 adopt-button" *ngIf="authService.isAuthenticated()">
     <button (click)="onAdoptPet()">Adopt
       <img src="../../../assets/next.png">
     </button>
@@ -104,5 +104,40 @@
 </div>
 
 <ng-template #adoptionRequest>
-  <app-adoption-request></app-adoption-request>
+  <div class="close-form" (click)="onClose()">
+    <img src="../../../../assets/close.png">
+  </div>
+  <p>Adoption request: {{data.pet.name.toUpperCase()}}</p>
+  <hr />
+
+  <div class="request-details">
+    <div class="row">
+      <p>To: {{data.owner.name}}, {{data.owner.email}}, {{data.owner.phone}}</p>
+    </div>
+    <div class="row">
+      <p>From: {{user.name}}, {{user.email}}, {{user.phone}}</p>
+    </div>
+  </div>
+
+  <form [formGroup]="adoptionRequestFrom" (ngSubmit)="onSendAdoptionRequest()">
+    <div class="row form-wrapper">
+      <div class="col-md-12">
+        <label for="request">
+          <span class="input-field">Request message</span>
+        </label>
+        <textarea placeholder="write your request here" formControlName="requestMessage"></textarea>
+      </div>
+    </div>
+
+    <div class="row button-wrapper">
+      <div class="col-md-2">
+        <button (click)="onBack()">
+          <img src="../../../assets/previous.png"> Back
+        </button>
+      </div>
+      <div class="col-md-2 submit-button">
+        <button type="submit" [disabled]="submittedForm">Send</button>
+      </div>
+    </div>
+  </form>
 </ng-template>

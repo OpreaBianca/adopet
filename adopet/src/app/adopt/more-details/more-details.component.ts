@@ -1,9 +1,13 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
+import { User } from '../../models/user.interface';
+import { AdoptionRequest } from '../../models/adoption-request.interface';
 import { PetComponent } from '../../layout/pets-layout/pet/pet.component';
 import { ImageService } from '../../services/image/image.service';
+import { AdoptionRequestService } from '../../services/adoption-request/adoption-request.service';
 import { AuthService } from '../../auth/auth.service';
 
 @Component({
@@ -12,11 +16,16 @@ import { AuthService } from '../../auth/auth.service';
   styleUrls: ['./more-details.component.scss']
 })
 export class MoreDetailsComponent implements OnInit {
+  adoptionRequestFrom: FormGroup;
+  submittedForm = false;
   isMoreDetailsPage = true;
   currentIdx = 0;
+
   imageURLs: string[] = [];
+  user: User;
 
   constructor(private imageService: ImageService,
+    private adoptionRequestService: AdoptionRequestService,
     private authService: AuthService,
     private domSanitizer: DomSanitizer,
     private dialogRef: MatDialogRef<PetComponent>,
@@ -25,6 +34,15 @@ export class MoreDetailsComponent implements OnInit {
   ngOnInit() {
     this.imageURLs.push(this.data.pet.profileImageUrl);
     this.getAllImages();
+
+    this.user = this.authService.getUser();
+
+    this.adoptionRequestFrom = new FormGroup({
+      petID: new FormControl(this.data.pet._id),
+      ownerID: new FormControl(this.data.pet.ownerID),
+      adopetID: new FormControl(this.user._id),
+      requestMessage: new FormControl('', Validators.required)
+    });
   }
 
   getAllImages() {
@@ -38,6 +56,21 @@ export class MoreDetailsComponent implements OnInit {
 
   onAdoptPet() {
     this.isMoreDetailsPage = false;
+  }
+
+  onBack() {
+    this.isMoreDetailsPage = true;
+  }
+
+  onSendAdoptionRequest() {
+    if (this.adoptionRequestFrom.valid) {
+      this.submittedForm = true;
+
+      this.adoptionRequestService.createRequest(this.adoptionRequestFrom.value).subscribe(
+        res => this.onClose(),
+        err => console.log(err)
+      );
+    }
   }
 
   onClose() {
