@@ -2,6 +2,6 @@ export interface AdoptionRequest {
   _id: string;
   petID: string;
   ownerID: string;
-  adopetID: string;
+  adoptertID: string;
   requestMessage: string;
 }

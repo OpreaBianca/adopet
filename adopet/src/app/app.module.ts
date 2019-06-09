@@ -30,6 +30,9 @@ import { DeletePetComponent } from './profile/my-pets/delete-pet/delete-pet.comp
 import { FavoritesComponent } from './profile/favorites/favorites.component';
 import { PetsLayoutComponent } from './layout/pets-layout/pets-layout.component';
 import { MoreDetailsComponent } from './adopt/more-details/more-details.component';
+import { ReceivedRequestsComponent } from './profile/adoption-requests/received-requests/received-requests.component';
+import { SentRequestsComponent } from './profile/adoption-requests/sent-requests/sent-requests.component';
+import { RequestComponent } from './profile/adoption-requests/request/request.component';
 
 @NgModule({
   entryComponents: [
@@ -55,7 +58,10 @@ import { MoreDetailsComponent } from './adopt/more-details/more-details.componen
     ThumbnailDirective,
     FavoritesComponent,
     PetsLayoutComponent,
-    MoreDetailsComponent
+    MoreDetailsComponent,
+    ReceivedRequestsComponent,
+    SentRequestsComponent,
+    RequestComponent
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 export default mongoose.model('AdoptionRequest', {
-  petID: String,
-  ownerID: String,
-  adopetID: String,
+  pet: { type: mongoose.Types.ObjectId, ref: "Pet" },
+  owner: { type: mongoose.Types.ObjectId, ref: "User" },
+  adopter: { type: mongoose.Types.ObjectId, ref: "User" },
   requestMessage: String
 });

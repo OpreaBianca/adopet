@@ -9,6 +9,8 @@ import { EditProfileComponent } from './profile/edit-profile/edit-profile.compon
 import { MyPetsComponent } from './profile/my-pets/my-pets.component';
 import { AdoptComponent } from './adopt/adopt.component';
 import { FavoritesComponent } from './profile/favorites/favorites.component';
+import { ReceivedRequestsComponent } from './profile/adoption-requests/received-requests/received-requests.component';
+import { SentRequestsComponent } from './profile/adoption-requests/sent-requests/sent-requests.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -19,6 +21,8 @@ const routes: Routes = [
       { path: '', redirectTo: 'my-pets', pathMatch: 'full' },
       { path: 'my-pets', component: MyPetsComponent },
       { path: 'favorites', component: FavoritesComponent },
+      { path: 'adoption-requests/received', component: ReceivedRequestsComponent },
+      { path: 'adoption-requests/sent', component: SentRequestsComponent },
       { path: 'edit', component: EditProfileComponent }
     ]
   },

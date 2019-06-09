@@ -40,7 +40,7 @@ export class MoreDetailsComponent implements OnInit {
     this.adoptionRequestFrom = new FormGroup({
       petID: new FormControl(this.data.pet._id),
       ownerID: new FormControl(this.data.pet.ownerID),
-      adopetID: new FormControl(this.user._id),
+      adopterID: new FormControl(this.user._id),
       requestMessage: new FormControl('', Validators.required)
     });
   }
