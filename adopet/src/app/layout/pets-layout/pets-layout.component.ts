@@ -41,7 +41,7 @@ export class PetsLayoutComponent implements OnInit, OnDestroy {
   addPet() {
     this.dialog.open(AddPetComponent, {
       width: '1000px',
-      maxHeight: '850px',
+      maxHeight: '900px',
       disableClose: true
     }).afterClosed().subscribe((pet: Pet) => {
       if (pet) {

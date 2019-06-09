@@ -143,7 +143,7 @@ class PetRouter {
 
   init() {
     this.router.get('/', jwt({ secret: AuthConfig.jwtSecret }), this.getPetsByOwner.bind(this));
-    this.router.get('/all', jwt({ secret: AuthConfig.jwtSecret }), this.getAllPets.bind(this));
+    this.router.get('/all', this.getAllPets.bind(this));
     this.router.get('/favorites', jwt({ secret: AuthConfig.jwtSecret }), this.getFavoritePets.bind(this));
     this.router.post('/', jwt({ secret: AuthConfig.jwtSecret }), this.insertOrUpdatePet.bind(this));
     this.router.put('/', jwt({ secret: AuthConfig.jwtSecret }), this.insertOrUpdatePet.bind(this));

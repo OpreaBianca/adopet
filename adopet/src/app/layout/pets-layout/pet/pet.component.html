@@ -3,7 +3,7 @@
     <img [src]=" domSanitizer.bypassSecurityTrustUrl(pet.profileImageUrl)">
   </div>
 
-  <div class="image-wrapper" *ngIf="!pet.profileImageUrl && this.pet.images.length === 0">
+  <div class="image-wrapper" *ngIf="!pet.profileImageUrl && pet.images.length === 0">
     <img src="../../../../assets/dog.png">
   </div>
 
@@ -42,8 +42,8 @@
         <div class="right-image" (click)="viewPetDetails()">
           <img src="../../../assets/view-more.png">
         </div>
-        <div class="left-image">
-          <img src="../../../../assets/empty-heart.png" *ngIf="!isFavorite()" (click)="addToFavorites()">
+        <div class="left-image" *ngIf="authService.isAuthenticated()">
+          <img src=" ../../../../assets/empty-heart.png" *ngIf="!isFavorite()" (click)="addToFavorites()">
           <img src="../../../../assets/full-heart.png" *ngIf="isFavorite()" (click)="removeFromFavorites()">
         </div>
       </div>

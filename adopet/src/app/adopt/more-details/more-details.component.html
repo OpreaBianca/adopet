@@ -1,0 +1,108 @@
+<div *ngIf="isMoreDetailsPage; else adoptionRequest">
+  <div class="row">
+    <div class="col-md-6 left-side">
+      <div class="row">
+        <div class="col-md-1 page-img">
+          <img src="../../../assets/previous.png" (click)="previousImage()" *ngIf="!isFirstImage()">
+        </div>
+        <div class="col-md-10">
+          <div class="image-wrapper" *ngIf="data.pet.images.length !== 0; else noImages">
+            <img [src]="domSanitizer.bypassSecurityTrustUrl(imageURLs[currentIdx])">
+          </div>
+          <ng-template #noImages>
+            <div class="image-wrapper">
+              <img src="../../../assets/dog.png">
+            </div>
+          </ng-template>
+        </div>
+        <div class="col-md-1 page-img">
+          <img src="../../../assets/next.png" (click)="nextImage()" *ngIf="!isLastImage()">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="close-form" (click)="onClose()">
+        <img src="../../../assets/close.png">
+      </div>
+      <p>Pet details</p>
+      <hr />
+      <div class="details">
+        <div class="row">
+          <p>Name: {{data.pet.name}}</p>
+        </div>
+        <div class="row">
+          <p>Status: {{data.pet.status}}</p>
+        </div>
+        <div class="row">
+          <p>Catgeory: {{data.pet.category}}</p>
+        </div>
+        <div class="row">
+          <p>Size: {{data.pet.size}}</p>
+        </div>
+        <div class="row">
+          <p>Gender: {{data.pet.gender}}</p>
+        </div>
+        <div class="row">
+          <p>Age: {{getAge()}}</p>
+        </div>
+        <div class="row">
+          <p>Location:</p>
+        </div>
+        <div class="row">
+          <div class="col-md-6 display-tick" *ngFor="let elem of data.pet.location">
+            <img src="../../../assets/tick.png">
+            <p>{{elem}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <p>Fit for:</p>
+        </div>
+        <div class="row">
+          <div class="col-md-6 display-tick" *ngFor="let elem of data.pet.fitFor">
+            <img src="../../../assets/tick.png">
+            <p>{{elem}}</p>
+          </div>
+        </div>
+        <div *ngIf="data.pet.goodWith[0]">
+          <div class="row">
+            <p>Good with:</p>
+          </div>
+          <div class="row">
+            <div class="col-md-6 display-tick" *ngFor="let elem of data.pet.goodWith">
+              <img src="../../../assets/tick.png">
+              <p>{{elem}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="row description" *ngIf="data.pet.description">
+          <p>Description: {{data.pet.description}}</p>
+        </div>
+      </div>
+
+      <p>Shelter/Rescuer details</p>
+      <hr />
+      <div class="details">
+        <div class="row">
+          <p>Name: {{data.owner.name}}</p>
+        </div>
+        <div class="row">
+          <p>Email: {{data.owner.email}}</p>
+        </div>
+        <div class="row">
+          <p>Phone: {{data.owner.phone}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-2 submit-button" *ngIf="authService.isAuthenticated()">
+    <button (click)="onAdoptPet()">Adopt
+      <img src="../../../assets/next.png">
+    </button>
+  </div>
+</div>
+
+<ng-template #adoptionRequest>
+  <app-adoption-request></app-adoption-request>
+</ng-template>

@@ -4,11 +4,15 @@ import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 
 import { Pet } from '../../../models/pet.interface';
-import { AddPetComponent } from '../../../profile/my-pets/add-pet/add-pet.component';
-import { ImageService } from '../../../services/image/image.service';
-import { DeletePetComponent } from '../../../profile/my-pets/delete-pet/delete-pet.component';
 import { User } from '../../../models/user.interface';
+import { ImageService } from '../../../services/image/image.service';
 import { PetService } from '../../../services/pet/pet.service';
+
+import { AddPetComponent } from '../../../profile/my-pets/add-pet/add-pet.component';
+import { DeletePetComponent } from '../../../profile/my-pets/delete-pet/delete-pet.component';
+import { MoreDetailsComponent } from '../../../adopt/more-details/more-details.component';
+import { UserService } from '../../../services/user/user.service';
+import { AuthService } from '../../../auth/auth.service';
 
 @Component({
   selector: 'app-pet',
@@ -24,6 +28,8 @@ export class PetComponent implements OnInit {
 
   constructor(private petService: PetService,
     private imageService: ImageService,
+    private userService: UserService,
+    private authService: AuthService,
     private dialog: MatDialog,
     private router: Router,
     private domSanitizer: DomSanitizer) { }
@@ -33,7 +39,7 @@ export class PetComponent implements OnInit {
   editPet() {
     this.dialog.open(AddPetComponent, {
       width: '1000px',
-      maxHeight: '850px',
+      maxHeight: '900px',
       disableClose: true,
       data: this.pet
     }).afterClosed().subscribe((updatedPet: Pet) => {
@@ -56,7 +62,7 @@ export class PetComponent implements OnInit {
   deletePet() {
     this.dialog.open(DeletePetComponent, {
       width: '600px',
-      maxHeight: '850px',
+      maxHeight: '900px',
       disableClose: true,
       data: this.pet
     }).afterClosed().subscribe((res) => {
@@ -67,28 +73,40 @@ export class PetComponent implements OnInit {
   }
 
   viewPetDetails() {
+    this.userService.getUserById(this.pet.ownerID).subscribe(
+      res => this.openMoreDetailsPopUp(res),
+      err => console.log(err)
+    );
+  }
 
+  openMoreDetailsPopUp(owner: User) {
+    this.dialog.open(MoreDetailsComponent, {
+      width: '1000px',
+      maxHeight: '900px',
+      disableClose: true,
+      data: { pet: this.pet, owner: owner }
+    });
   }
 
   addToFavorites() {
     this.pet.favorites.push(this.user._id);
-    this.updatePet();
+
+    this.petService.updatePetFavorites(this.pet).subscribe(
+      res => console.log(res),
+      err => console.log(err)
+    );
   }
 
   removeFromFavorites() {
     const idx = this.pet.favorites.findIndex((userId: string) => userId === this.user._id);
     this.pet.favorites.splice(idx, 1);
 
-    this.updatePet();
-
-    if (this.router.url === '/profile/favorites') {
-      this.removedPet.emit(this.pet);
-    }
-  }
-
-  updatePet() {
     this.petService.updatePetFavorites(this.pet).subscribe(
-      res => console.log(res),
+      res => {
+        if (this.router.url === '/profile/favorites') {
+          this.removedPet.emit(this.pet);
+        }
+      },
       err => console.log(err)
     );
   }

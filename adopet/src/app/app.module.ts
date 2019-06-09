@@ -29,11 +29,15 @@ import { ThumbnailDirective } from './profile/my-pets/attach-photos/thumbnail.di
 import { DeletePetComponent } from './profile/my-pets/delete-pet/delete-pet.component';
 import { FavoritesComponent } from './profile/favorites/favorites.component';
 import { PetsLayoutComponent } from './layout/pets-layout/pets-layout.component';
+import { MoreDetailsComponent } from './adopt/more-details/more-details.component';
+import { AdoptionRequestComponent } from './adopt/adoption-request/adoption-request.component';
 
 @NgModule({
   entryComponents: [
     AddPetComponent,
-    DeletePetComponent
+    DeletePetComponent,
+    MoreDetailsComponent,
+    AdoptionRequestComponent
   ],
   declarations: [
     AppComponent,
@@ -52,7 +56,9 @@ import { PetsLayoutComponent } from './layout/pets-layout/pets-layout.component'
     AttachPhotosComponent,
     ThumbnailDirective,
     FavoritesComponent,
-    PetsLayoutComponent
+    PetsLayoutComponent,
+    MoreDetailsComponent,
+    AdoptionRequestComponent
   ],
   imports: [
     BrowserModule,
