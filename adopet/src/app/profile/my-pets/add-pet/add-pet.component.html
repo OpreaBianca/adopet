@@ -99,10 +99,12 @@
       <app-add-adopter formTitle="Adopter" [data]="adopter" (formReady)="formInitialized('adopter', $event)"
         *ngIf="isAdopted()">
       </app-add-adopter>
+      <app-add-adopter formTitle="Owner" [data]="adopter" (formReady)="formInitialized('adopter', $event)"
+        *ngIf="isReturnedToOwner()">
+      </app-add-adopter>
       <app-add-adopter formTitle="Foster" [data]="foster" (formVisible)="showFosterForm($event)"
         (formReady)="formInitialized('foster', $event)" *ngIf="!isAdopted() && fosterFormVisible">
       </app-add-adopter>
-
     </div>
     <div class="col-md-2 submit-button">
       <button type="submit" [disabled]="submittedForm" (click)="onAddPet()" *ngIf="!pet">Save</button>

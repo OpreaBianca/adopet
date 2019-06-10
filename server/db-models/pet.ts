@@ -17,5 +17,6 @@ export default mongoose.model('Pet', {
   fosterFormVisibile: Boolean,
   images: [String],
   ownerID: String,
-  favorites: [String]
+  favorites: [String],
+  creationDate: Date
 });

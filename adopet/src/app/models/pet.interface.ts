@@ -20,4 +20,5 @@ export interface Pet {
   profileImageUrl: string;
   ownerID: string;
   favorites: string[];
+  creationDate: Date;
 }

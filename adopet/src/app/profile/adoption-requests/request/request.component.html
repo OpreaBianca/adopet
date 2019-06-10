@@ -41,11 +41,11 @@
 
   <div class="row buttons-wrapper">
     <div class="col-md-6">
-      <img src="../../../../assets/delete-blue.png">
-      <img class="edit" src="../../../../assets/edit-request.png">
+      <img src="../../../../assets/accept.png" matTooltip="Complete adoption" (click)="onCompleteAdoptionRequest()"
+        *ngIf="adoptionRequest.requestStatus === 'Pending'">
     </div>
     <div class="col-md-6 chat-button">
-      <img src="../../../../assets/chat.png">
+      <img src="../../../../assets/chat.png" matTooltip="Details & comments" (click)="onOpenComments()">
     </div>
   </div>
 </div>

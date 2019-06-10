@@ -5,5 +5,6 @@ export default mongoose.model('AdoptionRequest', {
   owner: { type: mongoose.Types.ObjectId, ref: "User" },
   adopter: { type: mongoose.Types.ObjectId, ref: "User" },
   requestMessage: String,
-  requestStatus: String
+  requestStatus: String,
+  creationDate: Date
 });

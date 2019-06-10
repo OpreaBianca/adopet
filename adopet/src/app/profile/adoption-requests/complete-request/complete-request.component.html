@@ -1,0 +1,20 @@
+<div class="close-form" (click)="onClose()">
+  <img src="../../../../assets/close.png">
+</div>
+<p>Complete adoption: {{request.pet.name.toUpperCase()}}</p>
+<hr />
+
+<form [formGroup]="completeRequestForm" (ngSubmit)="onCompleteRequest()">
+  <div class="row form-wrapper">
+    <label for="status">
+      <span class="input-field">Adoption request status</span>
+    </label>
+    <mat-select formControlName="status" placeholder="status">
+      <mat-option *ngFor="let status of statuses" [value]="status">{{status}}</mat-option>
+    </mat-select>
+  </div>
+
+  <div class="col-md-3 submit-button">
+    <button type="submit" [disabled]="submittedForm">Complete</button>
+  </div>
+</form>

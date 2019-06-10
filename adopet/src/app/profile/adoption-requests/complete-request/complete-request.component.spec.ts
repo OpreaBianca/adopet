@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeleteRequestComponent } from './delete-request.component';
+import { CompleteRequestComponent } from './complete-request.component';
 
-describe('DeleteRequestComponent', () => {
-  let component: DeleteRequestComponent;
-  let fixture: ComponentFixture<DeleteRequestComponent>;
+describe('CompleteRequestComponent', () => {
+  let component: CompleteRequestComponent;
+  let fixture: ComponentFixture<CompleteRequestComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DeleteRequestComponent ]
+      declarations: [ CompleteRequestComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DeleteRequestComponent);
+    fixture = TestBed.createComponent(CompleteRequestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

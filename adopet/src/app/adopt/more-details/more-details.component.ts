@@ -42,7 +42,8 @@ export class MoreDetailsComponent implements OnInit {
       ownerID: new FormControl(this.data.pet.ownerID),
       adopterID: new FormControl(this.user._id),
       requestMessage: new FormControl('', Validators.required),
-      requestStatus: new FormControl('Pending')
+      requestStatus: new FormControl('Pending'),
+      creationDate: new FormControl(new Date())
     });
   }
 

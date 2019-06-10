@@ -69,7 +69,7 @@ export class PetComponent implements OnInit {
       if (res) {
         this.removedPet.emit(this.pet);
       }
-    })
+    });
   }
 
   viewPetDetails() {

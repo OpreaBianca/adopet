@@ -19,7 +19,8 @@ class PetRouter {
 
   async getAllPets(req: Request, res: Response) {
     try {
-      const pets = await Pet.find();
+      const pets = await Pet.find()
+        .sort({ creationDate: -1 });
       return res.json(pets);
     } catch (err) {
       return res.status(500).json(err);
@@ -28,7 +29,8 @@ class PetRouter {
 
   async getPetsByOwner(req: Request, res: Response) {
     try {
-      const pets = await Pet.find({ ownerID: req.user.user._id });
+      const pets = await Pet.find({ ownerID: req.user.user._id })
+        .sort({ creationDate: -1 });
       return res.json(pets);
     } catch (err) {
       return res.status(500).json(err);
@@ -37,7 +39,8 @@ class PetRouter {
 
   async getFavoritePets(req: Request, res: Response) {
     try {
-      const pets = await Pet.find({ favorites: { $all: [req.user.user._id] } });
+      const pets = await Pet.find({ favorites: { $all: [req.user.user._id] } })
+        .sort({ creationDate: -1 });
       return res.json(pets);
     } catch (err) {
       return res.status(500).json(err);

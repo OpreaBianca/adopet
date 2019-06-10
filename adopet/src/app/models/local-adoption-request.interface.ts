@@ -5,4 +5,5 @@ export interface LocalAdoptionRequest {
   adopterID: string;
   requestMessage: string;
   requestStatus: string;
+  creationDate: Date;
 }

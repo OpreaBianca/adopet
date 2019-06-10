@@ -64,7 +64,8 @@ export class AddPetComponent implements OnInit {
         phone: new FormControl(this.pet ? this.pet.foster.phone : ''),
         address: new FormControl(this.pet ? this.pet.foster.address : ''),
         otherDetails: new FormControl(this.pet ? this.pet.foster.otherDetails : '')
-      })
+      }),
+      creationDate: new FormControl(new Date())
     });
   }
 
@@ -141,6 +142,10 @@ export class AddPetComponent implements OnInit {
 
   isAdopted() {
     return this.addPetForm.get('status').value === 'Adopted';
+  }
+
+  isReturnedToOwner() {
+    return this.addPetForm.get('status').value === 'Returned to owner';
   }
 
   onClose(pet: Pet = undefined) {

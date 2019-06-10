@@ -8,4 +8,5 @@ export interface AdoptionRequest {
   adopter: User;
   requestMessage: string;
   requestStatus: string;
+  creationDate: Date;
 }
