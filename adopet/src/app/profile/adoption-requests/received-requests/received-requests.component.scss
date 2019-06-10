@@ -1,0 +1,28 @@
+.page-wrapper {
+  width: 75%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 65px;
+  margin: auto;
+
+  .page-img {
+    width: 40px;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    cursor: pointer;
+  }
+
+  .requests-wrapper {
+    height: 650px;
+    align-self: center;
+
+    .request-container {
+      margin: 20px 0;
+    }
+  }
+}

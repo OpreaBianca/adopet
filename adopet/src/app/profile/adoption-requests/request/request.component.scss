@@ -1,0 +1,67 @@
+.request-wrapper {
+  background: #ffffff;
+  padding: 5px 0;
+
+  &:hover {
+    -webkit-box-shadow: 2px 0 25px -8px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 2px 0 25px -8px rgba(0, 0, 0, 1);
+    box-shadow: 2px 0 25px -8px rgba(0, 0, 0, 1);
+  }
+
+  .row {
+    margin: 0;
+  }
+
+  .request-details {
+    padding-left: 0;
+    margin-top: -5px;
+  }
+
+  .top-hr {
+    margin-top: 5px;
+  }
+
+  .bottom-hr {
+    margin-bottom: 5px;
+  }
+
+  p {
+    margin: 0;
+    font-family: inherit;
+    letter-spacing: 1px;
+    font-weight: 100;
+  }
+
+  .property-name {
+    font-weight: 500;
+  }
+
+  .name {
+    text-transform: uppercase;
+    font-size: 22px;
+  }
+
+  .image-wrapper {
+    img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+    }
+  }
+
+  .buttons-wrapper {    
+    img {
+      width: 35px;
+      height: 35px;
+      cursor: pointer;
+    }
+
+    .edit {
+      padding: 4px;
+    }
+
+    .chat-button {
+      text-align: right;
+    }
+  }
+}

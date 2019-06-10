@@ -1,0 +1,51 @@
+<div class="request-wrapper">
+  <div class="row">
+    <div class="col-md-12 name">
+      <p>{{adoptionRequest.pet.name}}</p>
+    </div>
+  </div>
+
+  <hr class="top-hr" />
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="image-wrapper" *ngIf="adoptionRequest.pet.profileImageUrl">
+        <img [src]="domSanitizer.bypassSecurityTrustUrl(adoptionRequest.pet.profileImageUrl)">
+      </div>
+
+      <div class="image-wrapper"
+        *ngIf="!adoptionRequest.pet.profileImageUrl && adoptionRequest.pet.images.length === 0">
+        <img src="../../../../assets/dog.png">
+      </div>
+    </div>
+
+    <div class="col-md-8 request-details">
+      <div class="row">
+        <p class="property-name">From:&nbsp;</p>
+        <p>{{adoptionRequest.adopter.name}}
+        </p>
+      </div>
+      <div class="row">
+        <p class="property-name">Request status:&nbsp;</p>
+        <p>{{adoptionRequest.requestStatus}}
+        </p>
+      </div>
+      <div class="row">
+        <p class="property-name">Request message:&nbsp;</p>
+        <p>{{getRequestMessage()}}</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="bottom-hr" />
+
+  <div class="row buttons-wrapper">
+    <div class="col-md-6">
+      <img src="../../../../assets/delete-blue.png">
+      <img class="edit" src="../../../../assets/edit-request.png">
+    </div>
+    <div class="col-md-6 chat-button">
+      <img src="../../../../assets/chat.png">
+    </div>
+  </div>
+</div>

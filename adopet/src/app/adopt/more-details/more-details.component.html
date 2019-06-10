@@ -29,25 +29,31 @@
       <hr />
       <div class="details">
         <div class="row">
-          <p>Name: {{data.pet.name}}</p>
+          <p class="property-name">Name:&nbsp;</p>
+          <p>{{data.pet.name}}</p>
         </div>
         <div class="row">
-          <p>Status: {{data.pet.status}}</p>
+          <p class="property-name">Status:&nbsp;</p>
+          <p>{{data.pet.status}}</p>
         </div>
         <div class="row">
-          <p>Catgeory: {{data.pet.category}}</p>
+          <p class="property-name">Category:&nbsp;</p>
+          <p>{{data.pet.category}}</p>
         </div>
         <div class="row">
-          <p>Size: {{data.pet.size}}</p>
+          <p class="property-name">Size:&nbsp;</p>
+          <p>{{data.pet.size}}</p>
         </div>
         <div class="row">
-          <p>Gender: {{data.pet.gender}}</p>
+          <p class="property-name">Gender:&nbsp;</p>
+          <p>{{data.pet.gender}}</p>
         </div>
         <div class="row">
-          <p>Age: {{getAge()}}</p>
+          <p class="property-name">Age:&nbsp;</p>
+          <p>{{getAge()}}</p>
         </div>
         <div class="row">
-          <p>Location:</p>
+          <p class="property-name">Location:</p>
         </div>
         <div class="row">
           <div class="col-md-6 display-tick" *ngFor="let elem of data.pet.location">
@@ -56,7 +62,7 @@
           </div>
         </div>
         <div class="row">
-          <p>Fit for:</p>
+          <p class="property-name">Fit for:&nbsp;</p>
         </div>
         <div class="row">
           <div class="col-md-6 display-tick" *ngFor="let elem of data.pet.fitFor">
@@ -66,7 +72,7 @@
         </div>
         <div *ngIf="data.pet.goodWith[0]">
           <div class="row">
-            <p>Good with:</p>
+            <p class="property-name">Good with:&nbsp;</p>
           </div>
           <div class="row">
             <div class="col-md-6 display-tick" *ngFor="let elem of data.pet.goodWith">
@@ -76,7 +82,8 @@
           </div>
         </div>
         <div class="row description" *ngIf="data.pet.description">
-          <p>Description: {{data.pet.description}}</p>
+          <p class="property-name">Description:&nbsp;</p>
+          <p>{{data.pet.description}}</p>
         </div>
       </div>
 
@@ -84,13 +91,16 @@
       <hr />
       <div class="details">
         <div class="row">
-          <p>Name: {{data.owner.name}}</p>
+          <p class="property-name">Name:&nbsp;</p>
+          <p>{{data.owner.name}}</p>
         </div>
         <div class="row">
-          <p>Email: {{data.owner.email}}</p>
+          <p class="property-name">Email:&nbsp;</p>
+          <p>{{data.owner.email}}</p>
         </div>
         <div class="row">
-          <p>Phone: {{data.owner.phone}}</p>
+          <p class="property-name">Phone:&nbsp;</p>
+          <p>{{data.owner.phone}}</p>
         </div>
       </div>
     </div>
@@ -112,10 +122,12 @@
 
   <div class="request-details">
     <div class="row">
-      <p>To: {{data.owner.name}}, {{data.owner.email}}, {{data.owner.phone}}</p>
+      <p class="property-name">To:&nbsp;</p>
+      <p>{{data.owner.name}}, {{data.owner.email}}, {{data.owner.phone}}</p>
     </div>
     <div class="row">
-      <p>From: {{user.name}}, {{user.email}}, {{user.phone}}</p>
+      <p class="property-name">From:&nbsp;</p>
+      <p>{{user.name}}, {{user.email}}, {{user.phone}}</p>
     </div>
   </div>
 

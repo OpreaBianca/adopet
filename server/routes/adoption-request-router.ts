@@ -28,6 +28,18 @@ class AdoptionRequestRouter {
     }
   }
 
+  async getSentRequests(req: Request, res: Response) {
+    try {
+      const adoptionRequests = await AdoptionRequest.find({ adopter: req.user.user._id })
+        .populate({ path: "pet" })
+        .populate({ path: "owner", select: "name email phone" })
+        .populate({ path: "adopter", select: "name email phone" });
+      return res.json(adoptionRequests);
+    } catch (err) {
+      return res.status(500).json(err);
+    }
+  }
+
   createAdoptionRequets(req: Request, res: Response) {
     const localRequest: LocalAdoptionRequest = req.body;
 
@@ -35,7 +47,8 @@ class AdoptionRequestRouter {
       pet: mongoose.Types.ObjectId(localRequest.petID),
       owner: mongoose.Types.ObjectId(localRequest.ownerID),
       adopter: mongoose.Types.ObjectId(localRequest.adopterID),
-      requestMessage: localRequest.requestMessage
+      requestMessage: localRequest.requestMessage,
+      requestStatus: localRequest.requestStatus
     });
 
     adoptionRequest.save(err => {
@@ -47,7 +60,8 @@ class AdoptionRequestRouter {
   }
 
   init() {
-    this.router.get('/received', jwt({ secret: AuthConfig.jwtSecret }), this.getReceivedRequests.bind(this))
+    this.router.get('/received', jwt({ secret: AuthConfig.jwtSecret }), this.getReceivedRequests.bind(this));
+    this.router.get('/sent', jwt({ secret: AuthConfig.jwtSecret }), this.getSentRequests.bind(this));
     this.router.post('/', jwt({ secret: AuthConfig.jwtSecret }), this.createAdoptionRequets.bind(this));
   }
 }

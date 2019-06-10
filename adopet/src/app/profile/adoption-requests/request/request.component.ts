@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+
+import { AdoptionRequest } from '../../../models/adoption-request.interface';
 
 @Component({
   selector: 'app-request',
@@ -6,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./request.component.scss']
 })
 export class RequestComponent implements OnInit {
+  @Input() adoptionRequest: AdoptionRequest;
 
-  constructor() { }
+  constructor(private domSanitizer: DomSanitizer) { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  getRequestMessage() {
+    return this.adoptionRequest.requestMessage.length < 150 ? this.adoptionRequest.requestMessage :
+      this.adoptionRequest.requestMessage.slice(0, 150) + '...'
   }
-
 }

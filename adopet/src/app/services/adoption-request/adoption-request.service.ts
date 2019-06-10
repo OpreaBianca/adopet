@@ -4,7 +4,7 @@ import { throwError as observableThrowError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
-import { AdoptionRequest } from '../../models/adoption-request.interface';
+import { LocalAdoptionRequest } from '../../models/local-adoption-request.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +24,7 @@ export class AdoptionRequestService {
     );
   }
 
-  createRequest(request: AdoptionRequest): Observable<any> {
+  createRequest(request: LocalAdoptionRequest): Observable<any> {
     return this.http.post(`${environment.apiPath}/adoption-request`, request).pipe(
       catchError((err) => observableThrowError(err))
     );

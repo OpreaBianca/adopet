@@ -33,12 +33,18 @@ import { MoreDetailsComponent } from './adopt/more-details/more-details.componen
 import { ReceivedRequestsComponent } from './profile/adoption-requests/received-requests/received-requests.component';
 import { SentRequestsComponent } from './profile/adoption-requests/sent-requests/sent-requests.component';
 import { RequestComponent } from './profile/adoption-requests/request/request.component';
+import { DeleteRequestComponent } from './profile/adoption-requests/delete-request/delete-request.component';
+import { ChatComponent } from './profile/adoption-requests/chat/chat.component';
+import { ChangeRequestStatusComponent } from './profile/adoption-requests/change-request-status/change-request-status.component';
 
 @NgModule({
   entryComponents: [
     AddPetComponent,
     DeletePetComponent,
-    MoreDetailsComponent
+    MoreDetailsComponent,
+    ChangeRequestStatusComponent,
+    DeleteRequestComponent,
+    ChatComponent
   ],
   declarations: [
     AppComponent,
@@ -61,7 +67,10 @@ import { RequestComponent } from './profile/adoption-requests/request/request.co
     MoreDetailsComponent,
     ReceivedRequestsComponent,
     SentRequestsComponent,
-    RequestComponent
+    RequestComponent,
+    DeleteRequestComponent,
+    ChatComponent,
+    ChangeRequestStatusComponent
   ],
   imports: [
     BrowserModule,
