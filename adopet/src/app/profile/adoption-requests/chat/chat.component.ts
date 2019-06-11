@@ -55,7 +55,7 @@ export class ChatComponent implements OnInit {
   }
 
   isDisabled() {
-    return this.messageForm.get('message').value == '' || this.submittedForm;
+    return this.messageForm.get('message').value === '' || this.submittedForm;
   }
 
   getOtherUserName() {

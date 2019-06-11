@@ -12,6 +12,7 @@ import { AuthService } from '../../auth/auth.service';
 export class ProfileLayoutComponent implements OnInit {
   user: User;
   active = false;
+  hideSubmenu = true;
 
   constructor(private authService: AuthService,
     private router: Router) { }
@@ -22,5 +23,9 @@ export class ProfileLayoutComponent implements OnInit {
 
   isChildLinkActive() {
     return this.router.url.includes('adoption-requests');
+  }
+
+  openCloseSubmenu() {
+    this.hideSubmenu = !this.hideSubmenu;
   }
 }
