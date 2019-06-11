@@ -11,4 +11,6 @@ export interface LocalUser {
   website: string;
   instagram: string;
   description: string;
+  profileImageUrl: string;
+  profileImage: string;
 }

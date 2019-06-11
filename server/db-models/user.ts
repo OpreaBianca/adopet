@@ -12,5 +12,6 @@ export default mongoose.model('User', {
   twitter: String,
   website: String,
   instagram: String,
-  description: String
+  description: String,
+  profileImage: String
 });

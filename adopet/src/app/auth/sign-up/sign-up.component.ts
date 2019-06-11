@@ -31,7 +31,14 @@ export class SignUpComponent implements OnInit {
       phone: new FormControl('', Validators.required /*Validators.pattern(phoneNumberPattern)*/),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required),
-      emergency: new FormControl('')
+      emergencyNotificationOn: new FormControl(''),
+      address: new FormControl(''),
+      facebook: new FormControl(''),
+      twitter: new FormControl(''),
+      website: new FormControl(''),
+      instagram: new FormControl(''),
+      description: new FormControl(''),
+      profileImage: new FormControl('')
     });
   }
 

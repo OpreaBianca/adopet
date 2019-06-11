@@ -6,6 +6,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 import { User } from '../../models/user.interface';
 import { AuthService } from '../../auth/auth.service';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-profile-layout',
@@ -19,7 +20,8 @@ export class ProfileLayoutComponent implements OnInit, OnDestroy {
 
   uploader: FileUploader = new FileUploader({});
 
-  constructor(private authService: AuthService,
+  constructor(private userService: UserService,
+    private authService: AuthService,
     private router: Router,
     private domSanitizer: DomSanitizer,
     private ng2ImgMax: Ng2ImgMaxService) { }
@@ -27,8 +29,10 @@ export class ProfileLayoutComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.user = this.authService.getUser();
 
-    // go to db, get image name, get file and return it
-    // set url
+    this.userService.getUserProfileImage(this.user._id).subscribe(
+      res => this.user.profileImageUrl = URL.createObjectURL(res),
+      err => console.log(err)
+    );
   }
 
   ngOnDestroy() {
@@ -43,7 +47,14 @@ export class ProfileLayoutComponent implements OnInit, OnDestroy {
     this.ng2ImgMax.compressImage(item._file, 0.05).subscribe(
       res => {
         this.user.profileImageUrl = URL.createObjectURL(res);
-        // go to db, update user and save image
+
+        const formData = new FormData();
+        formData.append('file', item.file.rawFile, item.file.name);
+
+        this.userService.updateUserProfileImage(formData).subscribe(
+          res => console.log(res),
+          err => console.log(err)
+        );
       },
       err => console.log(err)
     );
