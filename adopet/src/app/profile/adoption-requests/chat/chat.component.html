@@ -7,7 +7,8 @@
 <div class="row">
   <div class="col-md-12" *ngFor="let message of data.request.messages;">
     <div class="row right-messages" *ngIf="isCurrentUserMessage(message); else otherUser">
-      <div class="col-md-11 message-container">
+      <div class="col-md-1"></div>
+      <div class="col-md-10 message-container">
         <div class="row name">
           <p>{{data.user.name}}</p>
         </div>
@@ -32,10 +33,9 @@
             <img src="../../../../assets/profile-picture-replacer.png">
           </div>
         </div>
-        <div class="col-md-11 message-container">
+        <div class="col-md-10 message-container">
           <div class="row name">
-            <!-- Aici trebuie schimbat -->
-            <p>{{data.request.adopter.name}}</p>
+            <p>{{getOtherUserName()}}</p>
           </div>
           <div class="row">
             <p>{{message.text}}</p>
@@ -51,11 +51,15 @@
 
 <form [formGroup]="messageForm">
   <div class="row form-wrapper">
-    <div class="col-md-11 message">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 message">
       <textarea placeholder="write your message here" formControlName="message"></textarea>
     </div>
     <div class="col-md-1 send">
-      <img src="../../../../assets/send-message.png" (click)="onSendMessage()">
+      <img src="../../../../assets/send-message-disabled.png" *ngIf="isDisabled(); else send" class="disabled">
+      <ng-template #send>
+        <img src="../../../../assets/send-message.png" (click)="onSendMessage()">
+      </ng-template>
     </div>
   </div>
 </form>

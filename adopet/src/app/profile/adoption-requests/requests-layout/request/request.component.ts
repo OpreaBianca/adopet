@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
 
 import { AdoptionRequest } from '../../../../models/adoption-request.interface';
 import { CompleteRequestComponent } from '../../complete-request/complete-request.component';
@@ -17,6 +18,7 @@ export class RequestComponent implements OnInit {
   @Input() user: User;
 
   constructor(private dialog: MatDialog,
+    private router: Router,
     private domSanitizer: DomSanitizer) { }
 
   ngOnInit() { }
@@ -38,7 +40,6 @@ export class RequestComponent implements OnInit {
     this.dialog.open(ChatComponent, {
       width: '1000px',
       maxHeight: '900px',
-      disableClose: true,
       data: {
         request: this.adoptionRequest,
         user: this.user
@@ -54,5 +55,9 @@ export class RequestComponent implements OnInit {
   getRequestMessage() {
     return this.adoptionRequest.requestMessage.length < 150 ? this.adoptionRequest.requestMessage :
       this.adoptionRequest.requestMessage.slice(0, 150) + '...'
+  }
+
+  displayCompleteRequestButton() {
+    return this.adoptionRequest.requestStatus === 'Pending' && this.router.url.includes('received');
   }
 }

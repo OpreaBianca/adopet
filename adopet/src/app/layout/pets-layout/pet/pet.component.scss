@@ -47,6 +47,10 @@
     font-size: 14px; 
     text-align: justify;  
     margin: 15px;
+
+    p {
+      overflow: hidden;
+    }
   }
 
   .right-image {

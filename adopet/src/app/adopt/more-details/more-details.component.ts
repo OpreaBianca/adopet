@@ -106,4 +106,8 @@ export class MoreDetailsComponent implements OnInit {
   isLastImage() {
     return this.currentIdx === this.data.pet.images.length - 1 || this.data.pet.images.length === 0;
   }
+
+  isAllowedToAdopt() {
+    return this.authService.isAuthenticated() && this.data.pet.ownerID !== this.user._id;
+  }
 }

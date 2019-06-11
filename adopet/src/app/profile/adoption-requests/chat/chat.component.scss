@@ -30,7 +30,6 @@ hr {
   .profile-picture {
     display: flex;
     flex-direction: column;
-    justify-content: center;
 
     img {
       width: 60px;
@@ -143,7 +142,7 @@ hr {
   }
 
   .message {
-    padding-right: 0;
+    padding: 10px;
 
     textarea {
       width: 100%;
@@ -151,6 +150,7 @@ hr {
       font-size: 16px;
       letter-spacing: 1px;
       font-weight: 100;
+      padding: 10px;
     }
   }
 
@@ -163,6 +163,10 @@ hr {
       width: 40px;
       height: 40px;
       cursor: pointer;
+    }
+
+    .disabled {
+      cursor: unset;      
     }
   }
 }

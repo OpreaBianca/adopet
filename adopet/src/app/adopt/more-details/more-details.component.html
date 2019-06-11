@@ -106,7 +106,7 @@
     </div>
   </div>
 
-  <div class="col-md-2 adopt-button" *ngIf="authService.isAuthenticated()">
+  <div class="col-md-2 adopt-button" *ngIf="isAllowedToAdopt()">
     <button (click)="onAdoptPet()">Adopt
       <img src="../../../assets/next.png">
     </button>

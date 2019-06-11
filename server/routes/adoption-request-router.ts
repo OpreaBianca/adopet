@@ -69,11 +69,12 @@ class AdoptionRequestRouter {
   addRequestMessage(req: Request, res: Response) {
     const message: Message = req.body;
 
-    AdoptionRequest.update({ _id: req.params.id }, { $push: { messages: message } }, err => {
+    AdoptionRequest.findOneAndUpdate({ _id: req.params.id }, { $push: { messages: message } }, { new: true }, (err, request) => {
       if (err) {
         return res.status(500).json(err);
       }
-      return res.json('OK');
+      const len = request.messages.length;
+      return res.json(request.messages[len - 1]);
     });
   }
 

@@ -15,7 +15,6 @@
       <div class="image-wrapper" *ngIf="adoptionRequest.pet.profileImageUrl">
         <img [src]="domSanitizer.bypassSecurityTrustUrl(adoptionRequest.pet.profileImageUrl)">
       </div>
-
       <div class="image-wrapper"
         *ngIf="!adoptionRequest.pet.profileImageUrl && adoptionRequest.pet.images.length === 0">
         <img src="../../../../assets/dog.png">
@@ -35,7 +34,7 @@
       </div>
       <div class="row">
         <p class="property-name">Request message:&nbsp;</p>
-        <p>{{getRequestMessage()}}</p>
+        <p class="request-message">{{getRequestMessage()}}</p>
       </div>
     </div>
   </div>
@@ -45,7 +44,7 @@
   <div class="row buttons-wrapper">
     <div class="col-md-6">
       <img src="../../../../assets/accept.png" matTooltip="Complete adoption" (click)="onCompleteAdoptionRequest()"
-        *ngIf="adoptionRequest.requestStatus === 'Pending'">
+        *ngIf="displayCompleteRequestButton()">
     </div>
     <div class="col-md-6 chat-button">
       <img src="../../../../assets/chat.png" matTooltip="Open chat" (click)="onOpenChat()">

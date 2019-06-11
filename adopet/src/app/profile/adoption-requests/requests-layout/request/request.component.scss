@@ -15,6 +15,11 @@
   .request-details {
     padding-left: 0;
     margin-top: -5px;
+
+    .request-message {
+      overflow: hidden;
+      height: 90px;
+    }
   }
 
   .top-hr {

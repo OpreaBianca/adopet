@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { RequestComponent } from '../requests-layout/request/request.component';
 import { Message } from '../../../models/message.interface';
@@ -12,9 +13,11 @@ import { AdoptionRequestService } from '../../../services/adoption-request/adopt
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit {
+  submittedForm = false;
   messageForm: FormGroup;
 
   constructor(private adoptionRequestService: AdoptionRequestService,
+    private router: Router,
     private dialogRef: MatDialogRef<RequestComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
@@ -25,6 +28,8 @@ export class ChatComponent implements OnInit {
   }
 
   onSendMessage() {
+    this.submittedForm = true;
+
     const message: Message = {
       userID: this.data.user._id,
       text: this.messageForm.get('message').value,
@@ -33,8 +38,9 @@ export class ChatComponent implements OnInit {
 
     this.adoptionRequestService.addRequestMessage(message, this.data.request._id).subscribe(
       res => {
-        this.data.request.messages.push(message);
+        this.data.request.messages.push(res);
         this.messageForm.reset();
+        this.submittedForm = false;
       },
       err => console.log(err)
     );
@@ -46,6 +52,14 @@ export class ChatComponent implements OnInit {
 
   isCurrentUserMessage(message: Message) {
     return message.userID === this.data.user._id;
+  }
+
+  isDisabled() {
+    return this.messageForm.get('message').value == '' || this.submittedForm;
+  }
+
+  getOtherUserName() {
+    return this.router.url.includes('received') ? this.data.request.adopter.name : this.data.request.owner.name;
   }
 
   getDateTime(message: Message) {
