@@ -1,3 +1,61 @@
-<p>
-  chat works!
-</p>
+<div class="close-form" (click)="onClose()">
+  <img src="../../../../assets/close.png">
+</div>
+<p>Messages: {{data.request.pet.name.toUpperCase()}}</p>
+<hr />
+
+<div class="row">
+  <div class="col-md-12" *ngFor="let message of data.request.messages;">
+    <div class="row right-messages" *ngIf="isCurrentUserMessage(message); else otherUser">
+      <div class="col-md-11 message-container">
+        <div class="row name">
+          <p>{{data.user.name}}</p>
+        </div>
+        <div class="row">
+          <p>{{message.text}}</p>
+        </div>
+        <div class="row date">
+          <p>{{getDateTime(message)}}</p>
+        </div>
+      </div>
+      <div class="col-md-1 profile-picture">
+        <div class="row">
+          <img src="../../../../assets/profile-picture-replacer.png">
+        </div>
+      </div>
+    </div>
+
+    <ng-template #otherUser>
+      <div class="row left-messages">
+        <div class=" col-md-1 profile-picture">
+          <div class="row">
+            <img src="../../../../assets/profile-picture-replacer.png">
+          </div>
+        </div>
+        <div class="col-md-11 message-container">
+          <div class="row name">
+            <!-- Aici trebuie schimbat -->
+            <p>{{data.request.adopter.name}}</p>
+          </div>
+          <div class="row">
+            <p>{{message.text}}</p>
+          </div>
+          <div class="row date">
+            <p>{{getDateTime(message)}}</p>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>
+
+<form [formGroup]="messageForm">
+  <div class="row form-wrapper">
+    <div class="col-md-11 message">
+      <textarea placeholder="write your message here" formControlName="message"></textarea>
+    </div>
+    <div class="col-md-1 send">
+      <img src="../../../../assets/send-message.png" (click)="onSendMessage()">
+    </div>
+  </div>
+</form>

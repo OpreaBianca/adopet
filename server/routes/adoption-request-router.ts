@@ -3,9 +3,10 @@ import * as jwt from 'express-jwt';
 
 import { AuthConfig } from '../config/auth-config';
 import { LocalAdoptionRequest } from '../models/local-adoption-request.interface';
-import { Adopter } from '../models/adopter.interface';
 import AdoptionRequest from '../db-models/adoption-request';
 import Pet from '../db-models/pet';
+import { Message } from '../models/message.interface';
+import { request } from 'https';
 
 const mongoose = require('mongoose');
 
@@ -53,7 +54,8 @@ class AdoptionRequestRouter {
       adopter: mongoose.Types.ObjectId(localRequest.adopterID),
       requestMessage: localRequest.requestMessage,
       requestStatus: localRequest.requestStatus,
-      creationDate: localRequest.creationDate
+      creationDate: localRequest.creationDate,
+      messages: localRequest.messages
     });
 
     adoptionRequest.save(err => {
@@ -61,6 +63,17 @@ class AdoptionRequestRouter {
         return res.status(500).json(err);
       }
       return res.json(adoptionRequest);
+    });
+  }
+
+  addRequestMessage(req: Request, res: Response) {
+    const message: Message = req.body;
+
+    AdoptionRequest.update({ _id: req.params.id }, { $push: { messages: message } }, err => {
+      if (err) {
+        return res.status(500).json(err);
+      }
+      return res.json('OK');
     });
   }
 
@@ -107,6 +120,7 @@ class AdoptionRequestRouter {
     this.router.get('/received', jwt({ secret: AuthConfig.jwtSecret }), this.getReceivedRequests.bind(this));
     this.router.get('/sent', jwt({ secret: AuthConfig.jwtSecret }), this.getSentRequests.bind(this));
     this.router.post('/', jwt({ secret: AuthConfig.jwtSecret }), this.createAdoptionRequest.bind(this));
+    this.router.put('/:id', jwt({ secret: AuthConfig.jwtSecret }), this.addRequestMessage.bind(this))
     this.router.put('/', jwt({ secret: AuthConfig.jwtSecret }), this.updateRequestStatus.bind(this));
   }
 }

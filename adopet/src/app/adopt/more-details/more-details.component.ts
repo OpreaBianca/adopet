@@ -4,11 +4,12 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { User } from '../../models/user.interface';
-import { AdoptionRequest } from '../../models/adoption-request.interface';
 import { PetComponent } from '../../layout/pets-layout/pet/pet.component';
 import { ImageService } from '../../services/image/image.service';
 import { AdoptionRequestService } from '../../services/adoption-request/adoption-request.service';
 import { AuthService } from '../../auth/auth.service';
+import { LocalAdoptionRequest } from '../../models/local-adoption-request.interface';
+import { Message } from '../../models/message.interface';
 
 @Component({
   selector: 'app-more-details',
@@ -67,8 +68,15 @@ export class MoreDetailsComponent implements OnInit {
   onSendAdoptionRequest() {
     if (this.adoptionRequestFrom.valid) {
       this.submittedForm = true;
+      let request: LocalAdoptionRequest = this.adoptionRequestFrom.value;
+      const message: Message = {
+        userID: this.user._id,
+        text: this.adoptionRequestFrom.get('requestMessage').value,
+        date: new Date()
+      }
+      request.messages = [message];
 
-      this.adoptionRequestService.createRequest(this.adoptionRequestFrom.value).subscribe(
+      this.adoptionRequestService.createRequest(request).subscribe(
         res => this.onClose(),
         err => console.log(err)
       );

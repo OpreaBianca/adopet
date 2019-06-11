@@ -1,0 +1,168 @@
+p {
+  letter-spacing: 1px;
+  font-weight: 100;
+  font-size: 22px;
+  margin: 0;
+}
+
+hr {
+  margin-top: 5px;
+}
+
+.close-form {
+  width: 25px;
+  float: right;
+  cursor: pointer;
+
+  img {
+    width: 25px;
+  }
+}
+
+.right-messages,
+.left-messages {
+  margin: 0 0 10px 0;
+
+  p {
+    font-size: 16px;
+  }
+
+  .profile-picture {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    img {
+      width: 60px;
+      height: 60px;
+    }
+
+    .name {
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .message-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 10px;
+    
+    .row {
+      margin: 0;
+    }
+
+    .date,
+    .name {
+      padding: 5px 0;
+      
+      p {
+        font-size: 14px;
+      }
+    }
+
+    .date {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+  }
+}
+
+.right-messages {
+  .profile-picture {
+    align-items: flex-end;
+  }
+
+  .message-container {
+    background: #2c8aaa;
+    color: #ffffff;
+
+    &::after {
+      width: 0;
+      height: 0;
+      position: absolute;
+      top: 0;
+      right: -15px;
+      content: "";
+      border-style: solid;
+      border-width: 15px 15px 0 0;
+      border-color: #2c8aaa transparent transparent transparent;     
+    }
+
+    .name,
+    .date {
+      p {
+        color: #b2c6cd;
+      }
+    }
+  }
+}
+
+.left-messages {
+  .message-container {
+    background: #e8e8e8;
+
+    &::before {
+      width: 0;
+      height: 0;
+      position: absolute;
+      top: 0;
+      left: -15px;
+      content: "";
+      border-style: solid;
+      border-width: 0 15px 15px 0;
+      border-color: transparent #e8e8e8 transparent transparent;            
+    }
+
+    .name,
+    .date {
+      p {
+        color: #a9a9a9;
+      }
+    }
+  }
+}
+
+.form-wrapper {
+  margin-top: 30px;
+
+  label {
+    display: block;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: 100;
+    margin-bottom: 3px;
+  
+    .input-field::after {
+      content: " *";
+      color: #e60000;
+    }
+  }
+
+  .message {
+    padding-right: 0;
+
+    textarea {
+      width: 100%;
+      height: 100%;
+      font-size: 16px;
+      letter-spacing: 1px;
+      font-weight: 100;
+    }
+  }
+
+  .send {
+    align-self: center;
+    text-align: right;
+    padding-left: 0;
+
+    img {
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+    }
+  }
+}

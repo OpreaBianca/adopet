@@ -6,6 +6,7 @@ import { catchError } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { LocalAdoptionRequest } from '../../models/local-adoption-request.interface';
 import { AdoptionRequest } from '../../models/adoption-request.interface';
+import { Message } from '../../models/message.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,12 @@ export class AdoptionRequestService {
 
   updateRequestStatus(request: AdoptionRequest): Observable<any> {
     return this.http.put(`${environment.apiPath}/adoption-request`, request).pipe(
+      catchError((err) => observableThrowError(err))
+    );
+  }
+
+  addRequestMessage(message: Message, id: string): Observable<any> {
+    return this.http.put(`${environment.apiPath}/adoption-request/${id}`, message).pipe(
       catchError((err) => observableThrowError(err))
     );
   }

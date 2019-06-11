@@ -2,9 +2,9 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { PetComponent } from '../../../layout/pets-layout/pet/pet.component';
-import { AdoptionRequestService } from 'src/app/services/adoption-request/adoption-request.service';
-import { AdoptionRequest } from 'src/app/models/adoption-request.interface';
+import { AdoptionRequestService } from '../../../services/adoption-request/adoption-request.service';
+import { AdoptionRequest } from '../../../models/adoption-request.interface';
+import { RequestComponent } from '../requests-layout/request/request.component';
 
 @Component({
   selector: 'app-complete-request',
@@ -18,7 +18,7 @@ export class CompleteRequestComponent implements OnInit {
   statuses = ['Accepted', 'Rejected'];
 
   constructor(private adoptionRequestService: AdoptionRequestService,
-    private dialogRef: MatDialogRef<PetComponent>,
+    private dialogRef: MatDialogRef<RequestComponent>,
     @Inject(MAT_DIALOG_DATA) public request: AdoptionRequest) { }
 
   ngOnInit() {
@@ -33,13 +33,13 @@ export class CompleteRequestComponent implements OnInit {
       this.request.requestStatus = this.completeRequestForm.get('status').value;
 
       this.adoptionRequestService.updateRequestStatus(this.request).subscribe(
-        res => this.onClose(),
+        res => this.onClose(res),
         err => console.log(err)
       );
     }
   }
 
-  onClose() {
-    this.dialogRef.close();
+  onClose(request: AdoptionRequest = undefined) {
+    this.dialogRef.close(request);
   }
 }

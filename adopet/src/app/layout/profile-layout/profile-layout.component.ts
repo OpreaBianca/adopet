@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { User } from '../../models/user.interface';
 import { AuthService } from '../../auth/auth.service';
@@ -10,10 +11,16 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class ProfileLayoutComponent implements OnInit {
   user: User;
+  active = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit() {
     this.user = this.authService.getUser();
+  }
+
+  isChildLinkActive() {
+    return this.router.url.includes('adoption-requests');
   }
 }

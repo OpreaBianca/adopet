@@ -1,5 +1,6 @@
 import { Pet } from './pet.interface';
 import { User } from './user.interface';
+import { Message } from './message.interface';
 
 export interface AdoptionRequest {
   _id: string;
@@ -9,4 +10,5 @@ export interface AdoptionRequest {
   requestMessage: string;
   requestStatus: string;
   creationDate: Date;
+  messages: Message[];
 }

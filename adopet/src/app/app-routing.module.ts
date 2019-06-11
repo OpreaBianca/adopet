@@ -21,8 +21,13 @@ const routes: Routes = [
       { path: '', redirectTo: 'my-pets', pathMatch: 'full' },
       { path: 'my-pets', component: MyPetsComponent },
       { path: 'favorites', component: FavoritesComponent },
-      { path: 'adoption-requests/received', component: ReceivedRequestsComponent },
-      { path: 'adoption-requests/sent', component: SentRequestsComponent },
+      {
+        path: 'adoption-requests', children: [
+          { path: '', redirectTo: 'received', pathMatch: 'full' },
+          { path: 'received', component: ReceivedRequestsComponent },
+          { path: 'sent', component: SentRequestsComponent },
+        ]
+      },
       { path: 'edit', component: EditProfileComponent }
     ]
   },

@@ -32,9 +32,10 @@ import { PetsLayoutComponent } from './layout/pets-layout/pets-layout.component'
 import { MoreDetailsComponent } from './adopt/more-details/more-details.component';
 import { ReceivedRequestsComponent } from './profile/adoption-requests/received-requests/received-requests.component';
 import { SentRequestsComponent } from './profile/adoption-requests/sent-requests/sent-requests.component';
-import { RequestComponent } from './profile/adoption-requests/request/request.component';
 import { ChatComponent } from './profile/adoption-requests/chat/chat.component';
 import { CompleteRequestComponent } from './profile/adoption-requests/complete-request/complete-request.component';
+import { RequestsLayoutComponent } from './profile/adoption-requests/requests-layout/requests-layout.component';
+import { RequestComponent } from './profile/adoption-requests/requests-layout/request/request.component';
 
 @NgModule({
   entryComponents: [
@@ -67,7 +68,8 @@ import { CompleteRequestComponent } from './profile/adoption-requests/complete-r
     SentRequestsComponent,
     RequestComponent,
     CompleteRequestComponent,
-    ChatComponent
+    ChatComponent,
+    RequestsLayoutComponent
   ],
   imports: [
     BrowserModule,

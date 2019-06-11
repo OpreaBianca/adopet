@@ -1,3 +1,5 @@
+import { Message } from './message.interface';
+
 export interface LocalAdoptionRequest {
   _id: string;
   petID: string;
@@ -6,4 +8,5 @@ export interface LocalAdoptionRequest {
   requestMessage: string;
   requestStatus: string;
   creationDate: Date;
+  messages: Message[];
 }

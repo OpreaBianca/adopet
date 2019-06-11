@@ -1,17 +1,2 @@
 <app-profile-layout></app-profile-layout>
-
-<div class="row page-wrapper">
-  <div class="col-md-1">
-    <img class="page-img" src="../../../assets/previous.png" (click)="previousPage()" *ngIf="!isFirstPage()">
-  </div>
-  <div class="col-md-10 requests-wrapper">
-    <div class="row">
-      <div class="col-md-6 request-container" *ngFor="let request of getRequestsToDisplay();">
-        <app-request [adoptionRequest]="request"></app-request>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-1">
-    <img class="page-img" src="../../../assets/next.png" (click)="nextPage()" *ngIf="!isLastPage()">
-  </div>
-</div>
+<app-requests-layout [requests]="requests" *ngIf="successfulRequest"></app-requests-layout>
