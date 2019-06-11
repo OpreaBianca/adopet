@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { throwError as observableThrowError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -11,17 +11,14 @@ import { environment } from '../../../environments/environment';
 export class UserService {
   constructor(private http: HttpClient) { }
 
-  getUserById(userId: string): Observable<any> {
-    return this.http.get(`${environment.apiPath}/user/${userId}`).pipe(
+  getCurrentUser(): Observable<any> {
+    return this.http.get(`${environment.apiPath}/user`).pipe(
       catchError((err) => observableThrowError(err))
     );
   }
 
-  getUserProfileImage(userId: string) {
-    return this.http.get(`${environment.apiPath}/user/image/${userId}`, {
-      headers: new HttpHeaders().set('Content-Type', 'application/json'),
-      responseType: 'blob'
-    }).pipe(
+  getUserById(userId: string): Observable<any> {
+    return this.http.get(`${environment.apiPath}/user/${userId}`).pipe(
       catchError((err) => observableThrowError(err))
     );
   }

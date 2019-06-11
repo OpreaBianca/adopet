@@ -1,5 +1,5 @@
 <div class="details-wrapper">
-  <div class="profile-section-wrapper">
+  <div class="profile-section-wrapper" *ngIf="user">
     <div class="profile-picture">
       <mat-card class="profile-picture-card">
         <div *ngIf="user.profileImageUrl">
@@ -30,10 +30,11 @@
         </li>
         <!-- Aici daca nu a bifat pentru a primi notifications trebuie sa apara ceva de genul: aboneaza-te la notificari si ceva gen - more about emergency notifications -->
         <li>NOTIFICATIONS</li>
-        <!-- Afisare detalii existente somehow + pop up in care se poate aduga mai multe poze/editare ce exista deja + detalii pentru donatii -->
-        <li><a routerLink="/profile/edit" routerLinkActive="active">CONTACT INFO & DONATIONS</a></li>
         <li>EVENTS</li>
         <li>CONTRIBUTE WITH AN ARTICLE</li>
+        <li>
+          <img src="../../../assets/settings.png" matTooltip="Edit contact and donations info" (click)="onEditInfo()">
+        </li>
       </ul>
     </div>
   </div>

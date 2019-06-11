@@ -2,10 +2,13 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import { RequestComponent } from '../requests-layout/request/request.component';
 import { Message } from '../../../models/message.interface';
 import { AdoptionRequestService } from '../../../services/adoption-request/adoption-request.service';
+import { ImageService } from '../../../services/image/image.service';
+import { User } from '../../../models/user.interface';
 
 @Component({
   selector: 'app-chat',
@@ -18,6 +21,7 @@ export class ChatComponent implements OnInit {
 
   constructor(private adoptionRequestService: AdoptionRequestService,
     private router: Router,
+    private domSanitizer: DomSanitizer,
     private dialogRef: MatDialogRef<RequestComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
@@ -58,8 +62,12 @@ export class ChatComponent implements OnInit {
     return this.messageForm.get('message').value === '' || this.submittedForm;
   }
 
-  getOtherUserName() {
-    return this.router.url.includes('received') ? this.data.request.adopter.name : this.data.request.owner.name;
+  getOtherUserProfileImage() {
+
+  }
+
+  getOtherUser() {
+    return this.router.url.includes('received') ? this.data.request.adopter : this.data.request.owner;
   }
 
   getDateTime(message: Message) {

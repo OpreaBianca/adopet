@@ -16,21 +16,19 @@ class UserRouter {
     this.init();
   }
 
-  async getUserById(req: Request, res: Response) {
+  async getCurrentUser(req: Request, res: Response) {
     try {
-      const users = await User.find({ _id: req.params.id });
+      const users = await User.find({ _id: req.user.user._id });
       return res.json(users[0]);
     } catch (err) {
       return res.status(500).json(err);
     }
   }
 
-  async getUserProfileImage(req: Request, res: Response) {
+  async getUserById(req: Request, res: Response) {
     try {
       const users = await User.find({ _id: req.params.id });
-
-      const filePath = path.join(__dirname, `${this.uploadPath}/${users[0]._id}/${users[0].profileImage}`);
-      res.sendFile(filePath);
+      return res.json(users[0]);
     } catch (err) {
       return res.status(500).json(err);
     }
@@ -73,8 +71,8 @@ class UserRouter {
   }
 
   init() {
+    this.router.get('/', jwt({ secret: AuthConfig.jwtSecret }), this.getCurrentUser.bind(this));
     this.router.get('/:id', this.getUserById.bind(this));
-    this.router.get('/image/:id', this.getUserProfileImage.bind(this));
     this.router.put('/', jwt({ secret: AuthConfig.jwtSecret }), this.updateUserProfileImage.bind(this));
   }
 }

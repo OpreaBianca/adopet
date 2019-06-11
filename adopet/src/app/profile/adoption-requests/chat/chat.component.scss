@@ -31,9 +31,18 @@ hr {
     display: flex;
     flex-direction: column;
 
-    img {
-      width: 60px;
-      height: 60px;
+    .profile-picture-card {
+      background: rgba(0, 0, 0, 0);
+      transition: none !important;
+      box-shadow: none !important;
+      padding: 0;
+
+      img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        cursor: pointer;
+      }
     }
 
     .name {

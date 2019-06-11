@@ -5,6 +5,7 @@ import { User } from '../../../models/user.interface';
 import { Pet } from '../../../models/pet.interface';
 import { ImageService } from '../../../services/image/image.service';
 import { AuthService } from '../../../auth/auth.service';
+import { UserService } from '../../../services/user/user.service';
 
 @Component({
   selector: 'app-requests-layout',
@@ -19,11 +20,15 @@ export class RequestsLayoutComponent implements OnInit, OnDestroy {
   currentPage = 0;
 
   constructor(private imageService: ImageService,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private userService: UserService) { }
 
   ngOnInit() {
-    this.user = this.authService.getUser();
-    console.log(this.requests);
+    this.userService.getCurrentUser().subscribe(
+      res => this.user = res,
+      err => console.log(err)
+    );
+
     this.setProfileImages();
   }
 

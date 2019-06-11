@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { User } from '../../models/user.interface';
 import { AuthService } from '../../auth/auth.service';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -14,10 +15,14 @@ export class EditProfileComponent implements OnInit {
   user: User;
   submittedForm = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+    private userService: UserService) { }
 
   ngOnInit() {
-    this.user = this.authService.getUser();
+    this.userService.getCurrentUser().subscribe(
+      res => this.user = res,
+      err => console.log(err)
+    );
 
     this.editProfileForm = new FormGroup({
       name: new FormControl(this.user.name, Validators.required),

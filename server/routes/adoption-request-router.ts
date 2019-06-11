@@ -6,7 +6,6 @@ import { LocalAdoptionRequest } from '../models/local-adoption-request.interface
 import AdoptionRequest from '../db-models/adoption-request';
 import Pet from '../db-models/pet';
 import { Message } from '../models/message.interface';
-import { request } from 'https';
 
 const mongoose = require('mongoose');
 
@@ -24,8 +23,8 @@ class AdoptionRequestRouter {
       const adoptionRequests = await AdoptionRequest.find({ owner: req.user.user._id })
         .sort({ creationDate: -1 })
         .populate({ path: 'pet' })
-        .populate({ path: 'owner', select: 'name email phone address' })
-        .populate({ path: 'adopter', select: 'name email phone address' });
+        .populate({ path: 'owner', select: 'name email phone address, profileImage' })
+        .populate({ path: 'adopter', select: 'name email phone address, profileImage' });
       return res.json(adoptionRequests);
     } catch (err) {
       return res.status(500).json(err);

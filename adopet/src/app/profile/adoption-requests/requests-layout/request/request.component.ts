@@ -2,11 +2,13 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
+import { combineLatest } from 'rxjs';
 
 import { AdoptionRequest } from '../../../../models/adoption-request.interface';
 import { CompleteRequestComponent } from '../../complete-request/complete-request.component';
 import { ChatComponent } from '../../chat/chat.component';
 import { User } from '../../../../models/user.interface';
+import { ImageService } from '../../../../services/image/image.service';
 
 @Component({
   selector: 'app-request',
@@ -17,7 +19,8 @@ export class RequestComponent implements OnInit {
   @Input() adoptionRequest: AdoptionRequest;
   @Input() user: User;
 
-  constructor(private dialog: MatDialog,
+  constructor(private imageService: ImageService,
+    private dialog: MatDialog,
     private router: Router,
     private domSanitizer: DomSanitizer) { }
 
@@ -37,6 +40,26 @@ export class RequestComponent implements OnInit {
   }
 
   onOpenChat() {
+    combineLatest(this.imageService.getImageByName(this.adoptionRequest.owner.profileImage, this.adoptionRequest.owner._id),
+      this.imageService.getImageByName(this.adoptionRequest.adopter.profileImage, this.adoptionRequest.adopter._id)).subscribe(
+        res => {
+          this.adoptionRequest.owner.profileImageUrl = URL.createObjectURL(res[0]);
+          this.adoptionRequest.adopter.profileImageUrl = URL.createObjectURL(res[1]);
+
+          this.setCurrentUser();
+
+          this.openChat();
+        },
+        err => console.log(err)
+      );
+  }
+
+  setCurrentUser() {
+    this.user._id === this.adoptionRequest.adopter._id ? this.user.profileImageUrl = this.adoptionRequest.adopter.profileImageUrl
+      : this.user.profileImageUrl = this.adoptionRequest.owner.profileImageUrl;
+  }
+
+  openChat() {
     this.dialog.open(ChatComponent, {
       width: '1000px',
       maxHeight: '900px',
