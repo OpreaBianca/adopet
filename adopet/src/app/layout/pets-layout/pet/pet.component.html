@@ -2,7 +2,6 @@
   <div class="image-wrapper" *ngIf="pet.profileImageUrl">
     <img [src]="domSanitizer.bypassSecurityTrustUrl(pet.profileImageUrl)">
   </div>
-
   <div class="image-wrapper" *ngIf="!pet.profileImageUrl && pet.images.length === 0">
     <img src="../../../../assets/dog.png">
   </div>

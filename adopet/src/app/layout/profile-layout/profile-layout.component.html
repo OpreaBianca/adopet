@@ -1,7 +1,17 @@
 <div class="details-wrapper">
   <div class="profile-section-wrapper">
     <div class="profile-picture">
-      <img src="../../../assets/profile-picture-replacer.png">
+      <mat-card class="profile-picture-card">
+        <div *ngIf="user.profileImageUrl; else noImage">
+          <img mat-card-avatar [src]="domSanitizer.bypassSecurityTrustUrl(user.profileImageUrl)"
+            (click)="fileInput.click()">
+        </div>
+        <ng-template #noImage>
+          <img mat-card-avatar src="../../../assets/profile-picture-replacer.png" (click)="fileInput.click()">
+        </ng-template>
+        <input #fileInput type="file" ng2FileSelect [uploader]="uploader" (onFileSelected)="updateProfilePicture()"
+          accept="image/*" style="display: none;" />
+      </mat-card>
     </div>
     <div class="user-name">{{user.name}}</div>
     <div class="menu">
@@ -28,3 +38,4 @@
     </div>
   </div>
 </div>
+<router-outlet></router-outlet>

@@ -65,7 +65,7 @@ export class AddPetComponent implements OnInit {
         address: new FormControl(this.pet ? this.pet.foster.address : ''),
         otherDetails: new FormControl(this.pet ? this.pet.foster.otherDetails : '')
       }),
-      creationDate: new FormControl(new Date())
+      creationDate: new FormControl(this.pet ? new Date(this.pet.creationDate) : new Date())
     });
   }
 

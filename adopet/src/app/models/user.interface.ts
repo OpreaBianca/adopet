@@ -11,4 +11,6 @@ export interface User {
   website: string;
   instagram: string;
   description: string;
+  profileImageUrl: string;
+  profileImage: string;
 }

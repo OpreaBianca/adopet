@@ -7,7 +7,6 @@ import { Pet } from '../../../models/pet.interface';
 import { User } from '../../../models/user.interface';
 import { ImageService } from '../../../services/image/image.service';
 import { PetService } from '../../../services/pet/pet.service';
-
 import { AddPetComponent } from '../../../profile/my-pets/add-pet/add-pet.component';
 import { DeletePetComponent } from '../../../profile/my-pets/delete-pet/delete-pet.component';
 import { MoreDetailsComponent } from '../../../adopt/more-details/more-details.component';

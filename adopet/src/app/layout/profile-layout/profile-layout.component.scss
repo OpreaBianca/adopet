@@ -13,13 +13,21 @@
     background: rgba(0, 0, 0, 0.8);
     
     .profile-picture {
-      width: 45%;
+      width: 50%;
       margin: 0 auto;
+      margin-top: 40px;
 
-      img {
-        max-width: 100%;
-        height: auto;
-        margin-top: 20%;
+      .profile-picture-card {
+        background: rgba(0, 0, 0, 0);
+        transition: none !important;
+        box-shadow: none !important;
+
+        img {
+          width: 200px;
+          height: 200px;
+          object-fit: cover;
+          cursor: pointer;
+        }
       }
     }
 
