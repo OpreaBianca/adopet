@@ -44,6 +44,8 @@ export class EditProfileComponent implements OnInit {
     });
   }
 
+  get profile() { return this.editProfileForm.get('profile').value; }
+
   onSubmit() {
     if (this.editProfileForm.valid) {
       this.submittedForm = true;

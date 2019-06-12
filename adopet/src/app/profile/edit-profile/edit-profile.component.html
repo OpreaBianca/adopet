@@ -77,43 +77,45 @@
         </div>
       </div>
 
-      <p class="donations">Donations info</p>
-      <hr />
-      <div class="row">
-        <div class="col-md-4">
-          <label for="bankName">
-            <span>Bank name</span>
-          </label>
-          <input type="text" placeholder="bank name" formControlName="bankName">
+      <div *ngIf="profile === 'Shelter/ONG'">
+        <p class="donations">Donations info</p>
+        <hr />
+        <div class="row">
+          <div class="col-md-4">
+            <label for="bankName">
+              <span>Bank name</span>
+            </label>
+            <input type="text" placeholder="bank name" formControlName="bankName">
+          </div>
+          <div class="col-md-4">
+            <label for="bankAccount">
+              <span>Bank account</span>
+            </label>
+            <input type="text" placeholder="IBAN" formControlName="bankAccount">
+          </div>
+          <div class="col-md-4">
+            <label for="bankAccountName">
+              <span>Bank account owner</span>
+            </label>
+            <input type="text" placeholder="bank account owner name" formControlName="bankAccountName">
+          </div>
         </div>
-        <div class="col-md-4">
-          <label for="bankAccount">
-            <span>Bank account</span>
-          </label>
-          <input type="text" placeholder="IBAN" formControlName="bankAccount">
+        <div class="row">
+          <div class="col-md-4">
+            <label for="paypalAccount">
+              <span>Paypal account</span>
+            </label>
+            <input type="text" placeholder="paypal account" formControlName="paypalAccount">
+          </div>
         </div>
-        <div class="col-md-4">
-          <label for="bankAccountName">
-            <span>Bank account owner</span>
-          </label>
-          <input type="text" placeholder="bank account owner name" formControlName="bankAccountName">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <label for="paypalAccount">
-            <span>Paypal account</span>
-          </label>
-          <input type="text" placeholder="paypal account" formControlName="paypalAccount">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <label for="donationsInfo">
-            <span>Other donations info</span>
-          </label>
-          <textarea placeholder="eg. info about forwarding 2% from the annual income tax"
-            formControlName="donationsInfo" class="description"></textarea>
+        <div class="row">
+          <div class="col-md-12">
+            <label for="donationsInfo">
+              <span>Other donations info</span>
+            </label>
+            <textarea placeholder="eg. info about forwarding 2% from the annual income tax"
+              formControlName="donationsInfo" class="description"></textarea>
+          </div>
         </div>
       </div>
     </div>
