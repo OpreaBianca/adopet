@@ -36,6 +36,10 @@ import { CompleteRequestComponent } from './profile/adoption-requests/complete-r
 import { RequestsLayoutComponent } from './profile/adoption-requests/requests-layout/requests-layout.component';
 import { RequestComponent } from './profile/adoption-requests/requests-layout/request/request.component';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
+import { MyEventsComponent } from './profile/my-events/my-events.component';
+import { AddEventComponent } from './profile/my-events/add-event/add-event.component';
+import { EventsLayoutComponent } from './layout/events-layout/events-layout.component';
+import { EventComponent } from './layout/events-layout/event/event.component';
 
 @NgModule({
   entryComponents: [
@@ -44,7 +48,8 @@ import { EditProfileComponent } from './profile/edit-profile/edit-profile.compon
     MoreDetailsComponent,
     CompleteRequestComponent,
     ChatComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    AddEventComponent
   ],
   declarations: [
     AppComponent,
@@ -70,7 +75,11 @@ import { EditProfileComponent } from './profile/edit-profile/edit-profile.compon
     CompleteRequestComponent,
     ChatComponent,
     RequestsLayoutComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    MyEventsComponent,
+    AddEventComponent,
+    EventsLayoutComponent,
+    EventComponent
   ],
   imports: [
     BrowserModule,

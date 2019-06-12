@@ -1,0 +1,60 @@
+<div class="form-wrapper">
+  <div class="close-form" (click)="onClose()">
+    <img src="../../../../assets/close.png">
+  </div>
+  <p>Event details</p>
+  <hr />
+
+  <app-attach-photos></app-attach-photos>
+
+  <form [formGroup]="addEventForm" (ngSubmit)="onSubmit()">
+    <div class="form-inputs">
+      <div class="row">
+        <div class="col-md-4">
+          <label for="name">
+            <span class="input-field">Name</span>
+          </label>
+          <input type="text" placeholder="name" formControlName="name">
+
+          <label for="location">
+            <span class="input-field">Location</span>
+          </label>
+          <mat-select formControlName="location" placeholder="location">
+            <mat-option *ngFor="let location of locations" [value]="location">{{location}}</mat-option>
+          </mat-select>
+        </div>
+        <div class="col-md-4">
+          <label for="organizer">
+            <span class="input-field">Organizer</span>
+          </label>
+          <input type="text" placeholder="organizer" formControlName="organizer">
+        </div>
+        <div class="col-md-4">
+          <label for="date">
+            <span class="input-field">Date & time</span>
+          </label>
+          <input matInput type="datetime-local" placeholder="date" formControlName="date">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <label for="address">
+            <span class="input-field">Address</span>
+          </label>
+          <textarea placeholder="address" formControlName="address"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <label for="description">
+            <span>Description</span>
+          </label>
+          <textarea placeholder="description" formControlName="description" class="description"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2 submit-button">
+      <button type="submit" [disabled]="submittedForm">Save</button>
+    </div>
+  </form>
+</div>

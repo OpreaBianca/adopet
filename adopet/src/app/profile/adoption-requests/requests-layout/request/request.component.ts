@@ -24,9 +24,7 @@ export class RequestComponent implements OnInit {
     private router: Router,
     private domSanitizer: DomSanitizer) { }
 
-  ngOnInit() {
-    console.log(this.adoptionRequest.owner, this.adoptionRequest.adopter);
-  }
+  ngOnInit() { }
 
   onCompleteAdoptionRequest() {
     this.dialog.open(CompleteRequestComponent, {

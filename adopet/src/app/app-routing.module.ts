@@ -12,6 +12,7 @@ import { ReceivedRequestsComponent } from './profile/adoption-requests/received-
 import { SentRequestsComponent } from './profile/adoption-requests/sent-requests/sent-requests.component';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 import { ProfileLayoutComponent } from './layout/profile-layout/profile-layout.component';
+import { MyEventsComponent } from './profile/my-events/my-events.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,7 @@ const routes: Routes = [
         path: 'profile', component: ProfileLayoutComponent, canActivate: [AuthGuard], children: [
           { path: '', redirectTo: 'my-pets', pathMatch: 'full' },
           { path: 'my-pets', component: MyPetsComponent },
+          { path: 'my-events', component: MyEventsComponent },
           { path: 'favorites', component: FavoritesComponent },
           {
             path: 'adoption-requests', children: [

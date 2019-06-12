@@ -1,0 +1,20 @@
+<div class="row page-wrapper">
+  <div class="col-md-1">
+    <img class="page-img" src="../../../assets/previous.png" (click)="previousPage()" *ngIf="!isFirstPage()">
+  </div>
+  <div class="col-md-10">
+    <div class="row button-wrapper" *ngIf="isMyEventsPage()">
+      <button (click)="addEvent()">Add
+        <img src="../../../assets/add.png">
+      </button>
+    </div>
+    <div class="row requests-wrapper">
+      <div class="col-md-4 request-container" *ngFor="let event of getEventsToDisplay();">
+        <app-event [event]="event" (removeEvent)="removeEvent($event)"></app-event>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-1">
+    <img class="page-img" src="../../../assets/next.png" (click)="nextPage()" *ngIf="!isLastPage()">
+  </div>
+</div>

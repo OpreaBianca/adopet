@@ -1,0 +1,47 @@
+<div class="request-wrapper">
+  <div class="row">
+    <div class="col-md-12 image-wrapper">
+      <ngx-loading [show]="!event.imageUrl && event.image !== ''" [config]="{ backdropBorderRadius: '3px' }">
+      </ngx-loading>
+      <div *ngIf="event.imageUrl">
+        <img [src]="domSanitizer.bypassSecurityTrustUrl(event.imageUrl)">
+      </div>
+      <div *ngIf="!event.imageUrl && event.image === ''">
+        <img src="../../../../assets/calendar.png">
+        <hr />
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 request-details">
+      <div class="row">
+        <p class="name">{{event.name}}</p>
+      </div>
+      <div class="row">
+        <p class="organizer">{{event.organizer}}</p>
+      </div>
+      <div class="row">
+        <p>{{getDateTime()}}</p>
+      </div>
+      <div class="row">
+        <p>{{event.location}}</p>
+      </div>
+      <div class="row">
+        <p>{{event.address}}</p>
+      </div>
+      <div class="row request-message">
+        <p>{{event.description}}</p>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="row buttons-wrapper">
+    <div class="col-md-12">
+      <img src="../../../../assets/delete-blue.png" matTooltip="Delete event" (click)="onDeleteEvent()"
+        *ngIf="isMyEventsPage()">
+    </div>
+  </div>
+</div>
