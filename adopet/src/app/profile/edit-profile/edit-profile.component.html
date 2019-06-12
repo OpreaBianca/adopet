@@ -1,64 +1,124 @@
-<div class="edit-profile-wrapper">
+<div class="form-wrapper">
+  <div class="close-form" (click)="onClose()">
+    <img src="../../../../assets/close.png">
+  </div>
+
   <form [formGroup]="editProfileForm" (ngSubmit)="onSubmit()">
-    <div class="edit-form-wrapper">
-      <div class="left-side">
-        <label for="name">
-          <span class="input-field">Name</span>
-        </label>
-        <input type="text" formControlName="name" placeholder="name">
-        <label for="profile">
-          <span class="input-field">Profile type</span>
-        </label>
-        <select formControlName="profile">
-          <option value="" disabled selected>profile</option>
-          <option>Shelter/ONG</option>
-          <option>Veterinary</option>
-          <option>Other</option>
-        </select>
-        <label for="address">
-          <span>Address</span>
-        </label>
-        <input type="text" formControlName="address" placeholder="address">
-        <label for="facebook">
-          <span>Facebook</span>
-        </label>
-        <input type="text" formControlName="facebook" placeholder="facebook link">
-        <label for="instagram">
-          <span>Instagram</span>
-        </label>
-        <input type="text" formControlName="instagram" placeholder="instagram account">
+    <div class="form-inputs">
+      <p>Contact info & description</p>
+      <hr />
+      <div class="row">
+        <div class="col-md-4">
+          <label for="name">
+            <span class="input-field">Name</span>
+          </label>
+          <input type="text" placeholder="name" formControlName="name">
+
+          <label for="profile">
+            <span class="input-field">Profile type</span>
+          </label>
+          <mat-select formControlName="profile" placeholder="profile">
+            <mat-option *ngFor="let profile of profiles" [value]="profile">{{profile}}</mat-option>
+          </mat-select>
+
+          <label for="instagram">
+            <span>Instagram account</span>
+          </label>
+          <input type="text" placeholder="instagram" formControlName="instagram">
+        </div>
+        <div class="col-md-4">
+          <label for="email">
+            <span class="input-field">Email</span>
+          </label>
+          <input type="text" placeholder="email" formControlName="email" disabled>
+
+          <label for="website">
+            <span>Website</span>
+          </label>
+          <input type="text" placeholder="website" formControlName="website">
+
+          <label for="twitter">
+            <span>Twitter</span>
+          </label>
+          <input type="text" placeholder="twitter" formControlName="twitter">
+        </div>
+        <div class="col-md-4">
+          <label for="phone">
+            <span class="input-field">Phone</span>
+          </label>
+          <input type="text" placeholder="phone" formControlName="phone">
+
+          <label for="facebook">
+            <span>Facebook</span>
+          </label>
+          <input type="text" placeholder="facebook" formControlName="facebook">
+
+          <!-- Aici trebuie check account -->
+          <label class="container">I want to receive notifications in case of emergency.
+            <input type="checkbox" formControlName="emergencyNotificationOn">
+            <span class="checkmark"></span>
+          </label>
+        </div>
       </div>
-      <div class="separator"> </div>
-      <div class="right-side">
-        <label for="email">
-          <span class="input-field">Email</span>
-        </label>
-        <input type="email" formControlName="email" placeholder="email"><label for="phone">
-          <span class="input-field">Phone number</span>
-        </label>
-        <input type="tel" formControlName="phone" placeholder="phone">
-        <label for="twitter">
-          <span>Twitter</span>
-        </label>
-        <input type="text" formControlName="twitter" placeholder="twitter account">
-        <label for="website">
-          <span>Website</span>
-        </label>
-        <input type="text" formControlName="website" placeholder="website link">
-        <label class="container">I want to receive notifications in case of emergency.
-          <input type="checkbox" formControlName="emergency">
-          <span class="checkmark"></span>
-        </label>
+      <div class="row">
+        <div class="col-md-12">
+          <label for="address">
+            <span>Address</span>
+          </label>
+          <textarea placeholder="address" formControlName="address"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <label for="description">
+            <span>Description</span>
+          </label>
+          <textarea placeholder="description" formControlName="description" class="description"></textarea>
+        </div>
+      </div>
+
+      <p class="donations">Donations info</p>
+      <hr />
+      <div class="row">
+        <div class="col-md-4">
+          <label for="bankName">
+            <span>Bank name</span>
+          </label>
+          <input type="text" placeholder="bank name" formControlName="bankName">
+        </div>
+        <div class="col-md-4">
+          <label for="bankAccount">
+            <span>Bank account</span>
+          </label>
+          <input type="text" placeholder="IBAN" formControlName="bankAccount">
+        </div>
+        <div class="col-md-4">
+          <label for="bankAccountName">
+            <span>Bank account owner</span>
+          </label>
+          <input type="text" placeholder="bank account owner name" formControlName="bankAccountName">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <label for="paypalAccount">
+            <span>Paypal account</span>
+          </label>
+          <input type="text" placeholder="paypal account" formControlName="paypalAccount">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <label for="donationsInfo">
+            <span>Other donations info</span>
+          </label>
+          <textarea placeholder="eg. info about forwarding 2% from the annual income tax"
+            formControlName="donationsInfo" class="description"></textarea>
+        </div>
       </div>
     </div>
-    <div class="description">
-      <label for="description">
-        <span>Description</span>
-      </label>
-      <textarea formControlName="description" placeholder="description" rows="3" cols="60"></textarea>
-    </div>
-    <div class="button-wrapper">
-      <button type="submit" [disabled]="submittedForm">Save Changes</button>
+    <div class="col-md-2 submit-button">
+      <button type="submit" [disabled]="submittedForm">Update</button>
     </div>
   </form>
 </div>

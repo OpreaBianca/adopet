@@ -43,7 +43,7 @@
 
     .menu {
       text-align: center;
-      margin-top: 30px;
+      margin-top: 40px;
 
       ul {
         margin: 0;
@@ -82,6 +82,10 @@
         .submenu {
           .hidden-submenu {
             display: none; 
+          }
+
+          ul {
+            padding: 16px 0 0 0;
           }
           
           li {

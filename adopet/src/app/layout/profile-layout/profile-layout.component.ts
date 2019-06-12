@@ -9,6 +9,7 @@ import { User } from '../../models/user.interface';
 import { AuthService } from '../../auth/auth.service';
 import { UserService } from '../../services/user/user.service';
 import { ImageService } from '../../services/image/image.service';
+import { EditProfileComponent } from '../../profile/edit-profile/edit-profile.component';
 
 @Component({
   selector: 'app-profile-layout',
@@ -66,16 +67,16 @@ export class ProfileLayoutComponent implements OnInit, OnDestroy {
   }
 
   onEditInfo() {
-    // this.dialog.open(AddPetComponent, {
-    //   width: '1000px',
-    //   maxHeight: '900px',
-    //   disableClose: true
-    // }).afterClosed().subscribe((pet: Pet) => {
-    //   if (pet) {
-    //     this.setProfileImage(pet);
-    //     this.pets.unshift(pet);
-    //   }
-    // });
+    this.dialog.open(EditProfileComponent, {
+      width: '1000px',
+      maxHeight: '900px',
+      disableClose: true,
+      data: this.user
+    }).afterClosed().subscribe((updatedUser: User) => {
+      if (updatedUser) {
+        this.user = updatedUser;
+      }
+    });
   }
 
   getUserProfileImage() {

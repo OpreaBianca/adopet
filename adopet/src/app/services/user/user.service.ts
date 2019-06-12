@@ -4,6 +4,7 @@ import { throwError as observableThrowError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
+import { User } from 'src/app/models/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +24,14 @@ export class UserService {
     );
   }
 
+  updateUser(user: User) {
+    return this.http.put(`${environment.apiPath}/user`, user).pipe(
+      catchError((err) => observableThrowError(err))
+    );
+  }
+
   updateUserProfileImage(formData: FormData) {
-    return this.http.put(`${environment.apiPath}/user`, formData).pipe(
+    return this.http.put(`${environment.apiPath}/user/image`, formData).pipe(
       catchError((err) => observableThrowError(err))
     );
   }

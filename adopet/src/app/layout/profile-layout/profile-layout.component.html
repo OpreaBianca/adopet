@@ -16,7 +16,7 @@
     <div class="user-name">{{user.name}}</div>
     <div class="menu">
       <ul>
-        <li><a routerLink="/profile/my-pets" routerLinkActive="active">MY PETS</a></li>
+        <li><a routerLink="/profile/my-pets" routerLinkActive="active">PETS</a></li>
         <li><a routerLink="/profile/favorites" routerLinkActive="active">FAVORITES</a></li>
         <li class="submenu">
           <a [ngClass]="{'active': isChildLinkActive()}" (click)="openCloseSubmenu()">ADOPTION REQUESTS</a>
@@ -31,7 +31,7 @@
         <!-- Aici daca nu a bifat pentru a primi notifications trebuie sa apara ceva de genul: aboneaza-te la notificari si ceva gen - more about emergency notifications -->
         <li>NOTIFICATIONS</li>
         <li>EVENTS</li>
-        <li>CONTRIBUTE WITH AN ARTICLE</li>
+        <!-- <li>CONTRIBUTE WITH AN ARTICLE</li> -->
         <li>
           <img src="../../../assets/settings.png" matTooltip="Edit contact and donations info" (click)="onEditInfo()">
         </li>

@@ -13,4 +13,10 @@ export interface User {
   description: string;
   profileImageUrl: string;
   profileImage: string;
+
+  bankName: string;
+  bankAccount: string;
+  bankAccountName: string;
+  paypalAccount: string;
+  donationsInfo: string;
 }

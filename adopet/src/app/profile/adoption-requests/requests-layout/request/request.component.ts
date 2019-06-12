@@ -24,7 +24,9 @@ export class RequestComponent implements OnInit {
     private router: Router,
     private domSanitizer: DomSanitizer) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    console.log(this.adoptionRequest.owner, this.adoptionRequest.adopter);
+  }
 
   onCompleteAdoptionRequest() {
     this.dialog.open(CompleteRequestComponent, {
@@ -43,6 +45,7 @@ export class RequestComponent implements OnInit {
     combineLatest(this.imageService.getImageByName(this.adoptionRequest.owner.profileImage, this.adoptionRequest.owner._id),
       this.imageService.getImageByName(this.adoptionRequest.adopter.profileImage, this.adoptionRequest.adopter._id)).subscribe(
         res => {
+          console.log(res);
           this.adoptionRequest.owner.profileImageUrl = URL.createObjectURL(res[0]);
           this.adoptionRequest.adopter.profileImageUrl = URL.createObjectURL(res[1]);
 

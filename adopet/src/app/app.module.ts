@@ -18,7 +18,6 @@ import { LoginComponent } from './auth/login/login.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 import { ProfileLayoutComponent } from './layout/profile-layout/profile-layout.component';
-import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 import { MyPetsComponent } from './profile/my-pets/my-pets.component';
 import { PetComponent } from './layout/pets-layout/pet/pet.component';
 import { AddPetComponent } from './profile/my-pets/add-pet/add-pet.component';
@@ -36,6 +35,7 @@ import { ChatComponent } from './profile/adoption-requests/chat/chat.component';
 import { CompleteRequestComponent } from './profile/adoption-requests/complete-request/complete-request.component';
 import { RequestsLayoutComponent } from './profile/adoption-requests/requests-layout/requests-layout.component';
 import { RequestComponent } from './profile/adoption-requests/requests-layout/request/request.component';
+import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 
 @NgModule({
   entryComponents: [
@@ -43,7 +43,8 @@ import { RequestComponent } from './profile/adoption-requests/requests-layout/re
     DeletePetComponent,
     MoreDetailsComponent,
     CompleteRequestComponent,
-    ChatComponent
+    ChatComponent,
+    EditProfileComponent
   ],
   declarations: [
     AppComponent,
@@ -52,7 +53,6 @@ import { RequestComponent } from './profile/adoption-requests/requests-layout/re
     LoginComponent,
     SignUpComponent,
     ProfileLayoutComponent,
-    EditProfileComponent,
     MyPetsComponent,
     PetComponent,
     AddPetComponent,
@@ -69,7 +69,8 @@ import { RequestComponent } from './profile/adoption-requests/requests-layout/re
     RequestComponent,
     CompleteRequestComponent,
     ChatComponent,
-    RequestsLayoutComponent
+    RequestsLayoutComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,

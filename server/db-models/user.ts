@@ -13,5 +13,10 @@ export default mongoose.model('User', {
   website: String,
   instagram: String,
   description: String,
-  profileImage: String
+  profileImage: String,
+  bankName: String,
+  bankAccount: String,
+  bankAccountName: String,
+  paypalAccount: String,
+  donationsInfo: String
 });

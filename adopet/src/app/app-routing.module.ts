@@ -5,7 +5,6 @@ import { AuthGuard } from './auth/auth.guard';
 import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
-import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 import { MyPetsComponent } from './profile/my-pets/my-pets.component';
 import { AdoptComponent } from './adopt/adopt.component';
 import { FavoritesComponent } from './profile/favorites/favorites.component';
@@ -32,8 +31,7 @@ const routes: Routes = [
               { path: 'received', component: ReceivedRequestsComponent },
               { path: 'sent', component: SentRequestsComponent },
             ]
-          },
-          { path: 'edit', component: EditProfileComponent }
+          }
         ]
       },
       {

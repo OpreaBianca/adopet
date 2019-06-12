@@ -6,6 +6,7 @@ import * as fs from 'fs';
 
 import { AuthConfig } from '../config/auth-config';
 import User from '../db-models/user';
+import { LocalUser } from '../models/local-user.interface';
 
 class UserRouter {
   router: Router;
@@ -32,6 +33,17 @@ class UserRouter {
     } catch (err) {
       return res.status(500).json(err);
     }
+  }
+
+  async updateUser(req: Request, res: Response) {
+    const user: LocalUser = req.body;
+
+    User.update({ _id: req.user.user._id }, { $set: user }, err => {
+      if (err) {
+        return res.status(500).json(err);
+      }
+      return res.json('OK');
+    });
   }
 
   updateUserProfileImage(req: Request, res: Response) {
@@ -73,7 +85,8 @@ class UserRouter {
   init() {
     this.router.get('/', jwt({ secret: AuthConfig.jwtSecret }), this.getCurrentUser.bind(this));
     this.router.get('/:id', this.getUserById.bind(this));
-    this.router.put('/', jwt({ secret: AuthConfig.jwtSecret }), this.updateUserProfileImage.bind(this));
+    this.router.put('/', jwt({ secret: AuthConfig.jwtSecret }), this.updateUser.bind(this));
+    this.router.put('/image', jwt({ secret: AuthConfig.jwtSecret }), this.updateUserProfileImage.bind(this));
   }
 }
 export default new UserRouter().router;

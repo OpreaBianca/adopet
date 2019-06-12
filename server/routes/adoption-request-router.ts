@@ -23,8 +23,8 @@ class AdoptionRequestRouter {
       const adoptionRequests = await AdoptionRequest.find({ owner: req.user.user._id })
         .sort({ creationDate: -1 })
         .populate({ path: 'pet' })
-        .populate({ path: 'owner', select: 'name email phone address, profileImage' })
-        .populate({ path: 'adopter', select: 'name email phone address, profileImage' });
+        .populate({ path: 'owner', select: 'name email phone address profileImage' })
+        .populate({ path: 'adopter', select: 'name email phone address profileImage' });
       return res.json(adoptionRequests);
     } catch (err) {
       return res.status(500).json(err);
@@ -36,8 +36,8 @@ class AdoptionRequestRouter {
       const adoptionRequests = await AdoptionRequest.find({ adopter: req.user.user._id })
         .sort({ creationDate: -1 })
         .populate({ path: 'pet' })
-        .populate({ path: 'owner', select: 'name email phone address' })
-        .populate({ path: 'adopter', select: 'name email phone address' });
+        .populate({ path: 'owner', select: 'name email phone address profileImage' })
+        .populate({ path: 'adopter', select: 'name email phone address profileImage' });
       return res.json(adoptionRequests);
     } catch (err) {
       return res.status(500).json(err);

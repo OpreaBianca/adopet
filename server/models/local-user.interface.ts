@@ -13,4 +13,10 @@ export interface LocalUser {
   description: string;
   profileImageUrl: string;
   profileImage: string;
+
+  bankame: string;
+  bankAccount: string;
+  bankAccountName: string;
+  paypalAccount: string;
+  donationsInfo: string;
 }
