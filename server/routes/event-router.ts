@@ -86,7 +86,10 @@ class EventRouter {
       if (err) {
         return res.status(500).json(err);
       }
-      fs.unlinkSync(`${filesPath}/${localEvent.image}`);
+
+      if (localEvent.image !== '') {
+        fs.unlinkSync(`${filesPath}/${localEvent.image}`);
+      }
 
       return res.json('OK');
     });

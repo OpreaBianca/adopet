@@ -10,7 +10,7 @@
     </div>
     <div class="row requests-wrapper">
       <div class="col-md-4 request-container" *ngFor="let event of getEventsToDisplay();">
-        <app-event [event]="event" (removeEvent)="removeEvent($event)"></app-event>
+        <app-event [event]="event" (removedEvent)="removeEvent($event)"></app-event>
       </div>
     </div>
   </div>

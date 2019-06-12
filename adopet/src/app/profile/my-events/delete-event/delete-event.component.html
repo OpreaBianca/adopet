@@ -1,0 +1,10 @@
+<div class="form-wrapper">
+  <div class="close-form" (click)="onClose()">
+    <img src="../../../../assets/close.png">
+  </div>
+  <p>Are you sure you want to remove event {{event.name}}? The changes are permanent.</p>
+  <hr />
+  <div class="col-md-2 submit-button">
+    <button type="submit" [disabled]="submittedForm" (click)="onRemoveEvent()">Yes</button>
+  </div>
+</div>

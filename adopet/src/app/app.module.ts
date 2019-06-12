@@ -40,6 +40,7 @@ import { MyEventsComponent } from './profile/my-events/my-events.component';
 import { AddEventComponent } from './profile/my-events/add-event/add-event.component';
 import { EventsLayoutComponent } from './layout/events-layout/events-layout.component';
 import { EventComponent } from './layout/events-layout/event/event.component';
+import { DeleteEventComponent } from './profile/my-events/delete-event/delete-event.component';
 
 @NgModule({
   entryComponents: [
@@ -49,7 +50,8 @@ import { EventComponent } from './layout/events-layout/event/event.component';
     CompleteRequestComponent,
     ChatComponent,
     EditProfileComponent,
-    AddEventComponent
+    AddEventComponent,
+    DeleteEventComponent
   ],
   declarations: [
     AppComponent,
@@ -79,7 +81,8 @@ import { EventComponent } from './layout/events-layout/event/event.component';
     MyEventsComponent,
     AddEventComponent,
     EventsLayoutComponent,
-    EventComponent
+    EventComponent,
+    DeleteEventComponent
   ],
   imports: [
     BrowserModule,

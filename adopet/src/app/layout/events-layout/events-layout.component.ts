@@ -27,6 +27,7 @@ export class EventsLayoutComponent implements OnInit {
   }
 
   addEvent() {
+    console.log('ce pula mea');
     this.dialog.open(AddEventComponent, {
       width: '1000px',
       maxHeight: '900px',
