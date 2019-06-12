@@ -19,10 +19,11 @@ class EventRouter {
 
   async getAllEvents(req: Request, res: Response) {
     try {
-      const events = await Event.find()
-        .sort({ date: -1 });
+      const events = await Event.find({ date: { $gte: new Date() } })
+        .sort({ date: 1 });
       return res.json(events);
     } catch (err) {
+      console.log(err);
       return res.status(500).json(err);
     }
   }

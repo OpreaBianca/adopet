@@ -54,6 +54,10 @@ export class PetsLayoutComponent implements OnInit, OnDestroy {
   removePet(pet: Pet) {
     const petIdx = this.pets.findIndex((currentPet: Pet) => currentPet._id === pet._id);
     this.pets.splice(petIdx, 1);
+
+    if (this.pets.length % this.numberPerPage === 0) {
+      this.currentPage -= 1;
+    }
   }
 
   setProfileImages() {

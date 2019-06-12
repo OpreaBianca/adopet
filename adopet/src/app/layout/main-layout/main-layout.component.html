@@ -6,13 +6,13 @@
       <!--Lista cu animale oferite pentru adoptie-->
       <li><a routerLink="/adopt" routerLinkActive="active">ADOPT</a></li>
       <!--List cu adaposturi: Descriere, locatie, contact, how to donate, posibilitatea de a le vizita profilul-->
-      <li>SHELTERS</li>
-      <!--List cu veterinari + integrare cu google maps penntru locatie si afisare cele mai apropiate centre veterinare-->
-      <li>VETERINARY</li>
+      <li><a routerLink="/shelters" routerLinkActive="active">SHELTERS</a></li>
+      <!--Integrare cu google maps penntru locatie si afisare cele mai apropiate centre veterinare-->
+      <li><a routerLink="/veterinary" routerLinkActive="active">VETERINARY</a></li>
       <!--Raportare cazuri de urgenta: harta + deschidere form cu descriere, contact etc-->
       <li>EMERGENCY</li>
       <!--Evenimente-->
-      <li>UPCOMING EVENTS</li>
+      <li><a routerLink="/upcoming-events" routerLinkActive="active">UPCOMING EVENTS</a></li>
       <li *ngIf="!authService.isAuthenticated()"><a routerLink="/login" routerLinkActive="active">LOGIN</a></li>
       <li *ngIf="authService.isAuthenticated()">
         <div class="dropdown">

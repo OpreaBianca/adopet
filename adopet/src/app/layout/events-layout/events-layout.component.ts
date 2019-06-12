@@ -14,7 +14,7 @@ import { AddEventComponent } from '../../profile/my-events/add-event/add-event.c
 })
 export class EventsLayoutComponent implements OnInit {
   @Input() events: Event[] = [];
-  @Input() numberPerPage = 4;
+  @Input() numberPerPage: number;
 
   currentPage = 0;
 
@@ -27,7 +27,6 @@ export class EventsLayoutComponent implements OnInit {
   }
 
   addEvent() {
-    console.log('ce pula mea');
     this.dialog.open(AddEventComponent, {
       width: '1000px',
       maxHeight: '900px',
@@ -43,6 +42,10 @@ export class EventsLayoutComponent implements OnInit {
   removeEvent(event: Event) {
     const eventIdx = this.events.findIndex((currentEvent: Event) => currentEvent._id === event._id);
     this.events.splice(eventIdx, 1);
+
+    if (this.events.length % this.numberPerPage === 0) {
+      this.currentPage -= 1;
+    }
   }
 
   setProfileImages() {

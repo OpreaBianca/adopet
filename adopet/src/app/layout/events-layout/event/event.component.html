@@ -36,12 +36,10 @@
     </div>
   </div>
 
-  <hr />
-
-  <div class="row buttons-wrapper">
+  <div class="row buttons-wrapper" *ngIf="isMyEventsPage()">
+    <hr />
     <div class="col-md-12">
-      <img src="../../../../assets/delete-blue.png" matTooltip="Delete event" (click)="onDeleteEvent()"
-        *ngIf="isMyEventsPage()">
+      <img src="../../../../assets/delete-blue.png" matTooltip="Delete event" (click)="onDeleteEvent()">
     </div>
   </div>
 </div>

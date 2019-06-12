@@ -1,5 +1,13 @@
 .page-wrapper {
   width: 75%;
+}
+
+.page-wrapper-full {
+  width: 100%;
+}
+
+.page-wrapper-full,
+.page-wrapper {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -31,7 +39,7 @@
   }
 
   .button-wrapper {
-    height: 16%;
+    height: 20%;
     
     button {
       width: 115px;
