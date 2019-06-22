@@ -24,6 +24,12 @@ export class UserService {
     );
   }
 
+  getShelters(): Observable<any> {
+    return this.http.get(`${environment.apiPath}/user/shelter`).pipe(
+      catchError((err) => observableThrowError(err))
+    );
+  }
+
   updateUser(user: User) {
     return this.http.put(`${environment.apiPath}/user`, user).pipe(
       catchError((err) => observableThrowError(err))

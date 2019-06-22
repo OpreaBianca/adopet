@@ -19,6 +19,5 @@ export class ControlErrorComponent implements OnInit {
 
   constructor(private cdr: ChangeDetectorRef) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 }

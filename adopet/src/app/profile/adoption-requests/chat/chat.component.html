@@ -29,8 +29,6 @@
             <div *ngIf="!data.user.profileImageUrl && data.user.profileImage === ''">
               <img mat-card-avatar src="../../../assets/profile-picture-replacer.png" (click)="fileInput.click()">
             </div>
-            <input #fileInput type="file" ng2FileSelect [uploader]="uploader" (onFileSelected)="updateProfilePicture()"
-              accept="image/*" style="display: none;" />
           </mat-card>
         </div>
       </div>

@@ -14,7 +14,6 @@ import { MainLayoutComponent } from './layout/main-layout/main-layout.component'
 import { ProfileLayoutComponent } from './layout/profile-layout/profile-layout.component';
 import { MyEventsComponent } from './profile/my-events/my-events.component';
 import { UpcomingEventsComponent } from './upcoming-events/upcoming-events.component';
-import { VeterinaryComponent } from './veterinary/veterinary.component';
 import { SheltersComponent } from './shelters/shelters.component';
 
 const routes: Routes = [
@@ -41,7 +40,6 @@ const routes: Routes = [
       },
       { path: 'adopt', component: AdoptComponent },
       { path: 'upcoming-events', component: UpcomingEventsComponent },
-      { path: 'veterinary', component: VeterinaryComponent },
       { path: 'shelters', component: SheltersComponent }
     ]
   }

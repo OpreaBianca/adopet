@@ -35,6 +35,15 @@ class UserRouter {
     }
   }
 
+  async getShelters(req: Request, res: Response) {
+    try {
+      const users = await User.find({ profile: 'Shelter/ONG' });
+      return res.json(users);
+    } catch (err) {
+      return res.status(500).json(err);
+    }
+  }
+
   async updateUser(req: Request, res: Response) {
     const user: LocalUser = req.body;
 
@@ -84,6 +93,7 @@ class UserRouter {
 
   init() {
     this.router.get('/', jwt({ secret: AuthConfig.jwtSecret }), this.getCurrentUser.bind(this));
+    this.router.get('/shelter', this.getShelters.bind(this))
     this.router.get('/:id', this.getUserById.bind(this));
     this.router.put('/', jwt({ secret: AuthConfig.jwtSecret }), this.updateUser.bind(this));
     this.router.put('/image', jwt({ secret: AuthConfig.jwtSecret }), this.updateUserProfileImage.bind(this));

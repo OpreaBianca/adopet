@@ -1,0 +1,80 @@
+<div class="request-wrapper">
+  <div class="row">
+    <div class="col-md-2 profile-picture">
+      <div class="row">
+        <mat-card class="profile-picture-card">
+          <div *ngIf="shelter.profileImageUrl">
+            <img mat-card-avatar [src]="domSanitizer.bypassSecurityTrustUrl(shelter.profileImageUrl)"
+              (click)="fileInput.click()">
+          </div>
+          <div *ngIf="!shelter.profileImageUrl && shelter.profileImage === ''">
+            <img mat-card-avatar src="../../../assets/profile-picture-replacer.png" (click)="fileInput.click()">
+          </div>
+        </mat-card>
+      </div>
+    </div>
+    <div class="col-md-10 title">
+      <div class="row name">
+        <p>{{shelter.name}}</p>
+      </div>
+      <div class="row">
+        <p>{{shelter.email}}</p>
+      </div>
+      <div class="row">
+        <p>{{shelter.phone}}</p>
+      </div>
+      <div class="row">
+        <p>{{shelter.address}}</p>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="row description" *ngIf="shelter.description">
+    <div class="col-md-12">
+      <div class=row>
+        <p>{{shelter.description}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row details">
+    <div class="col-md-3" *ngIf="displayMediaColumn()">
+      <div class="row" *ngIf="shelter.website">
+        <img src="../../../assets/website.png">
+        <p>{{shelter.website}}</p>
+      </div>
+      <div class="row" *ngIf="shelter.facebook">
+        <img src="../../../assets/facebook.png">
+        <p>{{shelter.facebook}}</p>
+      </div>
+      <div class="row" *ngIf="shelter.instagram">
+        <img src="../../../assets/instagram.png">
+        <p>{{shelter.instagram}}</p>
+      </div>
+      <div class="row" *ngIf="shelter.twitter">
+        <img src="../../../assets/twitter.png">
+        <p>{{shelter.twitter}}</p>
+      </div>
+    </div>
+
+    <div class="col-md-9">
+      <div class="row">
+        <p>{{shelter.bankName}}</p>
+      </div>
+      <div class="row">
+        <p>{{shelter.bankAccount}}</p>
+      </div>
+      <div class="row">
+        <p>{{shelter.bankAccountName}}</p>
+      </div>
+      <div class="row">
+        <p>{{shelter.paypalAccount}}</p>
+      </div>
+      <div class="row">
+        <p>{{shelter.donationsInfo}}</p>
+      </div>
+    </div>
+  </div>
+</div>

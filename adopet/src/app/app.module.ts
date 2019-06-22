@@ -42,8 +42,8 @@ import { EventsLayoutComponent } from './layout/events-layout/events-layout.comp
 import { EventComponent } from './layout/events-layout/event/event.component';
 import { DeleteEventComponent } from './profile/my-events/delete-event/delete-event.component';
 import { UpcomingEventsComponent } from './upcoming-events/upcoming-events.component';
-import { VeterinaryComponent } from './veterinary/veterinary.component';
 import { SheltersComponent } from './shelters/shelters.component';
+import { ShelterComponent } from './shelters/shelter/shelter.component';
 
 @NgModule({
   entryComponents: [
@@ -87,8 +87,8 @@ import { SheltersComponent } from './shelters/shelters.component';
     EventComponent,
     DeleteEventComponent,
     UpcomingEventsComponent,
-    VeterinaryComponent,
-    SheltersComponent
+    SheltersComponent,
+    ShelterComponent
   ],
   imports: [
     BrowserModule,

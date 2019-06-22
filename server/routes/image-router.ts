@@ -11,7 +11,8 @@ class ImageRouter {
   }
 
   async getImageByName(req: Request, res: Response) {
-    const filePath = path.join(__dirname, `${this.uploadPath}/${req.query.userId}/${req.query.imageName}`);
+    const filePath = path.join(__dirname,
+      `${this.uploadPath}/${req.query.userId}/${req.query.imageName}`);
     res.sendFile(filePath);
   }
 

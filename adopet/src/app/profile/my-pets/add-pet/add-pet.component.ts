@@ -28,7 +28,7 @@ export class AddPetComponent implements OnInit {
   locations = ['Bucharest', 'Teleorman'];
   sizes = ['Small', 'Medium', 'Large'];
   statuses = ['Adopted', 'Placed for adoption/foster', 'Looking for the owner', 'Returned to owner',
-    'In medical care/Not ready for adoption', 'Personal/Not for adoption'];
+    'In medical care', 'Not ready for adoption', 'Personal/Not for adoption'];
 
   constructor(private petService: PetService,
     private dialogRef: MatDialogRef<any>,

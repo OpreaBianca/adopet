@@ -1,0 +1,72 @@
+.request-wrapper {
+  background: #ffffff;
+  padding: 10px 0 0 0;
+
+  &:hover {
+    -webkit-box-shadow: 2px 0 25px -8px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 2px 0 25px -8px rgba(0, 0, 0, 1);
+    box-shadow: 2px 0 25px -8px rgba(0, 0, 0, 1);
+  }
+
+  .row {
+    margin: 0;
+  }
+
+  hr {
+    margin: 10px;
+  }
+
+  p {
+    margin: 0;
+    font-family: inherit;
+    letter-spacing: 1px;
+    font-weight: 100;
+  }
+
+  .profile-picture {
+    display: flex;
+    flex-direction: column;
+
+    .profile-picture-card {
+      background: rgba(0, 0, 0, 0);
+      transition: none !important;
+      box-shadow: none !important;
+      padding: 0;
+
+      img {
+        width: 110px;
+        height: 110px;
+        object-fit: cover;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .name {
+      text-transform: uppercase;
+      font-size: 18px;
+      font-weight: 400px;
+    }
+  }
+
+  .description {
+    margin-bottom: 10px;
+  }
+
+  .details {
+    .row {
+      margin-bottom: 10px
+    }
+
+    img {
+      width: 25px;
+      height: 25px;
+      margin-right: 10px;
+    }
+  }
+}

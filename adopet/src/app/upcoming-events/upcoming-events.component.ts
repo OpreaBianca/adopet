@@ -5,8 +5,7 @@ import { EventService } from '../services/event/event.service';
 
 @Component({
   selector: 'app-upcoming-events',
-  templateUrl: './upcoming-events.component.html',
-  styleUrls: ['./upcoming-events.component.scss']
+  templateUrl: './upcoming-events.component.html'
 })
 export class UpcomingEventsComponent implements OnInit {
   events: Event[] = [];

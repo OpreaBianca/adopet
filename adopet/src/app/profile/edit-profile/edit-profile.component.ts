@@ -18,7 +18,7 @@ export class EditProfileComponent implements OnInit {
     private dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public user: User) { }
 
-  profiles: string[] = ['Shelter/ONG', 'Veterinary', 'Other'];
+  profiles: string[] = ['Shelter/ONG', 'Other'];
 
   ngOnInit() {
     this.editProfileForm = new FormGroup({

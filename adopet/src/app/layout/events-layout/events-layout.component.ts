@@ -43,7 +43,7 @@ export class EventsLayoutComponent implements OnInit {
     const eventIdx = this.events.findIndex((currentEvent: Event) => currentEvent._id === event._id);
     this.events.splice(eventIdx, 1);
 
-    if (this.events.length % this.numberPerPage === 0) {
+    if (this.currentPage !== 0 && this.events.length % this.numberPerPage === 0) {
       this.currentPage -= 1;
     }
   }
