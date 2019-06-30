@@ -8,5 +8,6 @@ export interface LocalEvent {
   description: string,
   creatorID: string,
   image: string,
-  imageUrl: string
+  imageUrl: string,
+  subscribers: string[]
 }

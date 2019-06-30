@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
 import { Event } from '../../models/event.interface';
+import { User } from '../../models/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,12 @@ export class EventService {
     return this.http.delete(`${environment.apiPath}/event`, {
       params: new HttpParams().set('event', JSON.stringify(event)),
     }).pipe(
+      catchError((err) => observableThrowError(err))
+    );
+  }
+
+  subscribeEvent(event: Event): Observable<any> {
+    return this.http.put(`${environment.apiPath}/event`, event).pipe(
       catchError((err) => observableThrowError(err))
     );
   }

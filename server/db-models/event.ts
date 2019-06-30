@@ -8,5 +8,6 @@ export default mongoose.model('Event', {
   address: String,
   description: String,
   creatorID: String,
-  image: String
+  image: String,
+  subscribers: [String]
 });

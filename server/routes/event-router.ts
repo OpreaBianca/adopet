@@ -67,6 +67,7 @@ class EventRouter {
       const localEvent: LocalEvent = JSON.parse(fields.event);
       localEvent.creatorID = req.user.user._id;
       localEvent.image = image;
+      localEvent.subscribers = [];
 
       const event = new Event(localEvent);
       event.save(err => {
@@ -75,6 +76,18 @@ class EventRouter {
         }
         return res.json(event);
       });
+    });
+  }
+
+  subscribeEvent(req: Request, res: Response) {
+    const localEvent: LocalEvent = req.body;
+    console.log(localEvent);
+
+    Event.update({ _id: localEvent._id }, { $set: localEvent }, err => {
+      if (err) {
+        return res.status(500).json(err);
+      }
+      return res.json('OK');
     });
   }
 
@@ -99,6 +112,7 @@ class EventRouter {
     this.router.get('/', jwt({ secret: AuthConfig.jwtSecret }), this.getEventsByCreator.bind(this));
     this.router.get('/all', this.getAllEvents.bind(this));
     this.router.post('/', jwt({ secret: AuthConfig.jwtSecret }), this.insertEvent.bind(this));
+    this.router.put('/', jwt({ secret: AuthConfig.jwtSecret }), this.subscribeEvent.bind(this));
     this.router.delete('/', jwt({ secret: AuthConfig.jwtSecret }), this.deleteEvent.bind(this));
   }
 }

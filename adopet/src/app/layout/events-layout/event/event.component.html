@@ -39,8 +39,11 @@
   <div class="row button-wrapper">
     <hr />
     <div class="col-md-8"></div>
-    <div class="col-md-4 submit-button">
-      <button>Subscribe</button>
+    <div class="col-md-4 submit-button" *ngIf="!isUserSubscribed() && this.authService.isAuthenticated()">
+      <button (click)="onSubscribe()">Subscribe</button>
+    </div>
+    <div class="col-md-4 subscribed-button" *ngIf="isUserSubscribed()">
+      <button>Subscribed</button>
     </div>
   </div>
 

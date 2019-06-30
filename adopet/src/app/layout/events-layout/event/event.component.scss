@@ -86,4 +86,13 @@
     cursor: pointer;
     border: transparent;
   }
+
+  .subscribed-button {
+    button {
+      background: rgba(0, 0, 0, 0.6);
+      color: #ffffff;
+      font-style: italic;
+      cursor: initial;
+    }
+  }
 }
