@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, NgZone, Optional } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { FormControl } from '@angular/forms';
 import { MapsAPILoader } from '@agm/core';
@@ -6,6 +6,8 @@ import { } from 'googlemaps';
 
 import { EmergencyCase } from '../models/emergency-case.interface';
 import { ReportEmergencyComponent } from './report-emergency/report-emergency.component';
+import { EmergencyCaseService } from '../services/emergency-case/emergency-case.service';
+import { EmergencyDetailsComponent } from './emergency-details/emergency-details.component';
 
 //const webpush = require('web-push');
 
@@ -26,13 +28,13 @@ export class EmergencyComponent implements OnInit {
   @ViewChild('search')
   public searchElementRef: ElementRef;
 
-  constructor(private dialog: MatDialog,
+  constructor(private emergencyCaseService: EmergencyCaseService,
+    private dialog: MatDialog,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone) { }
 
   ngOnInit() {
-    //const vapidKeys = webpush.generateVAPIDKeys();
-    //console.log(vapidKeys);
+    this.emergencyCaseService.getAllEmergencyRequests().subscribe(res => this.emergencyCases = res);
 
     this.searchControl = new FormControl();
     this.setCurrentPosition();
@@ -58,45 +60,45 @@ export class EmergencyComponent implements OnInit {
   }
 
   clickedMarker(index: number) {
-    this.dialog.open(ReportEmergencyComponent, {
+    this.dialog.open(EmergencyDetailsComponent, {
       width: '1000px',
       maxHeight: '900px',
       data: this.emergencyCases[index]
+    }).afterClosed().subscribe((emergency: EmergencyCase) => {
+      if (emergency) {
+        this.emergencyCases[index] = emergency;
+      }
     });
   }
 
   mapClicked($event: any) {
-    this.emergencyCases.push({
-      lat: $event.coords.lat,
-      lng: $event.coords.lng,
-      name: 'lala',
-      phone: 12323,
-      description: 'asdasd'
+    this.dialog.open(ReportEmergencyComponent, {
+      width: '1000px',
+      maxHeight: '900px',
+      data: $event.coords
+    }).afterClosed().subscribe((emergency: EmergencyCase) => {
+      if (emergency) {
+        this.emergencyCases.push(emergency);
+      }
     });
-    // this.dialog.open(ReportEmergencyComponent, {
-    //   width: '1000px',
-    //   maxHeight: '900px',
-    //   data: $event.coords
-    // }).afterClosed().subscribe((emergency: EmergencyCase) => {
-    //   if (emergency) {
-    //     this.emergencyCases.push(emergency);
-    //   }
-    // });
   }
 
   setCurrentPosition() {
     if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.lat = position.coords.latitude;
-        this.lng = position.coords.longitude;
-        this.zoom = 16;
-      });
-    } else {
-      this.lat = 45.9432;
-      this.lng = 24.9668;
-      this.zoom = 6;
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          this.lat = position.coords.latitude;
+          this.lng = position.coords.longitude;
+          this.zoom = 16;
+        },
+        err => {
+          this.lat = 45.9432;
+          this.lng = 24.9668;
+          this.zoom = 8;
+        });
     }
   }
+
 
   // subscribeToNotifications() {
   //   if (this.swPush.isEnabled) {

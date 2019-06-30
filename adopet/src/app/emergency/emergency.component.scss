@@ -7,6 +7,15 @@ agm-map {
   position: absolute;
   top: 100px;
   width: 100%;
+
+  .row {
+    margin: 0;
+  }
+
+  .search-bar {
+    margin-top: 25px;
+    margin-bottom: 50px;
+  }
 }
 
 input {

@@ -1,3 +1,87 @@
-<p>
-  emergency-details works!
-</p>
+<div *ngIf="isMoreDetailsPage; else adoptionRequest">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="close-form" (click)="onClose()">
+        <img src="../../../assets/close.png">
+      </div>
+      <p>Emergency details</p>
+      <hr />
+      <div class="details">
+        <div class="row">
+          <p class="property-name">Reporter name:&nbsp;</p>
+          <p>{{emergency.name}}</p>
+        </div>
+        <div class="row">
+          <p class="property-name">Reporter phone:&nbsp;</p>
+          <p>{{emergency.phone}}</p>
+        </div>
+        <div class="row">
+          <p class="property-name">Address:&nbsp;
+          </p>
+          <p>{{emergency.address}}</p>
+        </div>
+        <div class="row description">
+          <p class="property-name">Description:&nbsp;</p>
+          <p>{{emergency.description}}</p>
+        </div>
+      </div>
+
+      <div *ngIf="isTakenOver()">
+        <p>Taken over</p>
+        <hr />
+        <div class="details">
+          <div class="row">
+            <p class="property-name">Name:&nbsp;</p>
+            <p>{{emergency.takenOverName}}</p>
+          </div>
+          <div class="row">
+            <p class="property-name">Phone:&nbsp;</p>
+            <p>{{emergency.takenOverPhone}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-2 adopt-button" *ngIf="!isTakenOver()">
+    <button (click)="onAcceptCase()">Accept
+      <img src="../../../assets/next.png">
+    </button>
+  </div>
+</div>
+
+<ng-template #adoptionRequest>
+  <div class="close-form" (click)="onClose()">
+    <img src="../../../../assets/close.png">
+  </div>
+  <p>Accept emergency details</p>
+  <hr />
+
+  <form [formGroup]="emergencyForm" (ngSubmit)="onSubmit()">
+    <div class="row form-wrapper">
+      <div class="col-md-6">
+        <label for="name">
+          <span class="input-field">Name</span>
+        </label>
+        <input type="text" placeholder="name" formControlName="name">
+      </div>
+      <div class="col-md-6">
+        <label for="phone">
+          <span class="input-field">Phone</span>
+        </label>
+        <input type="text" placeholder="phone" formControlName="phone">
+      </div>
+    </div>
+
+    <div class="row button-wrapper">
+      <div class="col-md-2">
+        <button (click)="onBack()">
+          <img src="../../../assets/previous.png"> Back
+        </button>
+      </div>
+      <div class="col-md-2 submit-button">
+        <button type="submit" [disabled]="submittedForm">Accept</button>
+      </div>
+    </div>
+  </form>
+</ng-template>

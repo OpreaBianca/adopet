@@ -48,7 +48,6 @@ import { EmergencyComponent } from './emergency/emergency.component';
 import { AgmCoreModule } from '@agm/core';
 import { ReportEmergencyComponent } from './emergency/report-emergency/report-emergency.component';
 import { EmergencyDetailsComponent } from './emergency/emergency-details/emergency-details.component';
-import { environment } from '../environments/environment';
 
 @NgModule({
   entryComponents: [
@@ -60,7 +59,8 @@ import { environment } from '../environments/environment';
     EditProfileComponent,
     AddEventComponent,
     DeleteEventComponent,
-    ReportEmergencyComponent
+    ReportEmergencyComponent,
+    EmergencyDetailsComponent
   ],
   declarations: [
     AppComponent,

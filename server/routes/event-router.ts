@@ -23,7 +23,6 @@ class EventRouter {
         .sort({ date: 1 });
       return res.json(events);
     } catch (err) {
-      console.log(err);
       return res.status(500).json(err);
     }
   }

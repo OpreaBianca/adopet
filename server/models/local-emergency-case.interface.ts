@@ -1,4 +1,4 @@
-export interface EmergencyCase {
+export interface LocalEmergencyCase {
   _id?: string;
   lat: number;
   lng: number;

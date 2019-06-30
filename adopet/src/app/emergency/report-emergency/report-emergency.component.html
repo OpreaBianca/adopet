@@ -1,0 +1,45 @@
+<div class="form-wrapper">
+  <div class="close-form" (click)="onClose()">
+    <img src="../../../../assets/close.png">
+  </div>
+  <p>Emergency details</p>
+  <hr />
+
+  <form [formGroup]="emergencyForm" (ngSubmit)="onSubmit()">
+    <div class="form-inputs">
+      <div class="row">
+        <div class="col-md-6">
+          <label for="name">
+            <span class="input-field">Name</span>
+          </label>
+          <input type="text" placeholder="name" formControlName="name">
+        </div>
+        <div class="col-md-6">
+          <label for="phone">
+            <span class="input-field">Phone</span>
+          </label>
+          <input type="text" placeholder="phone" formControlName="phone">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <label for="address">
+            <span>Address</span>
+          </label>
+          <input type="text" placeholder="address" formControlName="address">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <label for="description">
+            <span class="input-field">Description</span>
+          </label>
+          <textarea placeholder="description" formControlName="description" class="description"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2 submit-button">
+      <button type="submit" [disabled]="submittedForm">Save</button>
+    </div>
+  </form>
+</div>
