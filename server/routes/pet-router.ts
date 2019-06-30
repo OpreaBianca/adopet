@@ -19,7 +19,7 @@ class PetRouter {
 
   async getAllPets(req: Request, res: Response) {
     try {
-      const pets = await Pet.find()
+      const pets = await Pet.find({ $or: [{ status: 'Placed for adoption/foster' }, { status: 'Looking for the owner' }] })
         .sort({ creationDate: -1 });
       return res.json(pets);
     } catch (err) {
