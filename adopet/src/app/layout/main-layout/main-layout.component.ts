@@ -10,7 +10,7 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class MainLayoutComponent implements OnInit {
 
-  constructor(private authService: AuthService,
+  constructor(public authService: AuthService,
     private router: Router) { }
 
   ngOnInit() { }

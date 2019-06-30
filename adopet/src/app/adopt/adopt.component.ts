@@ -12,6 +12,7 @@ import { PetService } from '../services/pet/pet.service';
 export class AdoptComponent implements OnInit {
   searchForm: FormGroup;
   successfulRequest = false;
+  submittedForm = false;
   pets: Pet[] = [];
 
   genders = ['Female', 'Male'];
@@ -48,4 +49,6 @@ export class AdoptComponent implements OnInit {
       fitFor: new FormControl('')
     });
   }
+
+  onSubmit() { }
 }

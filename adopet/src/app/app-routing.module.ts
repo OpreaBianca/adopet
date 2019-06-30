@@ -15,6 +15,7 @@ import { ProfileLayoutComponent } from './layout/profile-layout/profile-layout.c
 import { MyEventsComponent } from './profile/my-events/my-events.component';
 import { UpcomingEventsComponent } from './upcoming-events/upcoming-events.component';
 import { SheltersComponent } from './shelters/shelters.component';
+import { EmergencyComponent } from './emergency/emergency.component';
 
 const routes: Routes = [
   {
@@ -40,7 +41,8 @@ const routes: Routes = [
       },
       { path: 'adopt', component: AdoptComponent },
       { path: 'upcoming-events', component: UpcomingEventsComponent },
-      { path: 'shelters', component: SheltersComponent }
+      { path: 'shelters', component: SheltersComponent },
+      { path: 'emergency', component: EmergencyComponent }
     ]
   }
 ];

@@ -44,6 +44,11 @@ import { DeleteEventComponent } from './profile/my-events/delete-event/delete-ev
 import { UpcomingEventsComponent } from './upcoming-events/upcoming-events.component';
 import { SheltersComponent } from './shelters/shelters.component';
 import { ShelterComponent } from './shelters/shelter/shelter.component';
+import { EmergencyComponent } from './emergency/emergency.component';
+import { AgmCoreModule } from '@agm/core';
+import { ReportEmergencyComponent } from './emergency/report-emergency/report-emergency.component';
+import { EmergencyDetailsComponent } from './emergency/emergency-details/emergency-details.component';
+import { environment } from '../environments/environment';
 
 @NgModule({
   entryComponents: [
@@ -54,7 +59,8 @@ import { ShelterComponent } from './shelters/shelter/shelter.component';
     ChatComponent,
     EditProfileComponent,
     AddEventComponent,
-    DeleteEventComponent
+    DeleteEventComponent,
+    ReportEmergencyComponent
   ],
   declarations: [
     AppComponent,
@@ -88,7 +94,10 @@ import { ShelterComponent } from './shelters/shelter/shelter.component';
     DeleteEventComponent,
     UpcomingEventsComponent,
     SheltersComponent,
-    ShelterComponent
+    ShelterComponent,
+    EmergencyComponent,
+    ReportEmergencyComponent,
+    EmergencyDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -102,7 +111,11 @@ import { ShelterComponent } from './shelters/shelter/shelter.component';
     AppRoutingModule,
     ValidationModule,
     MaterialModule,
-    AuthModule
+    AuthModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAqD1_6iiKOrteqphXnumDaNavczc60uT8',
+      libraries: ['places']
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
