@@ -48,6 +48,8 @@ import { EmergencyComponent } from './emergency/emergency.component';
 import { AgmCoreModule } from '@agm/core';
 import { ReportEmergencyComponent } from './emergency/report-emergency/report-emergency.component';
 import { EmergencyDetailsComponent } from './emergency/emergency-details/emergency-details.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   entryComponents: [
@@ -115,7 +117,8 @@ import { EmergencyDetailsComponent } from './emergency/emergency-details/emergen
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAqD1_6iiKOrteqphXnumDaNavczc60uT8',
       libraries: ['places']
-    })
+    }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

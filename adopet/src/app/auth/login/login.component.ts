@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SwPush } from '@angular/service-worker';
 
 import { AuthService } from '../auth.service';
 import { UserCredentials } from '../../models/user-credentials.interface';
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
   userCredentials: UserCredentials;
   submittedForm = false;
 
-  constructor(private authService: AuthService,
+  constructor(private swPush: SwPush,
+    private authService: AuthService,
     private router: Router) { }
 
   ngOnInit() {
@@ -38,6 +40,17 @@ export class LoginComponent implements OnInit {
         res => this.authService.authenticateUser(res.token),
         err => console.log(err)
       );
+    }
+  }
+
+  onSubscribe() {
+    if (this.swPush.isEnabled) {
+      console.log('is enabled')
+      this.swPush.requestSubscription({
+        serverPublicKey: 'BO96fFlC_JWjliSJ8KbIvU-juIecaSkKus27FBrDsSF8pctCQ4JdE3spcM2xH7hC7Qr5lAGIWZ8VRvYhHMn_uTQ'
+      })
+        .then(subscribition => console.log(subscribition))
+        .catch(err => console.log(err));
     }
   }
 }

@@ -5,6 +5,7 @@ import * as bodyParser from 'body-parser';
 import * as expressSession from 'express-session';
 import * as cors from 'cors';
 import * as cookieParser from 'cookie-parser';
+import * as webpush from 'web-push';
 
 import IndexRouter from './routes';
 
@@ -22,7 +23,8 @@ class App {
   }
 
   public config(): void {
-    this.express.use(express.static(path.join(__dirname, '../public')));
+    this.express.use(express.static(path.join(__dirname, '../../adopet/dist/adopet/')));
+    //this.express.use(express.static(path.join(__dirname, '../public')));
     this.express.use(cors());
     this.express.use(cookieParser());
     this.express.use(bodyParser.json());
@@ -30,6 +32,13 @@ class App {
     this.express.use(expressSession({ secret: 'shh', resave: true, saveUninitialized: false }));
     this.express.use(passport.initialize());
     this.express.use(passport.session());
+
+    webpush.setVapidDetails(
+      'http://localhost:3000',
+      // 'mailto:bianca.oprearand@gmail.com',
+      'BO96fFlC_JWjliSJ8KbIvU-juIecaSkKus27FBrDsSF8pctCQ4JdE3spcM2xH7hC7Qr5lAGIWZ8VRvYhHMn_uTQ',
+      '91zgm9Bh_nc3wMvNYpGhZKeEiaJjVplMWftkupf1AR8'
+    )
   }
 
   public api(): void {
@@ -38,7 +47,8 @@ class App {
 
   public setRoutes(): void {
     this.express.get('/', (req, res) => {
-      res.sendFile(path.join(__dirname, '../public/index.html'));
+      res.sendFile(path.join(__dirname, '../../adopet/dist/adopet/index.html'));
+      // res.sendFile(path.join(__dirname, '../public/index.html'));
     });
   }
 

@@ -18,12 +18,14 @@ export class AuthService {
     private router: Router) { }
 
   signUp(user: User): Observable<any> {
+    // return this.http.post(`auth/sign-up`, user).pipe(
     return this.http.post(`${environment.apiPath}/auth/sign-up`, user).pipe(
       catchError((err) => observableThrowError(err))
     );
   }
 
   login(userCredentials: UserCredentials): Observable<any> {
+    // return this.http.post(`auth/login`, userCredentials).pipe(
     return this.http.post(`${environment.apiPath}/auth/login`, userCredentials).pipe(
       catchError((err) => observableThrowError(err))
     );

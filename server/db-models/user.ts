@@ -18,5 +18,6 @@ export default mongoose.model('User', {
   bankAccount: String,
   bankAccountName: String,
   paypalAccount: String,
-  donationsInfo: String
+  donationsInfo: String,
+  subscription: {}
 });

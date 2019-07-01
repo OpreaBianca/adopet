@@ -21,7 +21,7 @@ export class EventComponent implements OnInit {
   user: User;
 
   constructor(private eventService: EventService,
-    private authService: AuthService,
+    public authService: AuthService,
     private dialog: MatDialog,
     private router: Router,
     private domSanitizer: DomSanitizer) { }

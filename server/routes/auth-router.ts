@@ -14,6 +14,7 @@ class AuthRouter {
 
   private init() {
     this.router.post('/sign-up', (req, res, next) => {
+      console.log('sign up');
       setupSignUpStrategy(passport);
       passport.authenticate('sign-up', { session: false }, async (err: any, user: any, info: any) => {
         if (err) {
