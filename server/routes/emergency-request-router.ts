@@ -28,7 +28,7 @@ class EmergencyRequestRouter {
 
   async getRequestsByTakenOver(req: Request, res: Response) {
     try {
-      const emergencyCases = await EmergencyCase.find({ takenOver: req.user.user._id })
+      const emergencyCases = await EmergencyCase.find({ takenOverID: req.user.user._id })
         .sort({ creationDate: -1 });
       return res.json(emergencyCases);
     } catch (err) {

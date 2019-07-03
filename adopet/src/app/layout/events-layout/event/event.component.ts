@@ -63,6 +63,6 @@ export class EventComponent implements OnInit {
   }
 
   isMyEventsPage() {
-    return this.router.url === '/profile/my-events';
+    return this.router.url === '/profile/events/created';
   }
 }

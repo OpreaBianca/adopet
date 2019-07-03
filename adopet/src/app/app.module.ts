@@ -50,6 +50,8 @@ import { ReportEmergencyComponent } from './emergency/report-emergency/report-em
 import { EmergencyDetailsComponent } from './emergency/emergency-details/emergency-details.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { MyNotificationsComponent } from './profile/my-notifications/my-notifications.component';
+import { SubscribedEventsComponent } from './profile/my-events/subscribed-events/subscribed-events.component';
 
 @NgModule({
   entryComponents: [
@@ -99,7 +101,9 @@ import { environment } from '../environments/environment';
     ShelterComponent,
     EmergencyComponent,
     ReportEmergencyComponent,
-    EmergencyDetailsComponent
+    EmergencyDetailsComponent,
+    MyNotificationsComponent,
+    SubscribedEventsComponent
   ],
   imports: [
     BrowserModule,

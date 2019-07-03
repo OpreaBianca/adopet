@@ -87,6 +87,6 @@ export class EventsLayoutComponent implements OnInit {
   }
 
   isMyEventsPage() {
-    return this.router.url === '/profile/my-events';
+    return this.router.url.includes('/profile/events');
   }
 }

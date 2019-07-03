@@ -13,6 +13,8 @@ import { SentRequestsComponent } from './profile/adoption-requests/sent-requests
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 import { ProfileLayoutComponent } from './layout/profile-layout/profile-layout.component';
 import { MyEventsComponent } from './profile/my-events/my-events.component';
+import { MyNotificationsComponent } from './profile/my-notifications/my-notifications.component';
+import { SubscribedEventsComponent } from './profile/my-events/subscribed-events/subscribed-events.component';
 import { UpcomingEventsComponent } from './upcoming-events/upcoming-events.component';
 import { SheltersComponent } from './shelters/shelters.component';
 import { EmergencyComponent } from './emergency/emergency.component';
@@ -27,9 +29,16 @@ const routes: Routes = [
       {
         path: 'profile', component: ProfileLayoutComponent, canActivate: [AuthGuard], children: [
           { path: '', redirectTo: 'my-pets', pathMatch: 'full' },
-          { path: 'my-pets', component: MyPetsComponent },
-          { path: 'my-events', component: MyEventsComponent },
+          { path: 'my-pets', component: MyPetsComponent },       
+          { path: 'my-notifications', component: MyNotificationsComponent },
           { path: 'favorites', component: FavoritesComponent },
+          {
+            path: 'events', children: [
+              { path: '', redirectTo: 'created', pathMatch: 'full' },
+              { path: 'created', component: MyEventsComponent },
+              { path: 'subscribed', component: SubscribedEventsComponent },
+            ]
+          },   
           {
             path: 'adoption-requests', children: [
               { path: '', redirectTo: 'received', pathMatch: 'full' },

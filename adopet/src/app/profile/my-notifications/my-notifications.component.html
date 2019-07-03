@@ -1,0 +1,19 @@
+<div class="form-group">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 search-bar">
+      <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text"
+        class="form-control" #search [formControl]="searchControl">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+        <agm-marker *ngFor="let emergency of emergencyCases; let i = index" (markerClick)="clickedMarker(i)"
+          [latitude]="emergency.lat" [longitude]="emergency.lng">
+        </agm-marker>
+      </agm-map>
+    </div>
+  </div>
+</div>

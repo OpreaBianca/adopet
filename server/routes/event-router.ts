@@ -37,6 +37,16 @@ class EventRouter {
     }
   }
 
+  async getEventsBySubscriber(req: Request, res: Response) {
+    try {
+      const events = await Event.find({ subscribers: { $all: [req.user.user._id] } })
+        .sort({ date: -1 });
+      return res.json(events);
+    } catch (err) {
+      return res.status(500).json(err);
+    }
+  }
+
   insertEvent(req: Request, res: Response) {
     const filesPath = path.join(__dirname, `${this.uploadPath}/${req.user.user._id}`);
     if (!fs.existsSync(filesPath)) {
@@ -81,7 +91,6 @@ class EventRouter {
 
   subscribeEvent(req: Request, res: Response) {
     const localEvent: LocalEvent = req.body;
-    console.log(localEvent);
 
     Event.update({ _id: localEvent._id }, { $set: localEvent }, err => {
       if (err) {
@@ -111,6 +120,7 @@ class EventRouter {
   init() {
     this.router.get('/', jwt({ secret: AuthConfig.jwtSecret }), this.getEventsByCreator.bind(this));
     this.router.get('/all', this.getAllEvents.bind(this));
+    this.router.get('/subscriber', jwt({ secret: AuthConfig.jwtSecret }), this.getEventsBySubscriber.bind(this));
     this.router.post('/', jwt({ secret: AuthConfig.jwtSecret }), this.insertEvent.bind(this));
     this.router.put('/', jwt({ secret: AuthConfig.jwtSecret }), this.subscribeEvent.bind(this));
     this.router.delete('/', jwt({ secret: AuthConfig.jwtSecret }), this.deleteEvent.bind(this));

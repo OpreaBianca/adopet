@@ -25,6 +25,12 @@ export class EventService {
     );
   }
 
+  getEventsBySubscriber(): Observable<any> {
+    return this.http.get(`${environment.apiPath}/event/subscriber`).pipe(
+      catchError((err) => observableThrowError(err))
+    );
+  }
+
   addEvent(formData: FormData): Observable<any> {
     return this.http.post(`${environment.apiPath}/event`, formData).pipe(
       catchError((err) => observableThrowError(err))

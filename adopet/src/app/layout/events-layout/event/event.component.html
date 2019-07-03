@@ -36,7 +36,7 @@
     </div>
   </div>
 
-  <div class="row button-wrapper">
+  <div class="row button-wrapper" *ngIf="!isMyEventsPage()">
     <hr />
     <div class="col-md-8"></div>
     <div class="col-md-4 submit-button" *ngIf="!isUserSubscribed() && this.authService.isAuthenticated()">

@@ -19,7 +19,8 @@ import { EditProfileComponent } from '../../profile/edit-profile/edit-profile.co
 export class ProfileLayoutComponent implements OnInit, OnDestroy {
   user: User;
   active = false;
-  hideSubmenu = false;
+  hideSubmenu = true;
+  hideEventSubmenu = true;
 
   uploader: FileUploader = new FileUploader({});
 
@@ -92,5 +93,19 @@ export class ProfileLayoutComponent implements OnInit, OnDestroy {
 
   openCloseSubmenu() {
     this.hideSubmenu = !this.hideSubmenu;
+    if (!this.hideSubmenu) {
+      this.hideEventSubmenu = true;
+    }
+  }
+
+  isChildLinkActiveEvents() {
+    return this.router.url.includes('events');
+  }
+
+  openCloseEventSubmenu() {
+    this.hideEventSubmenu = !this.hideEventSubmenu;
+     if (!this.hideEventSubmenu) {
+      this.hideSubmenu = true;
+    }
   }
 }
