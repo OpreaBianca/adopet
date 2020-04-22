@@ -1,8 +1,7 @@
 <div class="page-wrapper">
   <div class="navbar">
     <ul>
-      <!--Despre cum functioneaza aplicatia-->
-      <li>ABOUT US</li>
+      <li><a routerLink="/home" routerLinkActive="active">HOME</a></li>
       <!--Lista cu animale oferite pentru adoptie-->
       <li><a routerLink="/adopt" routerLinkActive="active">ADOPT</a></li>
       <!--List cu adaposturi: Descriere, locatie, contact, how to donate, posibilitatea de a le vizita profilul-->
@@ -12,9 +11,11 @@
       <!-- <li><a routerLink="/veterinary" routerLinkActive="active">VETERINARY</a></li> -->
 
       <!--Raportare cazuri de urgenta: harta + deschidere form cu descriere, contact etc-->
-      <li><a routerLink="/emergency" routerLinkActive="active">EMERGENCY</a></li>
+      <!-- <li><a routerLink="/emergency" routerLinkActive="active">EMERGENCY</a></li> -->
+      <li><a>EMERGENCY</a></li>
       <!--Evenimente-->
-      <li><a routerLink="/upcoming-events" routerLinkActive="active">UPCOMING EVENTS</a></li>
+      <!-- <li><a routerLink="/upcoming-events" routerLinkActive="active">UPCOMING EVENTS</a></li> -->
+      <li><a>UPCOMING EVENTS</a></li>
       <li *ngIf="!authService.isAuthenticated()"><a routerLink="/login" routerLinkActive="active">LOGIN</a></li>
       <li *ngIf="authService.isAuthenticated()">
         <div class="dropdown">

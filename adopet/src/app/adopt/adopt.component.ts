@@ -16,12 +16,14 @@ export class AdoptComponent implements OnInit {
   pets: Pet[] = [];
   displayedPets: Pet[] = [];
 
+  isFullPage = true;
+
   genders = ['any', 'Female', 'Male'];
   goodWith = ['Kids', 'Elders', 'People with disabilities', 'Dogs', 'Cats', 'Other animals'];
   categories = ['any', 'Dog', 'Cat', 'Rabbit', 'Fish'];
   ageRanges = ['any', '< 1 years', '1 - 5 years', '> 5 years'];
   fitFor = ['Apartment', 'House', 'Outdoor'];
-  locations = ['Bucharest', 'Teleorman'];
+  locations = ['Bucharest', 'Teleorman', 'Constanta', 'Cluj', 'Brasov', 'Bacau'];
   sizes = ['any', 'Small', 'Medium', 'Large'];
   actions = [
     { name: 'any' },

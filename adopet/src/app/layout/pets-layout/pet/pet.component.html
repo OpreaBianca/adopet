@@ -28,22 +28,27 @@
     </div>
 
     <div *ngIf="isMyPetsPage() else notMyPets">
-      <div class="right-image" (click)="editPet()">
+      <!-- <div class="right-image" (click)="editPet()"> -->
+      <div class="right-image">
         <img src="../../../assets/view-more.png">
       </div>
-      <div class="left-image" (click)="deletePet()">
+      <!-- <div class="left-image" (click)="deletePet()"> -->
+      <div class="left-image">
         <img src="../../../assets/delete.png">
       </div>
     </div>
 
     <ng-template #notMyPets>
       <div *ngIf="!isMyPetsPage()">
-        <div class="right-image" (click)="viewPetDetails()">
+        <!-- <div class="right-image" (click)="viewPetDetails()"> -->
+        <div class="right-image">
           <img src="../../../assets/view-more.png">
         </div>
         <div class="left-image" *ngIf="authService.isAuthenticated()">
-          <img src=" ../../../../assets/empty-heart.png" *ngIf="!isFavorite()" (click)="addToFavorites()">
-          <img src="../../../../assets/full-heart.png" *ngIf="isFavorite()" (click)="removeFromFavorites()">
+          <!-- <img src=" ../../../../assets/empty-heart.png" *ngIf="!isFavorite()" (click)="addToFavorites()"> -->
+          <!-- <img src="../../../../assets/full-heart.png" *ngIf="isFavorite()" (click)="removeFromFavorites()"> -->
+          <img src=" ../../../../assets/empty-heart.png" *ngIf="!isFavorite()">
+          <img src="../../../../assets/full-heart.png" *ngIf="isFavorite()">
         </div>
       </div>
     </ng-template>

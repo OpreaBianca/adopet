@@ -1,0 +1,17 @@
+{
+  "ExpandedNodes": [
+    "\\adopet\\src",
+    "\\adopet\\src\\app",
+    "\\adopet\\src\\app\\layout",
+    "\\adopet\\src\\app\\models",
+    "\\adopet\\src\\app\\profile",
+    "\\adopet\\src\\app\\profile\\my-pets",
+    "\\adopet\\src\\app\\services",
+    "\\adopet\\src\\app\\validation",
+    "\\server",
+    "\\server\\config",
+    "\\server\\db-models",
+    "\\server\\routes"
+  ],
+  "PreviewInSolutionExplorer": false
+}

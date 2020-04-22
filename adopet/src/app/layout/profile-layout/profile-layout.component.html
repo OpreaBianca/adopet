@@ -17,32 +17,39 @@
     <div class="menu">
       <ul>
         <li><a routerLink="/profile/my-pets" routerLinkActive="active">PETS</a></li>
-        <li><a routerLink="/profile/favorites" routerLinkActive="active">FAVORITES</a></li>
+        <!-- <li><a routerLink="/profile/favorites" routerLinkActive="active">FAVORITES</a></li> -->
+        <li><a>FAVORITES</a></li>
         <li class="submenu">
           <a [ngClass]="{'active': isChildLinkActive()}" (click)="openCloseSubmenu()">ADOPTION REQUESTS</a>
           <ul [ngClass]="{'hidden-submenu': hideSubmenu}">
             <hr />
-            <li class="received"><a routerLink="/profile/adoption-requests/received"
+            <!-- <li class="received"><a routerLink="/profile/adoption-requests/received"
                 routerLinkActive="active">RECEIVED</a></li>
-            <li class="sent"><a routerLink="/profile/adoption-requests/sent" routerLinkActive="active">SENT</a></li>
+            <li class="sent"><a routerLink="/profile/adoption-requests/sent" routerLinkActive="active">SENT</a></li> -->
+            <li class="received"><a>RECEIVED</a></li>
+            <li class="sent"><a>SENT</a></li>
             <hr class="last-hr" />
           </ul>
         </li>
         <!-- Aici daca nu a bifat pentru a primi notifications trebuie sa apara ceva de genul: aboneaza-te la notificari si ceva gen - more about emergency notifications -->
-        <li><a routerLink="/profile/my-notifications" routerLinkActive="active">NOTIFICATIONS</a></li>
+        <!-- <li><a routerLink="/profile/my-notifications" routerLinkActive="active">NOTIFICATIONS</a></li> -->
+        <li><a>NOTIFICATIONS</a></li>
         <!-- <li>CONTRIBUTE WITH AN ARTICLE</li> -->
         <li class="submenu">
           <a [ngClass]="{'active': isChildLinkActiveEvents()}" (click)="openCloseEventSubmenu()">EVENTS</a>
           <ul [ngClass]="{'hidden-submenu': hideEventSubmenu}">
             <hr />
-            <li class="received"><a routerLink="/profile/events/created"
-                routerLinkActive="active">CREATED BY ME</a></li>
-            <li class="sent"><a routerLink="/profile/events/subscribed" routerLinkActive="active">SUBSCRIBED TO</a></li>
+            <!-- <li class="received"><a routerLink="/profile/events/created" routerLinkActive="active">CREATED BY ME</a>
+            </li> -->
+            <li class="received"><a>CREATED BY ME</a></li>
+            <!-- <li class="sent"><a routerLink="/profile/events/subscribed" routerLinkActive="active">SUBSCRIBED TO</a></li> -->
+            <li class="sent"><a>SUBSCRIBED TO</a></li>
             <hr class="last-hr" />
           </ul>
         </li>
         <li>
-          <img src="../../../assets/settings.png" matTooltip="Edit contact and donations info" (click)="onEditInfo()">
+          <!-- <img src="../../../assets/settings.png" matTooltip="Edit contact and donations info" (click)="onEditInfo()"> -->
+          <img src="../../../assets/settings.png" matTooltip="Edit contact and donations info">
         </li>
       </ul>
     </div>

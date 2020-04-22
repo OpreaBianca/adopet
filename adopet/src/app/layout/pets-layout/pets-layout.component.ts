@@ -15,6 +15,7 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class PetsLayoutComponent implements OnInit, OnDestroy {
   @Input() pets: Pet[] = [];
+  @Input() isFullPage = false;
 
   user: User;
   numberPerPage = 8;
@@ -40,8 +41,8 @@ export class PetsLayoutComponent implements OnInit, OnDestroy {
 
   addPet() {
     this.dialog.open(AddPetComponent, {
-      width: '1000px',
-      maxHeight: '900px',
+      width: '800px',
+      maxHeight: '1000px',
       disableClose: true
     }).afterClosed().subscribe((pet: Pet) => {
       if (pet) {

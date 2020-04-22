@@ -10,7 +10,7 @@
   <!-- Display images -->
   <div class="row images-wrapper">
     <ngx-loading [show]="isLoading()" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
-    <div class="image-container col-md-2" *ngFor="let item of files">
+    <div class="image-container col-md-3" *ngFor="let item of files">
       <img src="../../../../assets/remove-image.png" class="remove-image" matTooltip="Remove image"
         (click)="removeImage(item)" />
       <img src="" thumbnail [image]="item?._file" class="image" />

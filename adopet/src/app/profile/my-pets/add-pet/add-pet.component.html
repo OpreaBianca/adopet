@@ -10,7 +10,7 @@
   <form [formGroup]="addPetForm">
     <div class="form-inputs">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
           <label for="name">
             <span class="input-field">Name</span>
           </label>
@@ -29,8 +29,7 @@
           <mat-select formControlName="goodWith" placeholder="good with" multiple>
             <mat-option *ngFor="let goodWith of goodWith" [value]="goodWith">{{goodWith}}</mat-option>
           </mat-select>
-        </div>
-        <div class="col-md-4">
+
           <label for="category">
             <span class="input-field">Category</span>
           </label>
@@ -53,15 +52,15 @@
               </mat-select>
             </div>
           </div>
-
+        </div>
+        <div class="col-md-6">
           <label for="fitFor">
             <span class="input-field">Fit for</span>
           </label>
           <mat-select formControlName="fitFor" placeholder="fit for" multiple>
             <mat-option *ngFor="let fitFor of fitFor" [value]="fitFor">{{fitFor}} </mat-option>
           </mat-select>
-        </div>
-        <div class="col-md-4">
+
           <label for="location">
             <span class="input-field">Location</span>
           </label>
@@ -93,7 +92,7 @@
         </div>
       </div>
 
-      <div class="row foster" *ngIf="!fosterFormVisible && !isAdopted()">
+      <!-- <div class="row foster" *ngIf="!fosterFormVisible && !isAdopted()">
         Is the pet currently in foster? Add the details <p (click)="showFosterForm(true)"> &nbsp;here.</p>
       </div>
       <app-add-adopter formTitle="Adopter" [data]="adopter" (formReady)="formInitialized('adopter', $event)"
@@ -104,7 +103,7 @@
       </app-add-adopter>
       <app-add-adopter formTitle="Foster" [data]="foster" (formVisible)="showFosterForm($event)"
         (formReady)="formInitialized('foster', $event)" *ngIf="!isAdopted() && fosterFormVisible">
-      </app-add-adopter>
+      </app-add-adopter> -->
     </div>
     <div class="col-md-2 submit-button">
       <button type="submit" [disabled]="submittedForm" (click)="onAddPet()" *ngIf="!pet">Save</button>

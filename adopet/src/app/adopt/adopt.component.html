@@ -1,4 +1,4 @@
-<div class="details-wrapper">
+<!-- <div class="details-wrapper">
   <div class="search-section-wrapper">
     <div class="search-form">
       <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
@@ -72,5 +72,6 @@
       </form>
     </div>
   </div>
-</div>
-<app-pets-layout [pets]="displayedPets" *ngIf="successfulRequest"></app-pets-layout>
+</div> -->
+
+<app-pets-layout [pets]="displayedPets" *ngIf="successfulRequest" [isFullPage]="isFullPage"></app-pets-layout>

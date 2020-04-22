@@ -55,7 +55,7 @@ class App {
   public connectToDb() {
     mongoose.connect('mongodb://adopet:adopet1234@ds155396.mlab.com:55396/adopet', { useNewUrlParser: true }, err => {
       if (err) {
-        console.log('Some problem with the connection ' + err);
+        console.log('Mongoose connection failed: ' + err);
       } else {
         console.log('The Mongoose connection is ready');
       }
