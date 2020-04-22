@@ -47,7 +47,7 @@
           outline: 5px auto -webkit-focus-ring-color;
         }
       }
-    
+
       button {
         height: 45px;
         background: #3a8584;
@@ -60,24 +60,11 @@
         border: transparent;
         margin-top: 25px;
         padding: 0 20px;
+      }
+    
+      .search-btn {
+        background: #fcb421;
         float: right;
-
-        p {
-          margin: 0;
-          padding-top: 2px;
-        }
-
-        img {
-          width: 30px;
-        }
-          
-        &:hover {
-          background: rgba(58, 133, 132, 0.7);
-        }
-
-        &:disabled {
-          cursor: progress;
-        }
       }
     }
   }

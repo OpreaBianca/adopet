@@ -19,7 +19,7 @@
       <li *ngIf="!authService.isAuthenticated()"><a routerLink="/login" routerLinkActive="active">LOGIN</a></li>
       <li *ngIf="authService.isAuthenticated()">
         <div class="dropdown">
-          <a [ngClass]="{'active': isChildLinkActive()}">HOME</a>
+          <a [ngClass]="{'active': isChildLinkActive()}">PROFILE</a>
           <div class="dropdown-content">
             <a routerLink="/profile">MY PROFILE</a>
             <a (click)="authService.logout()">LOGOUT</a>

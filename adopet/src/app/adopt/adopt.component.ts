@@ -123,4 +123,18 @@ export class AdoptComponent implements OnInit {
       });
     }
   }
+
+  clearFilters() {
+    this.searchForm.patchValue({
+      action: this.actions[0],
+      category: 'any',
+      location: '',
+      gender: 'any',
+      ageRange: 'any',
+      size: 'any',
+      goodWith: '',
+      fitFor: ''
+    });
+    this.displayedPets = [...this.pets];
+  }
 }

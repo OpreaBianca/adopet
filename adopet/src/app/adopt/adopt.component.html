@@ -1,4 +1,4 @@
-<!-- <div class="details-wrapper">
+<div class="details-wrapper">
   <div class="search-section-wrapper">
     <div class="search-form">
       <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
@@ -59,19 +59,11 @@
           <mat-option *ngFor="let goodWith of goodWith" [value]="goodWith">{{goodWith}}</mat-option>
         </mat-select>
 
-        <button type="submit" [disabled]="submittedForm">
-          <div class="row">
-            <div class="col-md-7">
-              <p>Search...</p>
-            </div>
-            <div class="col-md-5">
-              <img src="../../assets/search.png">
-            </div>
-          </div>
-        </button>
+        <button (click)="clearFilters()">Clear filters</button>
+        <button type="submit" [disabled]="submittedForm" class="search-btn">Search</button>
       </form>
     </div>
   </div>
-</div> -->
+</div>
 
-<app-pets-layout [pets]="displayedPets" *ngIf="successfulRequest" [isFullPage]="isFullPage"></app-pets-layout>
+<app-pets-layout [pets]="displayedPets" *ngIf="successfulRequest"></app-pets-layout>

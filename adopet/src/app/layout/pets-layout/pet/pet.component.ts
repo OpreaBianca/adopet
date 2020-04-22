@@ -37,8 +37,8 @@ export class PetComponent implements OnInit {
 
   editPet() {
     this.dialog.open(AddPetComponent, {
-      width: '1000px',
-      maxHeight: '900px',
+      width: '800px',
+      maxHeight: '1000px',
       disableClose: true,
       data: this.pet
     }).afterClosed().subscribe((updatedPet: Pet) => {

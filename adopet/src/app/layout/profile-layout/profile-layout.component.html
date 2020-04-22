@@ -17,8 +17,7 @@
     <div class="menu">
       <ul>
         <li><a routerLink="/profile/my-pets" routerLinkActive="active">PETS</a></li>
-        <!-- <li><a routerLink="/profile/favorites" routerLinkActive="active">FAVORITES</a></li> -->
-        <li><a>FAVORITES</a></li>
+        <li><a routerLink="/profile/favorites" routerLinkActive="active">FAVORITES</a></li>
         <li class="submenu">
           <a [ngClass]="{'active': isChildLinkActive()}" (click)="openCloseSubmenu()">ADOPTION REQUESTS</a>
           <ul [ngClass]="{'hidden-submenu': hideSubmenu}">
