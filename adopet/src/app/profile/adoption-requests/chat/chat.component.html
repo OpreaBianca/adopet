@@ -22,13 +22,7 @@
       <div class="col-md-1 profile-picture">
         <div class="row">
           <mat-card class="profile-picture-card">
-            <div *ngIf="data.user.profileImageUrl">
-              <img mat-card-avatar [src]="domSanitizer.bypassSecurityTrustUrl(data.user.profileImageUrl)"
-                (click)="fileInput.click()">
-            </div>
-            <div *ngIf="!data.user.profileImageUrl && data.user.profileImage === ''">
-              <img mat-card-avatar src="../../../assets/profile-picture-replacer.png" (click)="fileInput.click()">
-            </div>
+            <img mat-card-avatar src="../../../assets/profile-picture-replacer.png" (click)="fileInput.click()">
           </mat-card>
         </div>
       </div>
@@ -39,13 +33,7 @@
         <div class=" col-md-1 profile-picture">
           <div class="row">
             <mat-card class="profile-picture-card">
-              <div *ngIf="getOtherUser().profileImageUrl">
-                <img mat-card-avatar [src]="domSanitizer.bypassSecurityTrustUrl(getOtherUser().profileImageUrl)"
-                  (click)="fileInput.click()">
-              </div>
-              <div *ngIf="!getOtherUser().profileImageUrl && getOtherUser().profileImage === ''">
-                <img mat-card-avatar src="../../../assets/profile-picture-replacer.png" (click)="fileInput.click()">
-              </div>
+              <img mat-card-avatar src="../../../assets/profile-picture-replacer.png" (click)="fileInput.click()">
             </mat-card>
           </div>
         </div>

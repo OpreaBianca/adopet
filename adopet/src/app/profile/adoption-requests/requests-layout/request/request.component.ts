@@ -40,19 +40,8 @@ export class RequestComponent implements OnInit {
   }
 
   onOpenChat() {
-    combineLatest(this.imageService.getImageByName(this.adoptionRequest.owner.profileImage, this.adoptionRequest.owner._id),
-      this.imageService.getImageByName(this.adoptionRequest.adopter.profileImage, this.adoptionRequest.adopter._id)).subscribe(
-        res => {
-          console.log(res);
-          this.adoptionRequest.owner.profileImageUrl = URL.createObjectURL(res[0]);
-          this.adoptionRequest.adopter.profileImageUrl = URL.createObjectURL(res[1]);
-
-          this.setCurrentUser();
-
-          this.openChat();
-        },
-        err => console.log(err)
-      );
+    this.setCurrentUser();
+    this.openChat();
   }
 
   setCurrentUser() {

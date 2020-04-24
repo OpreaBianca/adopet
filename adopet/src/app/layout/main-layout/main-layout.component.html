@@ -12,10 +12,8 @@
 
       <!--Raportare cazuri de urgenta: harta + deschidere form cu descriere, contact etc-->
       <!-- <li><a routerLink="/emergency" routerLinkActive="active">EMERGENCY</a></li> -->
-      <li><a>EMERGENCY</a></li>
       <!--Evenimente-->
       <!-- <li><a routerLink="/upcoming-events" routerLinkActive="active">UPCOMING EVENTS</a></li> -->
-      <li><a>UPCOMING EVENTS</a></li>
       <li *ngIf="!authService.isAuthenticated()"><a routerLink="/login" routerLinkActive="active">LOGIN</a></li>
       <li *ngIf="authService.isAuthenticated()">
         <div class="dropdown">
